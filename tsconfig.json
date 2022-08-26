@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./app/",
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -13,7 +14,19 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "paths": {
+      "@/components/*": ["components/*"],
+      "@/ui/*": ["ui/*"],
+      "@/sreens/*": ["sreens/*"],
+      "@/hooks/*": ["hooks/*"],
+      "@/shared/*": ["shared/*"],
+      "@/config/*": ["config/*"],
+      "@/services/*": ["services/*"],
+      "@/utils/*": ["utils/*"],
+      "@/store/*": ["store/*"],
+      "@/assets/*": ["assets/*"]
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
