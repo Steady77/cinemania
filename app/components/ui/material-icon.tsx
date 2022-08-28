@@ -4,8 +4,9 @@ import * as MaterialIcons from 'react-icons/md';
 import { MaterialIconNameType } from '@/shared/types/icon.types';
 
 const MaterialIcon: FC<{ name: MaterialIconNameType }> = ({ name }) => {
-  const IconCompoonent = MaterialIcons[name];
+  const IconComponent = MaterialIcons[name];
 
-  return <IconCompoonent /> || <MaterialIcons.MdAccessibleForward />;
+  return <IconComponent /> || <MaterialIcons.MdAccessibleForward />;
 };
+
 export default MaterialIcon;
