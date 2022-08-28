@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import Menu from './menu';
-import { firstMenu, userMenu } from './menu-data';
+import { firstMenu, userMenu } from './menu.data';
 
 const MenuContainer: FC = () => {
   return (
