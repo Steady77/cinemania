@@ -3,8 +3,8 @@ import { FC } from 'react';
 import styles from '@/components/layout/navigation/menu-container/menu.module.scss';
 
 import AuthItems from './auth/auth-items';
-import { IMenu } from './menu-interface';
 import MenuItem from './menu-item';
+import { IMenu } from './menu.interface';
 
 const Menu: FC<{ menu: IMenu }> = ({ menu: { items, title } }) => {
   return (

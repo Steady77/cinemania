@@ -1,4 +1,4 @@
-import { MaterialIconNameType } from '@/shared/types/icon-types';
+import { MaterialIconNameType } from '@/shared/types/icon.types';
 
 export interface IMenuItem {
   icon: MaterialIconNameType;
