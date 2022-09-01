@@ -2,7 +2,7 @@ import { useQuery } from 'react-query';
 
 import { GenreService } from '@/services/genre.service';
 
-import { capitalizeFirstLetter } from '@/utils/helpers';
+import { capitalizeFirstLetter } from '@/utils/string';
 
 import { getGenreUrl } from '@/config/url.config';
 
