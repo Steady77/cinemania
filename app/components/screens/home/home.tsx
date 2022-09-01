@@ -1,12 +1,20 @@
 import { FC } from 'react';
 
-import Layout from '@/components/layout/layout';
+import Header from '@/components/ui/header/header';
+
+import Meta from '@/utils/meta/meta';
 
 const Home: FC = () => {
   return (
-    <Layout>
-      <h1>Home Page</h1>
-    </Layout>
+    <Meta
+      title="Онлайн кинотеатр"
+      description="Описание"
+    >
+      <Header
+        title="Смотреть фильмы онлайн"
+        className="text-blue-300 mb-8 text-xl"
+      />
+    </Meta>
   );
 };
 
