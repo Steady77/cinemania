@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    domains: ['kinopoiskapiunofficial.tech'],
+  },
   poweredByHeader: false,
   optimizeFonts: false,
   env: {
