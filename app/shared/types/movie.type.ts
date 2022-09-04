@@ -81,3 +81,23 @@ export interface ISearchMovie {
   posterUrl: string;
   posterUrlPreview: string;
 }
+
+export interface IPopularMovies {
+  pagesCount: number;
+  films: IPopularMovie[];
+}
+
+export interface IPopularMovie {
+  filmId: number;
+  nameRu: string;
+  nameEn: string;
+  year: string;
+  filmLength: string;
+  countries: Country[];
+  genres: Genre[];
+  rating: string;
+  ratingVoteCount: number;
+  posterUrl: string;
+  posterUrlPreview: string;
+  ratingChange?: null;
+}
