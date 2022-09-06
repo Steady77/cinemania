@@ -6,7 +6,7 @@ import { capitalizeFirstLetter } from '@/utils/string';
 
 import { getGenreRoute } from '@/config/url.config';
 
-import { IMenuItem } from './../menu.interface';
+import { IMenuItem } from '../menu.interface';
 
 export const useGenres = () => {
   const queryData = useQuery('genres menu', () => GenreService.getGenres(), {

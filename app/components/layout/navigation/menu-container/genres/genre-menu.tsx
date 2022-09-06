@@ -4,7 +4,7 @@ import ContentLoader from '@/components/ui/content-loader';
 
 import Menu from '../menu';
 
-import { useGenres } from './useGenres';
+import { useGenres } from './use-genres.hook';
 
 const GenreMenu: FC = () => {
   const { isLoading, data } = useGenres();

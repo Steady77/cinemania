@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import { useQuery } from 'react-query';
 
-import { useDebounce } from '@/hooks/useDebounce';
+import { useDebounce } from '@/hooks/use-debounce.hook';
 
 import { MovieService } from '@/services/movie.service';
 
