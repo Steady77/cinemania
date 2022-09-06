@@ -6,7 +6,7 @@ import Layout from '@/components/layout/layout';
 
 import { store } from '@/store/store';
 
-import HeadProvider from './head-provider';
+import HeadProvider from './head-provider/head-provider';
 import ReduxToast from './redux-toast';
 
 const queryClient = new QueryClient({
