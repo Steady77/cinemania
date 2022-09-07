@@ -13,6 +13,7 @@ module.exports = {
       primary,
       black: colors.black,
       white: colors.white,
+      red: colors.red,
       transparent: colors.transparent,
       yellow: {
         700: '#f5c521',
