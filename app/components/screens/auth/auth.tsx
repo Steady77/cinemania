@@ -1,12 +1,17 @@
 import { FC, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { toastr } from 'react-redux-toastr';
 
 import Button from '@/components/ui/form-elements/button';
 import Header from '@/components/ui/header/header';
 
-import { useAuth } from '@/hooks/use-auth.hook';
-
+import { USER } from '@/utils/consts';
 import Meta from '@/utils/meta/meta';
+import { saveToLS } from '@/utils/storage';
+
+import { IUserCred } from '@/store/auth/auth.interface';
+import { setAuthData } from '@/store/auth/auth.slice';
 
 import AuthInputs from './auth-inputs';
 import { IAuthInput } from './auth.interface';
@@ -14,9 +19,8 @@ import styles from './auth.module.scss';
 import { useAuthRedirect } from './use-auth-redirect.hook';
 
 const Auth: FC = () => {
+  const dispatch = useDispatch();
   useAuthRedirect();
-
-  const { isLoading } = useAuth();
 
   const [type, setType] = useState<'login' | 'register'>('login');
 
@@ -29,11 +33,16 @@ const Auth: FC = () => {
     mode: 'onChange',
   });
 
-  const login = (data: any) => {
-    console.log(data);
+  const login = (data: IUserCred) => {
+    toastr.success('Вход', 'Успешный вход');
+    dispatch(setAuthData(data));
+    saveToLS(USER, data);
+    console.table(data);
   };
-  const register = (data: any) => {
-    console.log(data);
+  const register = (data: IUserCred) => {
+    toastr.success('Регистрация', 'Успешная регистрация');
+    dispatch(setAuthData(data));
+    saveToLS(USER, data);
   };
 
   const onSubmit: SubmitHandler<IAuthInput> = (data) => {
@@ -60,14 +69,12 @@ const Auth: FC = () => {
             <Button
               type="submit"
               onClick={() => setType('login')}
-              disabled={isLoading}
             >
               Войти
             </Button>
             <Button
               type="submit"
               onClick={() => setType('register')}
-              disabled={isLoading}
             >
               Регистрация
             </Button>
