@@ -1,7 +1,7 @@
 import { IUserCred } from '@/store/auth/auth.interface';
 
 export const getFromLS = (name: string) => {
-  if (typeof name !== 'undefined') {
+  if (typeof localStorage !== 'undefined') {
     const ls = localStorage.getItem(name);
     return ls ? JSON.parse(ls) : null;
   }
