@@ -4,7 +4,7 @@ import { FC } from 'react';
 
 import MaterialIcon from '@/components/ui/material-icon';
 
-import { IPopularMovie } from '@/shared/types/movie.type';
+import { IFilm } from '@/shared/types/movie.type';
 
 import { getStringOfGenres } from '@/utils/movie/get-string-of-genres';
 
@@ -12,7 +12,7 @@ import { getMovieRoute } from '@/config/url.config';
 
 import styles from './movie-list.module.scss';
 
-const MovieItem: FC<{ movie: IPopularMovie }> = ({ movie }) => {
+const MovieItem: FC<{ movie: IFilm }> = ({ movie }) => {
   return (
     <div className={styles.item}>
       <Link href={getMovieRoute(movie.filmId)}>

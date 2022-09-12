@@ -84,10 +84,28 @@ export interface ISearchMovie {
 
 export interface IPopularMovies {
   pagesCount: number;
-  films: IPopularMovie[];
+  films: IFilm[];
 }
 
-export interface IPopularMovie {
+export interface IPremieresMovies {
+  total: number;
+  items: IPremieresMovie[];
+}
+
+export interface IPremieresMovie {
+  kinopoiskId: number;
+  nameRu: string;
+  nameEn: string;
+  year: number;
+  posterUrl: string;
+  posterUrlPreview: string;
+  countries: Country[];
+  genres: Genre[];
+  duration: number;
+  premiereRu: string;
+}
+
+export interface IFilm {
   filmId: number;
   nameRu: string;
   nameEn: string;
