@@ -2,13 +2,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 
-import { ISearchMovie, ISearchMovies } from '@/shared/types/movie.type';
+import { IFilmByFilters } from '@/shared/types/movie.type';
 
 import { getMovieRoute } from '@/config/url.config';
 
 import styles from './search-list.module.scss';
 
-const SearchList: FC<{ movies: ISearchMovie[] }> = ({ movies }) => {
+const SearchList: FC<{ movies: IFilmByFilters[] }> = ({ movies }) => {
   return (
     <div className={styles.list}>
       {movies.length ? (

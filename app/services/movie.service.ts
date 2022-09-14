@@ -1,9 +1,10 @@
 import { axiosAPI } from 'api/interceptors';
 
 import {
+  IFilmsByFilters,
   IPopularMovies,
   IPremieresMovies,
-  ISearchMovies,
+  IReleasesResp,
 } from '@/shared/types/movie.type';
 
 import { getCurrentMonth, getCurrentYear } from '@/utils/date';
@@ -12,7 +13,7 @@ import { getMoviesUrl } from '@/config/api.config';
 
 export const MovieService = {
   async getSearchedMovies(keyword?: string) {
-    return axiosAPI.get<ISearchMovies>(getMoviesUrl(''), {
+    return axiosAPI.get<IFilmsByFilters>(getMoviesUrl(''), {
       params: keyword ? { keyword } : {},
     });
   },
@@ -28,6 +29,24 @@ export const MovieService = {
       params: {
         year: getCurrentYear(),
         month: getCurrentMonth(),
+      },
+    });
+  },
+
+  async getReleasesMovies() {
+    return axiosAPI.get<IReleasesResp>('v2.1/films/releases', {
+      params: {
+        year: getCurrentYear(),
+        month: getCurrentMonth(),
+      },
+    });
+  },
+
+  async getTvSeries() {
+    return axiosAPI.get<IFilmsByFilters>(getMoviesUrl(''), {
+      params: {
+        type: 'TV_SERIES',
+        yearFrom: getCurrentYear(),
       },
     });
   },

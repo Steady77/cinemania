@@ -60,31 +60,9 @@ export interface IMovie {
   completed: boolean;
 }
 
-export interface ISearchMovies {
-  total: number;
-  totalPages: number;
-  items: ISearchMovie[];
-}
-
-export interface ISearchMovie {
-  kinopoiskId: number;
-  imdbId: string | null;
-  nameRu: string;
-  nameEn: string | null;
-  nameOriginal: string;
-  countries: Country[];
-  genres: Genre[];
-  ratingKinopoisk: number;
-  ratingImdb: number;
-  year: number;
-  type: string;
-  posterUrl: string;
-  posterUrlPreview: string;
-}
-
 export interface IPopularMovies {
   pagesCount: number;
-  films: IFilm[];
+  films: IPopularMovie[];
 }
 
 export interface IPremieresMovies {
@@ -105,7 +83,7 @@ export interface IPremieresMovie {
   premiereRu: string;
 }
 
-export interface IFilm {
+export interface IPopularMovie {
   filmId: number;
   nameRu: string;
   nameEn: string;
@@ -117,5 +95,48 @@ export interface IFilm {
   ratingVoteCount: number;
   posterUrl: string;
   posterUrlPreview: string;
-  ratingChange?: null;
+  ratingChange: string;
+}
+
+export interface IFilmByFilters {
+  kinopoiskId: number;
+  imdbId: number;
+  nameRu: string;
+  nameEn: string;
+  nameOriginal: string;
+  countries: Country[];
+  genres: Genre[];
+  ratingKinopoisk: number;
+  ratingImdb: number;
+  year: number;
+  type: string;
+  posterUrl: string;
+  posterUrlPreview: string;
+}
+
+export interface IFilmsByFilters {
+  total: number;
+  totalPages: number;
+  items: IFilmByFilters[];
+}
+
+export interface IReleaseMovie {
+  filmId: number;
+  nameRu: string;
+  nameEn: string;
+  year: number;
+  posterUrl: string;
+  posterUrlPreview: string;
+  countries: Country[];
+  genres: Genre[];
+  rating: number;
+  ratingVoteCount: number;
+  expectationsRating: number;
+  expectationsRatingVoteCount: number;
+  duration: number;
+  releaseDate: string;
+}
+
+export interface IReleasesResp {
+  releases: IReleaseMovie[];
 }
