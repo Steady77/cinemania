@@ -2,7 +2,7 @@
 
 App is under development...
 
-## Стэк:
+## Stack:
 
 - NextJS
 - React
@@ -10,3 +10,7 @@ App is under development...
 - TypeScript
 - SCSS, CSS modules
 - Tailwind CSS
+
+## API:
+
+https://kinopoiskapiunofficial.tech/
