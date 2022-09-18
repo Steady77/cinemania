@@ -1,18 +1,16 @@
-import { IUserCred } from '@/store/auth/auth.interface';
-
 export const getFromLS = (name: string) => {
-  if (typeof localStorage !== 'undefined') {
-    const ls = localStorage.getItem(name);
-    return ls ? JSON.parse(ls) : null;
-  }
+	if (typeof localStorage !== 'undefined') {
+		const ls = localStorage.getItem(name);
+		return ls ? JSON.parse(ls) : null;
+	}
 
-  return null;
+	return null;
 };
 
-export const saveToLS = (name: string, data: IUserCred) => {
-  localStorage.setItem(name, JSON.stringify(data));
+export const saveToLS = <T>(name: string, data: T) => {
+	localStorage.setItem(name, JSON.stringify(data));
 };
 
 export const removeFromLS = (name: string) => {
-  localStorage.removeItem(name);
+	localStorage.removeItem(name);
 };

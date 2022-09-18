@@ -1,9 +1,27 @@
-export interface IUserCred {
-  email: string;
-  password: string;
-}
+import { IUser } from '@/shared/types/user.types';
 
 export interface IAuthState {
-  authData: IUserCred | null;
-  isAuth: boolean;
+	user_email: string;
+	isAdmin: boolean;
+}
+
+export interface ITokens {
+	accessToken: string;
+	refreshToken: string;
+}
+
+export interface IInitialState {
+	user: IAuthState | null;
+	isLoading: boolean;
+}
+
+export interface IEmailPassword {
+	email: string;
+	password: string;
+}
+
+export interface IAuthResponse extends ITokens {
+	user: IUser & {
+		isAdmin: boolean;
+	};
 }

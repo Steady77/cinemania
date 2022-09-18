@@ -1,8 +1,8 @@
 import { reducer as toastrReducer } from 'react-redux-toastr';
 
-import auth from './auth/auth.slice';
+import authSlice from './auth/auth.slice';
 
 export const reducers = {
-  auth,
+  authSlice,
   toastr: toastrReducer,
 };

@@ -1,29 +1,53 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 import { USER } from '@/utils/consts';
 import { getFromLS } from '@/utils/storage';
 
-import { IAuthState, IUserCred } from './auth.interface';
+import { checkAuth, login, logout, register } from './auth.actions';
+import { IInitialState } from './auth.interface';
 
-const initialState: IAuthState = {
-  isAuth: false,
-  authData: getFromLS(USER),
+const initialState: IInitialState = {
+	isLoading: false,
+	user: getFromLS(USER),
 };
 
 export const authSlice = createSlice({
-  name: 'user',
-  initialState,
-  reducers: {
-    setAuthData(state, action: PayloadAction<IUserCred>) {
-      state.isAuth = true;
-      state.authData = action.payload;
-    },
-    removeAuthData(state) {
-      state.isAuth = false;
-      state.authData = null;
-    },
-  },
+	name: 'user',
+	initialState,
+	reducers: {},
+	extraReducers(builder) {
+		builder
+			.addCase(register.pending, (state) => {
+				state.isLoading = true;
+			})
+			.addCase(register.fulfilled, (state, { payload }) => {
+				state.isLoading = false;
+				state.user = payload.user;
+			})
+			.addCase(register.rejected, (state) => {
+				state.isLoading = false;
+				state.user = null;
+			})
+			.addCase(login.pending, (state) => {
+				state.isLoading = true;
+			})
+			.addCase(login.fulfilled, (state, { payload }) => {
+				state.isLoading = false;
+				state.user = payload.user;
+			})
+			.addCase(login.rejected, (state) => {
+				state.isLoading = false;
+				state.user = null;
+			})
+			.addCase(logout.fulfilled, (state) => {
+				state.isLoading = false;
+				state.user = null;
+			})
+			.addCase(checkAuth.fulfilled, (state, { payload }) => {
+				state.user = payload.user;
+			});
+	},
 });
 
-export const { setAuthData, removeAuthData } = authSlice.actions;
+export const {} = authSlice.actions;
 export default authSlice.reducer;
