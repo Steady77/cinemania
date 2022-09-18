@@ -1,3 +1,3 @@
 import { useTypedSelector } from './use-typed-selector.hook';
 
-export const useAuth = () => useTypedSelector((state) => state.auth);
+export const useAuth = () => useTypedSelector((state) => state.authSlice);
