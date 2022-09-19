@@ -9,17 +9,17 @@ import MaterialIcon from '@/components/ui/material-icon';
 import { IMenuItem } from './menu.interface';
 
 const MenuItem: FC<{ item: IMenuItem }> = ({ item }) => {
-  const { asPath } = useRouter();
+	const { asPath } = useRouter();
 
-  return (
-    <li className={cn({ [styles.active]: asPath === item.link })}>
-      <Link href={item.link}>
-        <a>
-          <MaterialIcon name={item.icon} />
-          <span>{item.title}</span>
-        </a>
-      </Link>
-    </li>
-  );
+	return (
+		<li className={cn({ [styles.active]: asPath === item.link })}>
+			<Link href={item.link}>
+				<a>
+					<MaterialIcon name={item.icon!} />
+					<span>{item.title}</span>
+				</a>
+			</Link>
+		</li>
+	);
 };
 export default MenuItem;

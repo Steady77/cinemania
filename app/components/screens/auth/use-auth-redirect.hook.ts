@@ -4,13 +4,13 @@ import { useEffect } from 'react';
 import { useAuth } from '@/hooks/use-auth.hook';
 
 export const useAuthRedirect = () => {
-  const { authData } = useAuth();
+	const { user } = useAuth();
 
-  const { query, push } = useRouter();
+	const { query, push } = useRouter();
 
-  const redirect = query.redirect ? String(query.redirect) : '/';
+	const redirect = query.redirect ? String(query.redirect) : '/';
 
-  useEffect(() => {
-    if (authData) push(redirect);
-  }, [authData, redirect, push]);
+	useEffect(() => {
+		if (user) push(redirect);
+	}, [user, redirect, push]);
 };
