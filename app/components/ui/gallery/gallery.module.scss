@@ -1,71 +1,73 @@
 @import '../../../assets/styles/variables';
 
 .gallery {
-  @apply flex items-center overflow-x-auto flex-nowrap py-3;
-  -webkit-overflow-scrolling: touch;
+	@apply flex items-center overflow-x-auto flex-nowrap py-3;
+	-webkit-overflow-scrolling: touch;
+	scrollbar-width: thin;
+	scrollbar-color: #1759e9 #d9daf8;
 
-  &::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    background-color: #d9daf8;
-    border-radius: 10px;
-  }
+	&::-webkit-scrollbar-track {
+		box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+		-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+		background-color: #d9daf8;
+		border-radius: 10px;
+	}
 
-  &::-webkit-scrollbar {
-    @apply h-2 bg-blue-900;
-  }
+	&::-webkit-scrollbar {
+		@apply h-2 bg-blue-900;
+	}
 
-  &::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-image: -webkit-gradient(
-      linear,
-      left bottom,
-      left top,
-      color-stop(0.44, #1759e9),
-      color-stop(0.72, #2d70ff),
-      color-stop(0.86, #5188ff)
-    );
-  }
+	&::-webkit-scrollbar-thumb {
+		border-radius: 10px;
+		background-image: -webkit-gradient(
+			linear,
+			left bottom,
+			left top,
+			color-stop(0.44, #1759e9),
+			color-stop(0.72, #2d70ff),
+			color-stop(0.86, #5188ff)
+		);
+	}
 }
 
 .item {
-  @apply relative transition-transform flex items-end shadow-lg rounded-layout overflow-hidden;
-  flex: 0 0 auto;
+	@apply relative transition-transform flex items-end shadow-lg rounded-layout overflow-hidden;
+	flex: 0 0 auto;
 
-  &:hover {
-    transform: translateY(-5px);
-  }
+	&:hover {
+		transform: translateY(-5px);
+	}
 
-  &.vertical {
-    @apply mr-4 last:mr-0 w-1/5 h-72;
-    max-width: 200px;
-  }
+	&.vertical {
+		@apply mr-4 last:mr-0 w-1/5 h-72;
+		max-width: 200px;
+	}
 
-  &.horizontal {
-    @apply mb-8 h-44;
-    width: 31%;
-  }
+	&.horizontal {
+		@apply mb-8 h-44;
+		width: 31%;
+	}
 
-  &.withText {
-    @include fade-bg-gradient(0deg);
-    &::before {
-      @apply rounded-layout;
-    }
-  }
+	&.withText {
+		@include fade-bg-gradient(0deg);
+		&::before {
+			@apply rounded-layout;
+		}
+	}
 
-  img {
-    @apply image-like-bg;
-  }
+	img {
+		@apply image-like-bg;
+	}
 
-  .content {
-    @apply relative z-2 text-center m-3 w-full;
+	.content {
+		@apply relative z-2 text-center m-3 w-full;
 
-    .title {
-      @apply font-semibold mb-1 text-white text-shadow;
-    }
+		.title {
+			@apply font-semibold mb-1 text-white text-shadow;
+		}
 
-    .subTitle {
-      @apply text-blue-500 text-shadow;
-    }
-  }
+		.subTitle {
+			@apply text-blue-500 text-shadow;
+		}
+	}
 }

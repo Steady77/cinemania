@@ -1,46 +1,68 @@
-import { FC, MouseEvent, useRef, useState } from 'react';
+import { FC, MouseEvent, useCallback, useRef, useState } from 'react';
 
 import GalleryItem from './gallery-item';
 import { IGalleryItem } from './gallery.interface';
 import styles from './gallery.module.scss';
 
 const Gallery: FC<{ items: IGalleryItem[] }> = ({ items }) => {
-	const galleryContainer = useRef<HTMLDivElement>(null);
-	const [isScrolling, setIsScrolling] = useState(false);
+	const galleryRef = useRef<HTMLDivElement>(null);
+	const [isPressed, setIsPressed] = useState(false);
+	const [isDragging, setIsDragging] = useState(false);
 	const [clientX, setClientX] = useState(0);
 	const [scrollX, setScrollX] = useState(0);
 
+	const preventClick = useCallback((e: Event) => {
+		e.preventDefault();
+		e.stopImmediatePropagation();
+		// e.stopPropagation();
+	}, []);
+
 	const mouseDownHandler = (e: MouseEvent<HTMLDivElement>) => {
-		if (galleryContainer.current) {
-			e.preventDefault();
-			setIsScrolling(true);
-			setClientX(e.clientX);
-			setScrollX(galleryContainer.current.scrollLeft);
-			galleryContainer.current.style.cursor = 'grabbing';
-			galleryContainer.current.style.userSelect = 'none';
+		e.preventDefault();
+		const gallery = galleryRef.current;
+		setIsPressed(true);
+		setClientX(e.clientX);
+
+		if (gallery) {
+			setScrollX(gallery.scrollLeft);
 		}
 	};
 
 	const mouseUpHandler = () => {
-		if (galleryContainer.current) {
-			setIsScrolling(false);
-			galleryContainer.current.style.cursor = 'grab';
-			galleryContainer.current.style.removeProperty('user-select');
+		const gallery = galleryRef.current;
+
+		if (gallery) {
+			if (isDragging) {
+				galleryRef.current.childNodes.forEach((child: ChildNode) => {
+					child.addEventListener('click', preventClick);
+				});
+			} else {
+				galleryRef.current.childNodes.forEach((child: ChildNode) => {
+					child.removeEventListener('click', preventClick);
+				});
+			}
+
+			setIsDragging(false);
+			setIsPressed(false);
 		}
 	};
 
 	const mouseMoveHandler = (e: MouseEvent) => {
-		if (isScrolling) {
-			if (galleryContainer.current) {
-				galleryContainer.current.scrollLeft = scrollX - (e.clientX - clientX);
+		const gallery = galleryRef.current;
+
+		if (gallery) {
+			if (isPressed) {
+				setIsDragging(true);
+				gallery.scrollLeft = scrollX - (e.clientX - clientX);
 				setScrollX(scrollX - (e.clientX - clientX));
 				setClientX(e.clientX);
 			}
 		}
 	};
+
 	return (
 		<div
-			ref={galleryContainer}
+			ref={galleryRef}
 			onMouseDown={mouseDownHandler}
 			onMouseUp={mouseUpHandler}
 			onMouseMove={mouseMoveHandler}
