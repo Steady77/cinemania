@@ -1,4 +1,11 @@
-import { FC, MouseEvent, useCallback, useRef, useState } from 'react';
+import {
+	FC,
+	MouseEvent,
+	useCallback,
+	useEffect,
+	useRef,
+	useState,
+} from 'react';
 
 import GalleryItem from './gallery-item';
 import { IGalleryItem } from './gallery.interface';
@@ -10,6 +17,25 @@ const Gallery: FC<{ items: IGalleryItem[] }> = ({ items }) => {
 	const [isDragging, setIsDragging] = useState(false);
 	const [clientX, setClientX] = useState(0);
 	const [scrollX, setScrollX] = useState(0);
+
+	useEffect(() => {
+		const gallery = galleryRef.current;
+
+		if (gallery) {
+			const onWheelHandler = (e: WheelEvent) => {
+				e.preventDefault();
+
+				gallery.scrollTo({
+					left: gallery.scrollLeft + e.deltaY * 2,
+					behavior: 'smooth',
+				});
+			};
+
+			gallery.addEventListener('wheel', onWheelHandler);
+
+			return () => gallery.removeEventListener('wheel', onWheelHandler);
+		}
+	}, []);
 
 	const preventClick = useCallback((e: Event) => {
 		e.preventDefault();
