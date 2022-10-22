@@ -33,7 +33,7 @@ export const MovieService = {
 		return axiosAPI.get<IPremieresMovies>(getMoviesUrl('/premieres'), {
 			params: {
 				year: getCurrentYear(),
-				month: getCurrentMonth(),
+				month: getCurrentMonth('en'),
 			},
 		});
 	},
@@ -42,7 +42,7 @@ export const MovieService = {
 		return axiosAPI.get<IReleasesResp>('v2.1/films/releases', {
 			params: {
 				year: getCurrentYear(),
-				month: getCurrentMonth(),
+				month: getCurrentMonth('en'),
 			},
 		});
 	},

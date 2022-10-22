@@ -1,4 +1,12 @@
+import { capitalizeFirstLetter } from './string';
+
 export const getCurrentYear = () => new Date().getFullYear();
 
-export const getCurrentMonth = () =>
-  new Date().toLocaleString('en-US', { month: 'long' });
+export const getCurrentMonth = (language: 'ru' | 'en') => {
+	if (language === 'ru')
+		return capitalizeFirstLetter(
+			new Date().toLocaleString('ru-RU', { month: 'long' }),
+		);
+	if (language === 'en')
+		return new Date().toLocaleString('en-US', { month: 'long' });
+};
