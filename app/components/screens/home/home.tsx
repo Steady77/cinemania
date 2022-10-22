@@ -11,26 +11,26 @@ import Meta from '@/utils/meta/meta';
 import { IHome } from './home.interface';
 
 const Home: FC<IHome> = ({ slides, releases, tvSeries }) => {
-  return (
-    <Meta
-      title="Онлайн кинотеатр"
-      description="Описание"
-    >
-      <Header
-        title="Кинопремьеры"
-        className="text-blue-300 mb-8 text-xl"
-      />
-      {slides.length && <Slider slides={slides} />}
-      <div className="my-10">
-        <SubHeading title={`Сериалы ${getCurrentYear()}`} />
-        {releases.length && <Gallery items={releases} />}
-      </div>
-      <div className="my-10">
-        <SubHeading title="Недавние релизы" />
-        {tvSeries.length && <Gallery items={tvSeries} />}
-      </div>
-    </Meta>
-  );
+	return (
+		<Meta
+			title="Онлайн кинотеатр"
+			description="Описание"
+		>
+			<Header
+				title="Кинопремьеры"
+				className="text-blue-300 mb-8"
+			/>
+			{slides.length && <Slider slides={slides} />}
+			<div className="my-10">
+				<SubHeading title="Свежие релизы" />
+				{releases.length && <Gallery items={releases} />}
+			</div>
+			<div className="my-10">
+				<SubHeading title={`Сериалы ${getCurrentYear()}`} />
+				{tvSeries.length && <Gallery items={tvSeries} />}
+			</div>
+		</Meta>
+	);
 };
 
 export default Home;
