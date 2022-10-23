@@ -22,9 +22,12 @@ const FreshPage: NextPage<{ releases: IReleaseMovie[] }> = ({ releases }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
 	try {
+		const yaer = getCurrentYear();
+		const month = getCurrentMonth('en');
+
 		const {
 			data: { releases },
-		} = await MovieService.getReleasesMovies();
+		} = await MovieService.getReleases(yaer, month);
 
 		return {
 			props: {

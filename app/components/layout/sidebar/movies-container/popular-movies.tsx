@@ -8,27 +8,27 @@ import { MovieService } from '@/services/movie.service';
 import MovieList from './movie-list';
 
 const PopularMovies: FC = () => {
-  const { isLoading, data } = useQuery(
-    'popular movies sidebar',
-    () => MovieService.getPopularMovies(),
-    {
-      select: ({ data }) => data.films.slice(0, 3),
-    },
-  );
+	const { isLoading, data } = useQuery(
+		'popular movies sidebar',
+		() => MovieService.getTop('TOP_100_POPULAR_FILMS'),
+		{
+			select: ({ data }) => data.films.slice(0, 3),
+		},
+	);
 
-  return isLoading ? (
-    <div className="mt-11">
-      <ContentLoader
-        count={3}
-        className="h-28 mb-4"
-      />
-    </div>
-  ) : (
-    <MovieList
-      link="/trends"
-      movies={data || []}
-      title="Популярные фильмы"
-    />
-  );
+	return isLoading ? (
+		<div className="mt-11">
+			<ContentLoader
+				count={3}
+				className="h-28 mb-4"
+			/>
+		</div>
+	) : (
+		<MovieList
+			link="/trends"
+			movies={data || []}
+			title="Популярные фильмы"
+		/>
+	);
 };
 export default PopularMovies;

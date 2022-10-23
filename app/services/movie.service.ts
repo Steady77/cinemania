@@ -8,50 +8,83 @@ import {
 	IReleasesResp,
 } from '@/shared/types/movie.type';
 
-import { getCurrentMonth, getCurrentYear } from '@/utils/date';
-
 import { getMoviesUrl } from '@/config/api.config';
 
-export const MovieService = {
-	async getSearchedMovies(keyword?: string) {
-		return axiosAPI.get<IFilmsByFilters>(getMoviesUrl(''), {
-			params: keyword ? { keyword } : {},
-		});
-	},
+interface IGetByFilters {
+	countries?: number;
+	genres?: number;
+	order?: 'RATING' | 'NUM_VOTE' | 'YEAR';
+	type?: 'FILM' | 'TV_SHOW' | 'TV_SERIES' | 'MINI_SERIES' | 'ALL';
+	ratingFrom?: number;
+	ratingTo?: number;
+	yearFrom?: number;
+	yearTo?: number;
+	imdbId?: string;
+	keyword?: string;
+	page?: number;
+}
 
+type TopType =
+	| 'TOP_100_POPULAR_FILMS'
+	| 'TOP_250_BEST_FILMS'
+	| 'TOP_AWAIT_FILMS';
+
+export const MovieService = {
 	async getById(id: string) {
 		return axiosAPI.get<IMovie>(getMoviesUrl(`/${id}`));
 	},
 
-	async getPopularMovies(type = 'TOP_100_POPULAR_FILMS', page = 1) {
+	async getTop(type: TopType, page = 1) {
 		return axiosAPI.get<IPopularMovies>(getMoviesUrl('/top'), {
 			params: { type, page },
 		});
 	},
 
-	async getPremieresMovies() {
+	async getPremieres(year: number, month: string | undefined) {
 		return axiosAPI.get<IPremieresMovies>(getMoviesUrl('/premieres'), {
 			params: {
-				year: getCurrentYear(),
-				month: getCurrentMonth('en'),
+				year,
+				month,
 			},
 		});
 	},
 
-	async getReleasesMovies() {
+	async getReleases(year: number, month: string | undefined, page = 1) {
 		return axiosAPI.get<IReleasesResp>('v2.1/films/releases', {
 			params: {
-				year: getCurrentYear(),
-				month: getCurrentMonth('en'),
+				year,
+				month,
+				page,
 			},
 		});
 	},
 
-	async getTvSeries() {
+	async getByFilters({
+		countries,
+		genres,
+		order,
+		type,
+		ratingFrom,
+		ratingTo,
+		yearFrom,
+		yearTo,
+		imdbId,
+		keyword,
+		page,
+	}: IGetByFilters) {
 		return axiosAPI.get<IFilmsByFilters>(getMoviesUrl(''), {
 			params: {
-				type: 'TV_SERIES',
-				yearFrom: getCurrentYear(),
+				countries,
+				genres,
+				order,
+				type,
+				ratingFrom,
+				ratingTo,
+				yearFrom,
+				yearTo,
+				imdbId,
+				keyword,
+				page,
 			},
 		});
 	},
