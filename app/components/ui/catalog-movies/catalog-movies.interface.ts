@@ -1,11 +1,7 @@
-import {
-	IMovie,
-	IReleaseMovie,
-	MergeTwoTypes,
-} from '@/shared/types/movie.type';
+import { IReleasesResp } from '@/shared/types/movie.type';
 
 export interface ICatalog {
 	title: string;
 	description: string;
-	movies: MergeTwoTypes<IMovie, IReleaseMovie>[];
+	data: IReleasesResp;
 }

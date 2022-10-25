@@ -151,5 +151,7 @@ export interface IReleaseMovie {
 }
 
 export interface IReleasesResp {
+	page: number;
+	total: number;
 	releases: IReleaseMovie[];
 }

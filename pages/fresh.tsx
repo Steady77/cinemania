@@ -1,18 +1,18 @@
-import { GetStaticProps, NextPage } from 'next';
+import { GetServerSideProps, GetStaticProps, NextPage } from 'next';
 
 import CatalogMovies from '@/components/ui/catalog-movies/catalog-movies';
 
-import { IReleaseMovie } from '@/shared/types/movie.type';
+import { IReleaseMovie, IReleasesResp } from '@/shared/types/movie.type';
 
 import { MovieService } from '@/services/movie.service';
 
 import { getCurrentMonth, getCurrentYear } from '@/utils/date';
 
-const FreshPage: NextPage<{ releases: IReleaseMovie[] }> = ({ releases }) => {
+const FreshPage: NextPage<{ data: IReleasesResp }> = ({ data }) => {
 	return (
 		<CatalogMovies
 			title="Свежие цифровые релизы"
-			movies={releases || []}
+			data={data || []}
 			description={`Недавние цифровые релизы фильмов и сериалов за ${getCurrentMonth(
 				'ru',
 			)} ${getCurrentYear()}`}
@@ -25,13 +25,11 @@ export const getStaticProps: GetStaticProps = async () => {
 		const yaer = getCurrentYear();
 		const month = getCurrentMonth('en');
 
-		const {
-			data: { releases },
-		} = await MovieService.getReleases(yaer, month);
+		const { data } = await MovieService.getReleases(yaer, month);
 
 		return {
 			props: {
-				releases,
+				data,
 			},
 		};
 	} catch (error) {
