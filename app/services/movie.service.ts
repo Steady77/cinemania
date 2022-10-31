@@ -3,9 +3,9 @@ import { axiosAPI } from 'api/interceptors';
 import {
 	IFilmsByFilters,
 	IMovie,
-	IPopularMovies,
 	IPremieresMovies,
-	IReleasesResp,
+	IReleasesResponse,
+	ITopResponse,
 } from '@/shared/types/movie.type';
 
 import { getMoviesUrl } from '@/config/api.config';
@@ -35,7 +35,7 @@ export const MovieService = {
 	},
 
 	async getTop(type: TopType, page = 1) {
-		return axiosAPI.get<IPopularMovies>(getMoviesUrl('/top'), {
+		return axiosAPI.get<ITopResponse>(getMoviesUrl('/top'), {
 			params: { type, page },
 		});
 	},
@@ -50,7 +50,7 @@ export const MovieService = {
 	},
 
 	async getReleases(year: number, month: string | undefined, page = 1) {
-		return axiosAPI.get<IReleasesResp>('v2.1/films/releases', {
+		return axiosAPI.get<IReleasesResponse>('v2.1/films/releases', {
 			params: {
 				year,
 				month,

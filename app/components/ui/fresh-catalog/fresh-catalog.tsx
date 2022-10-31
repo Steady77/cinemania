@@ -11,15 +11,16 @@ import GalleryItem from '../gallery/gallery-item';
 import Description from '../header/description';
 import Header from '../header/header';
 
-import { ICatalog } from './catalog-movies.interface';
-import styles from './catalog-movies.module.scss';
+import { IFreshCatalog } from './fresh-catalog.interface';
+import styles from './fresh-catalog.module.scss';
 
-const CatalogMovies: FC<ICatalog> = ({
+const FreshCatalog: FC<IFreshCatalog> = ({
 	title,
 	description,
-	data: { releases, total },
+	movies,
+	total,
 }) => {
-	const [moviesData, setMoviesData] = useState(releases);
+	const [moviesData, setMoviesData] = useState(movies);
 	const [currentPage, setCurrentPage] = useState(1);
 	const isMounted = useRef(false);
 
@@ -82,7 +83,7 @@ const CatalogMovies: FC<ICatalog> = ({
 						/>
 					))}
 			</section>
-			{currentPage < totalPages && (
+			{totalPages && currentPage < totalPages && (
 				<button
 					onClick={loadMore}
 					className={styles.button}
@@ -93,4 +94,4 @@ const CatalogMovies: FC<ICatalog> = ({
 		</Meta>
 	);
 };
-export default CatalogMovies;
+export default FreshCatalog;

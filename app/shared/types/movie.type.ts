@@ -73,9 +73,9 @@ export interface IMovie {
 	completed: boolean;
 }
 
-export interface IPopularMovies {
+export interface ITopResponse {
 	pagesCount: number;
-	films: IPopularMovie[];
+	films: ITopMovie[];
 }
 
 export interface IPremieresMovies {
@@ -96,7 +96,7 @@ export interface IPremieresMovie {
 	premiereRu: string;
 }
 
-export interface IPopularMovie {
+export interface ITopMovie {
 	filmId: number;
 	nameRu: string;
 	nameEn: string;
@@ -150,7 +150,7 @@ export interface IReleaseMovie {
 	releaseDate: string;
 }
 
-export interface IReleasesResp {
+export interface IReleasesResponse {
 	page: number;
 	total: number;
 	releases: IReleaseMovie[];
