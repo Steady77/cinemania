@@ -21,8 +21,7 @@ const Content: FC<{ movie: IMovie }> = ({ movie }) => {
 			<ContentList
 				name="Жанры"
 				links={movie.genres.map((g) => ({
-					id: g.id,
-					link: getGenreRoute(g.id),
+					link: getGenreRoute(g.genre),
 					title: g.genre,
 				}))}
 			/>

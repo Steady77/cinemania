@@ -12,19 +12,19 @@ export type MergeTwoTypes<T, U> =
 	};
 
 export interface IGenres {
-	genres: Genre[];
-	countries: Country[];
+	genres: IGenre[];
+	countries: ICountry[];
 }
 
-type Genre = {
+export interface IGenre {
 	id: number;
 	genre: string;
-};
+}
 
-type Country = {
+export interface ICountry {
 	id: number;
 	country: string;
-};
+}
 
 export interface IMovie {
 	kinopoiskId: number;
@@ -64,8 +64,8 @@ export interface IMovie {
 	hasImax: boolean;
 	has3D: boolean;
 	lastSync: Date;
-	countries: Country[];
-	genres: Genre[];
+	countries: ICountry[];
+	genres: IGenre[];
 	startYear: number;
 	endYear: number;
 	serial: boolean;
@@ -90,8 +90,8 @@ export interface IPremieresMovie {
 	year: number;
 	posterUrl: string;
 	posterUrlPreview: string;
-	countries: Country[];
-	genres: Genre[];
+	countries: ICountry[];
+	genres: IGenre[];
 	duration: number;
 	premiereRu: string;
 }
@@ -102,8 +102,8 @@ export interface ITopMovie {
 	nameEn: string;
 	year: string;
 	filmLength: string;
-	countries: Country[];
-	genres: Genre[];
+	countries: ICountry[];
+	genres: IGenre[];
 	rating: string;
 	ratingVoteCount: number;
 	posterUrl: string;
@@ -117,8 +117,8 @@ export interface IFilmByFilters {
 	nameRu: string;
 	nameEn: string;
 	nameOriginal: string;
-	countries: Country[];
-	genres: Genre[];
+	countries: ICountry[];
+	genres: IGenre[];
 	ratingKinopoisk: number;
 	ratingImdb: number;
 	year: number;
@@ -127,7 +127,7 @@ export interface IFilmByFilters {
 	posterUrlPreview: string;
 }
 
-export interface IFilmsByFilters {
+export interface IFilmsByFiltersResp {
 	total: number;
 	totalPages: number;
 	items: IFilmByFilters[];
@@ -140,8 +140,8 @@ export interface IReleaseMovie {
 	year: number;
 	posterUrl: string;
 	posterUrlPreview: string;
-	countries: Country[];
-	genres: Genre[];
+	countries: ICountry[];
+	genres: IGenre[];
 	rating: number;
 	ratingVoteCount: number;
 	expectationsRating: number;

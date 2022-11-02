@@ -1,7 +1,7 @@
 import { axiosAPI } from 'api/interceptors';
 
 import {
-	IFilmsByFilters,
+	IFilmsByFiltersResp,
 	IMovie,
 	IPremieresMovies,
 	IReleasesResponse,
@@ -72,7 +72,7 @@ export const MovieService = {
 		keyword,
 		page,
 	}: IGetByFilters) {
-		return axiosAPI.get<IFilmsByFilters>(getMoviesUrl(''), {
+		return axiosAPI.get<IFilmsByFiltersResp>(getMoviesUrl(''), {
 			params: {
 				countries,
 				genres,
