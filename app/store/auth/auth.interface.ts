@@ -1,7 +1,7 @@
 import { IUser } from '@/shared/types/user.types';
 
 export interface IAuthState {
-	user_email: string;
+	email: string;
 	isAdmin: boolean;
 }
 
