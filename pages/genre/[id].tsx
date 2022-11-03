@@ -50,19 +50,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 	let id = Number(params?.id);
-	let genre;
 
 	try {
 		const {
 			data: { genres },
 		} = await GenreService.getGenres();
 
-		if (isNaN(id)) {
-			id = Number(genres.find((obj) => obj.genre === params?.id)?.id);
-			genre = params?.id;
-		} else {
-			genre = genres.find((obj) => obj.id === Number(params?.id))?.genre;
-		}
+		const genre = genres.find((obj) => obj.id === id)?.genre;
 
 		const {
 			data: { items, totalPages },

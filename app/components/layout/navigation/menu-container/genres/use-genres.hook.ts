@@ -9,24 +9,24 @@ import { getGenreRoute } from '@/config/url.config';
 import { IMenuItem } from '../menu.interface';
 
 export const useGenres = () => {
-  const queryData = useQuery('genres menu', () => GenreService.getGenres(), {
-    select: ({ data: { genres } }) =>
-      genres
-        .map(
-          ({ genre, id }) =>
-            ({
-              title: genre,
-              link: getGenreRoute(id),
-              icon: 'MdThumbUp',
-            } as IMenuItem),
-        )
-        .sort(() => Math.random() - 0.5)
-        .splice(0, 4)
-        .map((item) => ({
-          ...item,
-          title: capitalizeFirstLetter(item.title),
-        })),
-  });
+	const queryData = useQuery('genres menu', () => GenreService.getGenres(), {
+		select: ({ data: { genres } }) =>
+			genres
+				.map(
+					({ genre, id }) =>
+						({
+							title: genre,
+							link: getGenreRoute(String(id)),
+							icon: 'MdThumbUp',
+						} as IMenuItem),
+				)
+				.sort(() => Math.random() - 0.5)
+				.splice(0, 4)
+				.map((item) => ({
+					...item,
+					title: capitalizeFirstLetter(item.title),
+				})),
+	});
 
-  return queryData;
+	return queryData;
 };
