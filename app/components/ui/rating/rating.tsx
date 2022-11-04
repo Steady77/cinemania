@@ -19,7 +19,7 @@ const Rating: FC<IRating> = ({ rating, icon, text, className }) => {
 		<div className={cn(styles.rating, className)}>
 			{text && <span className={styles.text}>{text}</span>}
 			<MaterialIcon name={icon} />
-			<span>{rating}</span>
+			{rating ? <span>{rating}</span> : <span>--</span>}
 		</div>
 	);
 };
