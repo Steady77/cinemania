@@ -16,7 +16,7 @@ const PopularMovies: FC = () => {
 		},
 	);
 
-	return isLoading ? (
+	return isLoading || data?.length! < 1 ? (
 		<div className="mt-11">
 			<ContentLoader
 				count={3}
