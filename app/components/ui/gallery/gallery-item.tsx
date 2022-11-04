@@ -3,6 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 
+import Rating from '../rating/rating';
+
 import { IGalleryItemProps } from './gallery.interface';
 import styles from './gallery.module.scss';
 
@@ -27,7 +29,11 @@ const GalleryItem: FC<IGalleryItemProps> = ({ item, variant }) => {
 					<div className={styles.content}>
 						<h6 className={styles.title}>{item.content.title}</h6>
 						{item.content.subTitle && (
-							<p className={styles.subTitle}>{item.content.subTitle}</p>
+							<Rating
+								className="justify-center"
+								rating={item.content.subTitle}
+								icon="MdStarRate"
+							/>
 						)}
 					</div>
 				)}

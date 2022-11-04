@@ -1,0 +1,15 @@
+.rating {
+	@apply flex items-center;
+
+	> svg {
+		@apply fill-yellow-700 mb-0.5;
+	}
+
+	> .text {
+		@apply pr-2;
+	}
+
+	> span {
+		@apply text-white ml-2;
+	}
+}

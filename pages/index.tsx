@@ -47,7 +47,7 @@ export const getStaticProps: GetStaticProps = async () => {
 			posterPath: movie.posterUrlPreview,
 			content: {
 				title: movie.nameRu,
-				subTitle: movie.year,
+				subTitle: movie.rating,
 			},
 		}));
 

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { FC } from 'react';
 
 import MaterialIcon from '@/components/ui/material-icon';
+import Rating from '@/components/ui/rating/rating';
 
 import { ITopMovie } from '@/shared/types/movie.type';
 
@@ -39,10 +40,11 @@ const MovieItem: FC<{ movie: ITopMovie }> = ({ movie }) => {
 						</span>
 					))}
 				</div>
-				<div className={styles.rating}>
-					<MaterialIcon name="MdStarRate" />
-					<span>{movie.rating}</span>
-				</div>
+				<Rating
+					className="mb-2"
+					rating={movie.rating}
+					icon="MdStarRate"
+				/>
 			</div>
 		</div>
 	);

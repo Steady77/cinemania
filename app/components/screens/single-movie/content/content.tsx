@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useQuery } from 'react-query';
 
-import MaterialIcon from '@/components/ui/material-icon';
+import Rating from '@/components/ui/rating/rating';
 
 import { IMovie } from '@/shared/types/movie.type';
 
@@ -38,11 +38,18 @@ const Content: FC<{ movie: IMovie }> = ({ movie }) => {
 					title: g.genre,
 				}))}
 			/>
-			<div className={styles.rating}>
-				<span className="pr-2">Кинопоиск</span>
-				<MaterialIcon name="MdStarRate" />
-				<span>{movie.ratingKinopoisk}</span>
-			</div>
+			<Rating
+				className="absolute bottom-8 right-8 text-xl opacity-90"
+				text="Кинопоиск"
+				icon="MdStarRate"
+				rating={movie.ratingKinopoisk}
+			/>
+			<Rating
+				className="absolute bottom-14 right-8 text-xl opacity-90"
+				text="IMDB"
+				icon="MdStarRate"
+				rating={movie.ratingImdb}
+			/>
 		</div>
 	);
 };
