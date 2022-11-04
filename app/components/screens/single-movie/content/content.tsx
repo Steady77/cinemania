@@ -23,7 +23,7 @@ const Content: FC<{ movie: IMovie }> = ({ movie }) => {
 
 	return (
 		<div className={styles.content}>
-			<h1 className={styles.title}>{movie.nameRu}</h1>
+			<h4 className={styles.title}>{movie.nameRu}</h4>
 			<div className={styles.details}>
 				<span>{movie.year} · </span>
 				<span>{movie.countries[0].country} · </span>

@@ -6,19 +6,19 @@ import { IMovieList } from './movie-list.interface';
 import styles from './movie-list.module.scss';
 
 const MovieList: FC<IMovieList> = ({ link, movies, title }) => {
-  return (
-    <div className={styles.list}>
-      <div className={styles.header}>{title}</div>
-      {movies.map((movie) => (
-        <MovieItem
-          key={movie.filmId}
-          movie={movie}
-        />
-      ))}
-      <Link href={link}>
-        <a className={styles.button}>Посмотреть еще</a>
-      </Link>
-    </div>
-  );
+	return (
+		<div className={styles.list}>
+			<h5 className={styles.header}>{title}</h5>
+			{movies.map((movie) => (
+				<MovieItem
+					key={movie.filmId}
+					movie={movie}
+				/>
+			))}
+			<Link href={link}>
+				<a className={styles.button}>Посмотреть еще</a>
+			</Link>
+		</div>
+	);
 };
 export default MovieList;

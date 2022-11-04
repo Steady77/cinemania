@@ -5,12 +5,12 @@ import MenuContainer from './menu-container/menu-container';
 import styles from './navigation.module.scss';
 
 const Navigation: FC = () => {
-  return (
-    <div className={styles.navigation}>
-      <Logo />
-      <MenuContainer />
-    </div>
-  );
+	return (
+		<aside className={styles.navigation}>
+			<Logo />
+			<MenuContainer />
+		</aside>
+	);
 };
 
 export default Navigation;

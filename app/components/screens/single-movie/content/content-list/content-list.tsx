@@ -7,7 +7,7 @@ import { IContentList } from './content.interface';
 const ContentList: FC<IContentList> = ({ name, links }) => {
 	return (
 		<div className={styles.list}>
-			<div className={styles.name}>{name}</div>
+			<h5 className={styles.name}>{name}</h5>
 			<div className={styles.links}>
 				{links.map((link, idx) => (
 					<Fragment key={idx}>
