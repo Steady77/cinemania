@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
 import Gallery from '@/components/ui/gallery/gallery';
-import Header from '@/components/ui/header/header';
-import SubHeading from '@/components/ui/header/sub-heading';
+import Heading from '@/components/ui/heading/heading';
+import SubHeading from '@/components/ui/heading/sub-heading';
 import Slider from '@/components/ui/slider/slider';
 
 import { getCurrentYear } from '@/utils/date';
@@ -16,7 +16,7 @@ const Home: FC<IHome> = ({ slides, releases, tvSeries }) => {
 			title="Онлайн кинотеатр"
 			description="Описание"
 		>
-			<Header
+			<Heading
 				title="Кинопремьеры"
 				className="text-blue-300 mb-8"
 			/>

@@ -8,8 +8,8 @@ import Meta from '@/utils/meta/meta';
 import { getMovieRoute } from '@/config/url.config';
 
 import GalleryItem from '../gallery/gallery-item';
-import Description from '../header/description';
-import Header from '../header/header';
+import Description from '../heading/description';
+import Heading from '../heading/heading';
 
 import { IFreshCatalog } from './fresh-catalog.interface';
 import styles from './fresh-catalog.module.scss';
@@ -58,7 +58,7 @@ const FreshCatalog: FC<IFreshCatalog> = ({
 			title={title}
 			description={description}
 		>
-			<Header
+			<Heading
 				title={title}
 				className={styles.heading}
 			/>

@@ -8,7 +8,7 @@ import styles from './movie-list.module.scss';
 const MovieList: FC<IMovieList> = ({ link, movies, title }) => {
 	return (
 		<div className={styles.list}>
-			<h5 className={styles.header}>{title}</h5>
+			<h5 className={styles.heading}>{title}</h5>
 			{movies.map((movie) => (
 				<MovieItem
 					key={movie.filmId}

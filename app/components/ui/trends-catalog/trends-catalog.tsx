@@ -7,8 +7,8 @@ import Meta from '@/utils/meta/meta';
 import { getMovieRoute } from '@/config/url.config';
 
 import GalleryItem from '../gallery/gallery-item';
-import Description from '../header/description';
-import Header from '../header/header';
+import Description from '../heading/description';
+import Heading from '../heading/heading';
 
 import { ITrendsCatalog } from './trends-catalog.interface';
 import styles from './trends-catalog.module.scss';
@@ -52,7 +52,7 @@ const TrendsCatalog: FC<ITrendsCatalog> = ({
 			title={title}
 			description={description}
 		>
-			<Header
+			<Heading
 				title={title}
 				className={styles.heading}
 			/>

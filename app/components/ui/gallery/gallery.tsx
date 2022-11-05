@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import Header from '../header/header';
+import Heading from '../heading/heading';
 
 import GalleryItem from './gallery-item';
 import { IGalleryItem } from './gallery.interface';
@@ -13,7 +13,7 @@ const Gallery: FC<{ items: IGalleryItem[] }> = ({ items }) => {
 
 	if (items.length === 0) {
 		return (
-			<Header
+			<Heading
 				className="text-center text-xl"
 				title="Фильмы не найдены"
 			/>

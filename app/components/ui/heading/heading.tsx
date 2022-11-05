@@ -1,11 +1,11 @@
 import { FC } from 'react';
 
-interface IHeader {
+interface IHeading {
 	title: string;
 	className?: string;
 }
 
-const Header: FC<IHeader> = ({ title, className }) => {
+const Heading: FC<IHeading> = ({ title, className }) => {
 	return (
 		<h1
 			className={`text-white text-opacity-80 font-semibold ${
@@ -16,4 +16,4 @@ const Header: FC<IHeader> = ({ title, className }) => {
 		</h1>
 	);
 };
-export default Header;
+export default Heading;

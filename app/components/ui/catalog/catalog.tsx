@@ -5,8 +5,8 @@ import Meta from '@/utils/meta/meta';
 import { getMovieRoute } from '@/config/url.config';
 
 import GalleryItem from '../gallery/gallery-item';
-import Description from '../header/description';
-import Header from '../header/header';
+import Description from '../heading/description';
+import Heading from '../heading/heading';
 
 import { ICatalog } from './catalog.interface';
 import styles from './catalog.module.scss';
@@ -17,7 +17,7 @@ const Catalog: FC<ICatalog> = ({ title, description, movies }) => {
 			title={title}
 			description={description}
 		>
-			<Header
+			<Heading
 				title={title}
 				className={styles.heading}
 			/>

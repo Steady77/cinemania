@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import Button from '@/components/ui/form-elements/button';
-import Header from '@/components/ui/header/header';
+import Heading from '@/components/ui/heading/heading';
 
 import { useActions } from '@/hooks/use-actions.hook';
 
@@ -39,7 +39,7 @@ const Auth: FC = () => {
 		<Meta title="Авторизация">
 			<section className={styles.wrapper}>
 				<form onSubmit={handleSubmit(onSubmit)}>
-					<Header
+					<Heading
 						title="Авторизация"
 						className="mb-6"
 					/>
