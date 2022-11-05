@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 
-import MaterialIcon from '@/components/ui/material-icon';
 import Rating from '@/components/ui/rating/rating';
 
 import { ITopMovie } from '@/shared/types/movie.type';

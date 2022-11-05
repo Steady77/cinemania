@@ -11,7 +11,7 @@ export type MergeTwoTypes<T, U> =
 		[K in keyof GetObjSameKeys<T, U>]: T[K] | U[K];
 	};
 
-export interface IGenres {
+export interface IFiltersResp {
 	genres: IGenre[];
 	countries: ICountry[];
 }
