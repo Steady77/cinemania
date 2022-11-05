@@ -26,6 +26,21 @@ export interface ICountry {
 	country: string;
 }
 
+export interface ISimilarMovie {
+	filmId: number;
+	nameRu: string;
+	nameEn: string;
+	nameOriginal: string;
+	posterUrl: string;
+	posterUrlPreview: string;
+	relationType: string;
+}
+
+export interface ISimilarsResp {
+	total: number;
+	items: ISimilarMovie[];
+}
+
 export interface IMovie {
 	kinopoiskId: number;
 	imdbId: string;

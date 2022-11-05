@@ -5,6 +5,7 @@ import {
 	IMovie,
 	IPremieresMovies,
 	IReleasesResponse,
+	ISimilarsResp,
 	ITopResponse,
 } from '@/shared/types/movie.type';
 
@@ -32,6 +33,10 @@ type TopType =
 export const MovieService = {
 	async getById(id: string) {
 		return axiosAPI.get<IMovie>(getMoviesUrl(`/${id}`));
+	},
+
+	async getSimilars(id: string) {
+		return axiosAPI.get<ISimilarsResp>(getMoviesUrl(`/${id}/similars`));
 	},
 
 	async getTop(type: TopType, page = 1) {
