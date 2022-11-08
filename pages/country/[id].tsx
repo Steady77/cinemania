@@ -4,7 +4,7 @@ import Catalog from '@/components/ui/catalog/catalog';
 
 import { IFilmByFilters } from '@/shared/types/movie.type';
 
-import { CountryService } from '@/services/country.service';
+import { FiltersService } from '@/services/filters.service';
 import { MovieService } from '@/services/movie.service';
 
 import Error404 from '../404';
@@ -30,7 +30,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	try {
 		const {
 			data: { countries },
-		} = await CountryService.getCountries();
+		} = await FiltersService.getGenresCountries();
 		const paths = countries.map((country) => ({
 			params: { id: String(country.id) },
 		}));
@@ -53,7 +53,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 	try {
 		const {
 			data: { countries },
-		} = await CountryService.getCountries();
+		} = await FiltersService.getGenresCountries();
 
 		const country = countries.find((obj) => obj.id === id)?.country;
 

@@ -4,7 +4,7 @@ import Catalog from '@/components/ui/catalog/catalog';
 
 import { IFilmByFilters } from '@/shared/types/movie.type';
 
-import { GenreService } from '@/services/genre.service';
+import { FiltersService } from '@/services/filters.service';
 import { MovieService } from '@/services/movie.service';
 
 import { capitalizeFirstLetter } from '@/utils/string';
@@ -32,7 +32,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	try {
 		const {
 			data: { genres },
-		} = await GenreService.getGenres();
+		} = await FiltersService.getGenresCountries();
 		const paths = genres.map((genre) => ({
 			params: { id: String(genre.id) },
 		}));
@@ -55,7 +55,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 	try {
 		const {
 			data: { genres },
-		} = await GenreService.getGenres();
+		} = await FiltersService.getGenresCountries();
 
 		const genre = genres.find((obj) => obj.id === id)?.genre;
 

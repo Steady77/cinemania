@@ -10,23 +10,23 @@ import HeadProvider from './head-provider/head-provider';
 import ReduxToast from './redux-toast';
 
 const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-    },
-  },
+	defaultOptions: {
+		queries: {
+			refetchOnWindowFocus: false,
+		},
+	},
 });
 
 const MainProvider: FC<PropsWithChildren> = ({ children }) => {
-  return (
-    <HeadProvider>
-      <Provider store={store}>
-        <QueryClientProvider client={queryClient}>
-          <ReduxToast />
-          <Layout>{children}</Layout>
-        </QueryClientProvider>
-      </Provider>
-    </HeadProvider>
-  );
+	return (
+		<HeadProvider>
+			<Provider store={store}>
+				<QueryClientProvider client={queryClient}>
+					<ReduxToast />
+					<Layout>{children}</Layout>
+				</QueryClientProvider>
+			</Provider>
+		</HeadProvider>
+	);
 };
 export default MainProvider;

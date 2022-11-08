@@ -10,7 +10,7 @@ export interface ITokens {
 	refreshToken: string;
 }
 
-export interface IInitialState {
+export interface IAuthInitialState {
 	user: IAuthState | null;
 	isLoading: boolean;
 }

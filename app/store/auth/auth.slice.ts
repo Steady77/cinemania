@@ -4,14 +4,14 @@ import { USER } from '@/utils/consts';
 import { getFromLS } from '@/utils/storage';
 
 import { checkAuth, login, logout, register } from './auth.actions';
-import { IInitialState } from './auth.interface';
+import { IAuthInitialState } from './auth.interface';
 
-const initialState: IInitialState = {
+const initialState: IAuthInitialState = {
 	isLoading: false,
 	user: getFromLS(USER),
 };
 
-export const authSlice = createSlice({
+const authSlice = createSlice({
 	name: 'auth',
 	initialState,
 	reducers: {},

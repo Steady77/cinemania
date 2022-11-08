@@ -1,12 +1,10 @@
 import { FC } from 'react';
-import { useQuery } from 'react-query';
 
 import Rating from '@/components/ui/rating/rating';
 
-import { IMovie } from '@/shared/types/movie.type';
+import { useTypedSelector } from '@/hooks/use-typed-selector.hook';
 
-import { CountryService } from '@/services/country.service';
-import { GenreService } from '@/services/genre.service';
+import { IMovie } from '@/shared/types/movie.type';
 
 import { getCountryRoute, getGenreRoute } from '@/config/url.config';
 
@@ -14,21 +12,7 @@ import ContentList from './content-list/content-list';
 import styles from './content.module.scss';
 
 const Content: FC<{ movie: IMovie }> = ({ movie }) => {
-	const { data: genresIds } = useQuery(
-		'genres single movie',
-		() => GenreService.getGenres(),
-		{
-			select: ({ data: { genres } }) => genres,
-		},
-	);
-
-	const { data: countryIds } = useQuery(
-		'countries single movie',
-		() => CountryService.getCountries(),
-		{
-			select: ({ data: { countries } }) => countries,
-		},
-	);
+	const { countries, genres } = useTypedSelector((state) => state.filtersSlice);
 
 	return (
 		<div className={styles.content}>
@@ -41,7 +25,7 @@ const Content: FC<{ movie: IMovie }> = ({ movie }) => {
 				name="Жанры:"
 				links={movie.genres.map((g) => ({
 					link: getGenreRoute(
-						String(genresIds?.find((obj) => obj.genre === g.genre)?.id),
+						String(genres?.find((obj) => obj.genre === g.genre)?.id),
 					),
 					title: g.genre,
 				}))}
@@ -50,7 +34,7 @@ const Content: FC<{ movie: IMovie }> = ({ movie }) => {
 				name="Страны:"
 				links={movie.countries.map((c) => ({
 					link: getCountryRoute(
-						String(countryIds?.find((obj) => obj.country === c.country)?.id),
+						String(countries?.find((obj) => obj.country === c.country)?.id),
 					),
 					title: c.country,
 				}))}
