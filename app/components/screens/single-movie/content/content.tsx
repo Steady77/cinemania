@@ -6,6 +6,8 @@ import { useTypedSelector } from '@/hooks/use-typed-selector.hook';
 
 import { IMovie } from '@/shared/types/movie.type';
 
+import { convertAge } from '@/utils/movie/convert-age';
+
 import { getCountryRoute, getGenreRoute } from '@/config/url.config';
 
 import ContentList from './content-list/content-list';
@@ -20,6 +22,7 @@ const Content: FC<{ movie: IMovie }> = ({ movie }) => {
 			<div className={styles.details}>
 				<span>{movie.year} год</span>
 				{movie.filmLength && <span> · {movie.filmLength} мин.</span>}
+				<span> {convertAge(movie.ratingAgeLimits)}</span>
 			</div>
 			<ContentList
 				name="Жанры:"

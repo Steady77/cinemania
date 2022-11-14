@@ -1,11 +1,11 @@
 .content {
 	@apply relative z-2 p-8;
 
-	> h4 {
+	.title {
 		@apply text-white uppercase text-5xl font-semibold mb-1 text-shadow;
 	}
 
 	.details {
-		@apply text-white text-opacity-80 my-3;
+		@apply text-white text-lg text-opacity-80 my-3;
 	}
 }
