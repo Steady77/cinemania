@@ -1,19 +1,23 @@
 .search {
-  @apply rounded-3xl border border-blue-700 px-3 py-2 flex items-center transition-colors;
+	@apply rounded-3xl border border-blue-700 px-3 py-2 flex items-center transition-colors;
 
-  > svg {
-    @apply fill-blue-600 mr-2 text-3xl transition-colors;
-  }
+	.close {
+		cursor: pointer;
+	}
 
-  > input {
-    @apply text-white placeholder:text-blue-600 block w-full bg-transparent outline-none;
-  }
+	> svg {
+		@apply fill-blue-600 mr-2 text-3xl transition-colors;
+	}
 
-  &:focus-within {
-    @apply border-blue-600;
+	> input {
+		@apply text-white placeholder:text-blue-600 block w-full bg-transparent outline-none;
+	}
 
-    > svg {
-      @apply fill-blue-500;
-    }
-  }
+	&:focus-within {
+		@apply border-blue-600;
+
+		> svg {
+			@apply fill-blue-500;
+		}
+	}
 }

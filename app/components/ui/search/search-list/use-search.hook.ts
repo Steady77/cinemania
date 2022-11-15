@@ -18,9 +18,13 @@ export const useSearch = () => {
 		},
 	);
 
+	const handleClear = () => {
+		setSearchValue('');
+	}
+
 	const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
 		setSearchValue(e.target.value);
 	};
 
-	return { isSuccess, handleSearch, data, searchValue };
+	return { isSuccess, handleSearch, data, searchValue, handleClear };
 };
