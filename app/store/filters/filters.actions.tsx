@@ -9,8 +9,6 @@ export const getGenresCountries = createAsyncThunk<IFiltersResp>(
 	async (_, thunkApi) => {
 		try {
 			const response = await FiltersService.getGenresCountries();
-			console.log(response.data);
-
 			return response.data;
 		} catch (error) {
 			return thunkApi.rejectWithValue(error);
