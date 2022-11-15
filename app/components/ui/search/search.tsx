@@ -7,15 +7,16 @@ import { useSearch } from './search-list/use-search.hook';
 import styles from './search.module.scss';
 
 const Search: FC = () => {
-  const { isSuccess, data, handleSearch, searchValue } = useSearch();
-  return (
-    <div className={styles.wrapper}>
-      <SearchInput
-        handleSearch={handleSearch}
-        searchValue={searchValue}
-      />
-      {isSuccess && <SearchList movies={data || []} />}
-    </div>
-  );
+	const { isSuccess, data, handleSearch, searchValue } = useSearch();
+
+	return (
+		<div className={styles.wrapper}>
+			<SearchInput
+				handleSearch={handleSearch}
+				searchValue={searchValue}
+			/>
+			{isSuccess && <SearchList movies={data || []} />}
+		</div>
+	);
 };
 export default Search;
