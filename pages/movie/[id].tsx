@@ -3,22 +3,27 @@ import { GetServerSideProps, NextPage } from 'next';
 import SingleMovie from '@/components/screens/single-movie/single-movie';
 import { IGalleryItem } from '@/components/ui/gallery/gallery.interface';
 
-import { IMovie } from '@/shared/types/movie.type';
+import { IMovie } from '@/shared/types/movie.types';
 
 import { MovieService } from '@/services/movie.service';
+import { StaffService } from '@/services/staff.service';
 
-import { getMovieRoute } from '@/config/url.config';
+import { getArrayOfUnique } from '@/utils/array';
+
+import { getMovieRoute, getStaffRoute } from '@/config/url.config';
 
 import Error404 from '../404';
 
 export interface IMoviePage {
+	staff: IGalleryItem[];
 	movie: IMovie;
 	similarMovies: IGalleryItem[];
 }
 
-const MoviePage: NextPage<IMoviePage> = ({ movie, similarMovies }) => {
+const MoviePage: NextPage<IMoviePage> = ({ movie, similarMovies, staff }) => {
 	return movie ? (
 		<SingleMovie
+			staff={staff || []}
 			movie={movie}
 			similarMovies={similarMovies || []}
 		/>
@@ -46,8 +51,22 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 			}),
 		);
 
+		const { data: dataStaff } = await StaffService.getByFilmId(id);
+
+		const uniqueStaff = getArrayOfUnique(dataStaff);
+
+		const staff: IGalleryItem[] = uniqueStaff.map((person) => ({
+			name: person.nameRu,
+			link: getStaffRoute(person.staffId),
+			posterPath: person.posterUrl,
+			content: {
+				title: person.nameRu,
+			},
+		}));
+
 		return {
 			props: {
+				staff,
 				movie,
 				similarMovies,
 			},
