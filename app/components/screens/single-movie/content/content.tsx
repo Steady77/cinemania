@@ -4,7 +4,7 @@ import Rating from '@/components/ui/rating/rating';
 
 import { useTypedSelector } from '@/hooks/use-typed-selector.hook';
 
-import { IMovie } from '@/shared/types/movie.type';
+import { IMovie } from '@/shared/types/movie.types';
 
 import { convertAge } from '@/utils/movie/convert-age';
 

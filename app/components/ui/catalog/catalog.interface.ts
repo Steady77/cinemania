@@ -1,4 +1,4 @@
-import { IFilmByFilters } from '@/shared/types/movie.type';
+import { IFilmByFilters } from '@/shared/types/movie.types';
 
 export interface ICatalog {
 	title: string;

@@ -2,7 +2,7 @@ import { GetStaticProps, NextPage } from 'next';
 
 import FreshCatalog from '@/components/ui/fresh-catalog/fresh-catalog';
 
-import { IReleasesResponse } from '@/shared/types/movie.type';
+import { IReleasesResponse } from '@/shared/types/movie.types';
 
 import { MovieService } from '@/services/movie.service';
 

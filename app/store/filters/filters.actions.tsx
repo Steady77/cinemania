@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { IFiltersResp } from '@/shared/types/movie.type';
+import { IFiltersResp } from '@/shared/types/movie.types';
 
 import { FiltersService } from '@/services/filters.service';
 

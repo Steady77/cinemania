@@ -1,4 +1,4 @@
-import { IReleaseMovie } from '@/shared/types/movie.type';
+import { IReleaseMovie } from '@/shared/types/movie.types';
 
 export interface IFreshCatalog {
 	title: string;

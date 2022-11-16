@@ -7,7 +7,7 @@ import {
 	IReleasesResponse,
 	ISimilarsResp,
 	ITopResponse,
-} from '@/shared/types/movie.type';
+} from '@/shared/types/movie.types';
 
 import { getMoviesUrl } from '@/config/api.config';
 

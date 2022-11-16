@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
 import Catalog from '@/components/ui/catalog/catalog';
 
-import { IFilmByFilters } from '@/shared/types/movie.type';
+import { IFilmByFilters } from '@/shared/types/movie.types';
 
 import { FiltersService } from '@/services/filters.service';
 import { MovieService } from '@/services/movie.service';

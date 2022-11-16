@@ -4,7 +4,7 @@ import { FC } from 'react';
 
 import Rating from '@/components/ui/rating/rating';
 
-import { ITopMovie } from '@/shared/types/movie.type';
+import { ITopMovie } from '@/shared/types/movie.types';
 
 import { getStringOfGenres } from '@/utils/movie/get-string-of-genres';
 

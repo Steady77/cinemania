@@ -1,4 +1,4 @@
-import { ITopMovie } from '@/shared/types/movie.type';
+import { ITopMovie } from '@/shared/types/movie.types';
 
 export interface IMovieList {
 	title: string;

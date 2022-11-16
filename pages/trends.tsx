@@ -2,7 +2,7 @@ import { GetStaticProps, NextPage } from 'next';
 
 import TrendsCatalog from '@/components/ui/trends-catalog/trends-catalog';
 
-import { ITopResponse } from '@/shared/types/movie.type';
+import { ITopResponse } from '@/shared/types/movie.types';
 
 import { MovieService } from '@/services/movie.service';
 

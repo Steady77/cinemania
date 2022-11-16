@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { ICountry, IGenre } from '@/shared/types/movie.type';
+import { ICountry, IGenre } from '@/shared/types/movie.types';
 
 import { getGenresCountries } from './filters.actions';
 
