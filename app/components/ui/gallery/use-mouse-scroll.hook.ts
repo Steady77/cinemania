@@ -1,6 +1,6 @@
 import { MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
 
-export const useGallery = () => {
+export const useMouseScroll = () => {
 	const ref = useRef<HTMLDivElement>(null);
 	const [isPressed, setIsPressed] = useState(false);
 	const [isDragging, setIsDragging] = useState(false);

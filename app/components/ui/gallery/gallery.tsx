@@ -5,11 +5,11 @@ import Heading from '../heading/heading';
 import GalleryItem from './gallery-item';
 import { IGalleryItem } from './gallery.interface';
 import styles from './gallery.module.scss';
-import { useGallery } from './use-gallery.hook';
+import { useMouseScroll } from './use-mouse-scroll.hook';
 
 const Gallery: FC<{ items: IGalleryItem[] }> = ({ items }) => {
 	const { ref, mouseDownHandler, mouseMoveHandler, mouseUpHandler } =
-		useGallery();
+		useMouseScroll();
 
 	if (items.length === 0) {
 		return (
