@@ -2,6 +2,8 @@
 
 App is under development...
 
+[Backend repository](https://github.com/Steady77/cinemania-server)
+
 ## Stack:
 
 - NextJS
