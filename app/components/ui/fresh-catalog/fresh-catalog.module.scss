@@ -3,15 +3,18 @@
 }
 
 .movies {
-	@apply flex flex-wrap mt-8;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+	grid-gap: 15px;
+	justify-items: center;
 
 	> a {
-		@apply mr-8 animate-fade;
+		@apply animate-fade;
 	}
+}
 
-	> a:nth-child(3n) {
-		@apply mr-0;
-	}
+.description {
+	@apply mb-8;
 }
 
 .button {

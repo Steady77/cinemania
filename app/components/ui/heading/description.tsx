@@ -6,11 +6,11 @@ const Description: FC<{ text: string; className?: string }> = ({
 	className,
 }) => {
 	return (
-		<div
+		<p
 			className={cn('text-lg font-light text-white text-opacity-60', className)}
 		>
-			<p>{text}</p>
-		</div>
+			{text}
+		</p>
 	);
 };
 export default Description;
