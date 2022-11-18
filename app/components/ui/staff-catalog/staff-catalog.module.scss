@@ -1,0 +1,54 @@
+// @import '../../../assets/styles/variables';
+
+// .staff {
+// 	@apply flex items-center overflow-x-auto flex-nowrap py-3;
+// 	@include custom-scrollbar;
+
+// 	.item {
+// 		@apply relative flex w-28 h-28 overflow-hidden mr-4 mb-1 last:mr-0 rounded-full transition-transform shadow-lg;
+// 		flex: 0 0 auto;
+
+// 		&:hover {
+// 			transform: translateY(-5px);
+// 		}
+
+// 		img {
+// 			@apply image-like-bg;
+// 		}
+
+// 		.content {
+// 			@apply relative z-2 text-center m-3 w-full;
+
+// 			.text {
+// 				@apply font-semibold mb-1 text-white text-shadow;
+// 			}
+// 		}
+// 	}
+// }
+
+@import '../../../assets/styles/variables';
+
+.staff {
+	@apply flex overflow-x-auto flex-nowrap pt-3;
+	@include custom-scrollbar;
+
+	.item {
+		@apply transition-transform shadow-lg mr-4 last:mr-0;
+
+		&:hover {
+			transform: translateY(-5px);
+		}
+
+		.avatar {
+			@apply relative h-36 w-36;
+		}
+
+		img {
+			@apply image-like-bg rounded-full;
+		}
+
+		.text {
+			@apply font-semibold text-white text-shadow text-center my-3;
+		}
+	}
+}

@@ -4,6 +4,7 @@ import Banner from '@/components/ui/banner/banner';
 import Gallery from '@/components/ui/gallery/gallery';
 import Description from '@/components/ui/heading/description';
 import SubHeading from '@/components/ui/heading/sub-heading';
+import StaffCatalog from '@/components/ui/staff-catalog/staff-catalog';
 
 import Meta from '@/utils/meta/meta';
 
@@ -29,7 +30,7 @@ const SingleMovie: FC<IMoviePage> = ({ movie, similarMovies, staff }) => {
 
 			<div className="mt-6">
 				<SubHeading title="Актеры и создатели" />
-				<Gallery items={staff} />
+				<StaffCatalog persons={staff} />
 			</div>
 
 			<div className="mt-6">
