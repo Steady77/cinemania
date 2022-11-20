@@ -1,12 +1,9 @@
-@import '../../../assets/styles/variables';
-
 .list {
-	@apply flex items-center overflow-x-auto flex-nowrap py-3;
-	@include custom-scrollbar;
+	@apply flex items-center overflow-hidden flex-nowrap py-3;
 
 	.item {
 		@apply transition-transform flex flex-col items-center justify-center shadow-lg 
-    rounded-layout overflow-hidden bg-blue-700 py-2 px-3 text-center mr-4 last:mr-0;
+    rounded-layout bg-blue-700 py-2 px-3 text-center mr-4 last:mr-0;
 		flex: 0 0 auto;
 
 		min-width: 200px;
@@ -14,6 +11,11 @@
 
 		&:hover {
 			transform: translateY(-5px);
+			background: radial-gradient(
+				129.83% 100% at 100% 0,
+				#66677e 0,
+				#39394f 100%
+			);
 		}
 
 		.text {
