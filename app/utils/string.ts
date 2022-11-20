@@ -5,6 +5,16 @@ export const capitalizeFirstLetter = (str: string) => {
 	return str;
 };
 
+export const formatAge = (value: number): string => {
+	const formatter = new Intl.NumberFormat('ru', {
+		style: 'unit',
+		unit: 'year',
+		unitDisplay: 'long',
+	});
+
+	return formatter.format(value);
+};
+
 export const clearText = (
 	_string: string,
 	limit: null | number = null,

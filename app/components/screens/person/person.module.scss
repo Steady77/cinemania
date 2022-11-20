@@ -1,0 +1,17 @@
+.person {
+	@apply text-white text-opacity-60;
+	max-width: 1200px;
+	margin: 0 auto;
+
+	.info {
+		@apply flex justify-evenly flex-wrap mb-5;
+
+		img {
+			@apply image-like-bg;
+		}
+
+		.list {
+			@apply ml-3;
+		}
+	}
+}

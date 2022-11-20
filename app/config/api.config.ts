@@ -3,6 +3,6 @@ export const API_KEY = `${process.env.API_KEY}`;
 export const SERVER_URL = `${process.env.SERVER_URL}`;
 
 export const getFiltersUrl = () => `v2.2/films/filters`;
-export const getStaffUrl = () => `v1/staff`;
+export const getStaffUrl = (string: string) => `v1/staff/${string}`;
 export const getAuthUrl = (string: string) => `auth${string}`;
 export const getMoviesUrl = (string: string) => `v2.2/films${string}`;

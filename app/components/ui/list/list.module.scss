@@ -1,0 +1,23 @@
+@import '../../../assets/styles/variables';
+
+.list {
+	@apply flex items-center overflow-x-auto flex-nowrap py-3;
+	@include custom-scrollbar;
+
+	.item {
+		@apply transition-transform flex flex-col items-center justify-center shadow-lg 
+    rounded-layout overflow-hidden bg-blue-700 py-2 px-3 text-center mr-4 last:mr-0;
+		flex: 0 0 auto;
+
+		min-width: 200px;
+		min-height: 64px;
+
+		&:hover {
+			transform: translateY(-5px);
+		}
+
+		.text {
+			@apply text-blue-500 font-semibold text-shadow;
+		}
+	}
+}
