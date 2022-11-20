@@ -14,6 +14,7 @@ const StaffItem: FC<IStaffItemProps> = ({ person }) => {
 						src={person.posterPath || ''}
 						alt={person.name}
 						layout="fill"
+						priority
 					/>
 				</div>
 				<p className={styles.text}>{person.name}</p>
