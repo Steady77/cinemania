@@ -12,7 +12,7 @@ import { IPerson } from '@/shared/types/staff.types';
 import Meta from '@/utils/meta/meta';
 import { formatAge } from '@/utils/string';
 
-import { getMovieRoute } from '@/config/url.config';
+import { getMovieRoute } from '@/config/route.config';
 
 import styles from './person.module.scss';
 

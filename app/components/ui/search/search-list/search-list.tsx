@@ -4,7 +4,7 @@ import { FC } from 'react';
 
 import { IFilmByFilters } from '@/shared/types/movie.types';
 
-import { getMovieRoute } from '@/config/url.config';
+import { getMovieRoute } from '@/config/route.config';
 
 import styles from './search-list.module.scss';
 

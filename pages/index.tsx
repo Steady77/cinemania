@@ -13,7 +13,7 @@ import { getCurrentMonth, getCurrentYear } from '@/utils/date';
 import { getGenresList } from '@/utils/movie/get-string-of-genres';
 import { capitalizeFirstLetter } from '@/utils/string';
 
-import { getGenreRoute, getMovieRoute } from '@/config/url.config';
+import { getGenreRoute, getMovieRoute } from '@/config/route.config';
 
 const HomePage: NextPage<IHome> = ({ slides, releases, tvSeries, genres }) => {
 	return (

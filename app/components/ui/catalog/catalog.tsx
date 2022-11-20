@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import Meta from '@/utils/meta/meta';
 
-import { getMovieRoute } from '@/config/url.config';
+import { getMovieRoute } from '@/config/route.config';
 
 import GalleryItem from '../gallery/gallery-item';
 import Description from '../heading/description';

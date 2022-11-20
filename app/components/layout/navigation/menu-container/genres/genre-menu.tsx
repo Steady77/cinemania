@@ -6,7 +6,7 @@ import { useTypedSelector } from '@/hooks/use-typed-selector.hook';
 
 import { capitalizeFirstLetter } from '@/utils/string';
 
-import { getGenreRoute } from '@/config/url.config';
+import { getGenreRoute } from '@/config/route.config';
 
 import Menu from '../menu';
 import { IMenuItem } from '../menu.interface';

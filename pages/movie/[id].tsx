@@ -10,7 +10,7 @@ import { StaffService } from '@/services/staff.service';
 
 import { getArrayOfUnique } from '@/utils/array';
 
-import { getMovieRoute, getStaffRoute } from '@/config/url.config';
+import { getMovieRoute, getStaffRoute } from '@/config/route.config';
 
 import Error404 from '../404';
 

@@ -8,7 +8,7 @@ import { IMovie } from '@/shared/types/movie.types';
 
 import { convertAge } from '@/utils/movie/convert-age';
 
-import { getCountryRoute, getGenreRoute } from '@/config/url.config';
+import { getCountryRoute, getGenreRoute } from '@/config/route.config';
 
 import ContentList from './content-list/content-list';
 import styles from './content.module.scss';

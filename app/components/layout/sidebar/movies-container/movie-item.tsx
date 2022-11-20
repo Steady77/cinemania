@@ -8,7 +8,7 @@ import { ITopMovie } from '@/shared/types/movie.types';
 
 import { getStringOfGenres } from '@/utils/movie/get-string-of-genres';
 
-import { getMovieRoute } from '@/config/url.config';
+import { getMovieRoute } from '@/config/route.config';
 
 import styles from './movie-list.module.scss';
 

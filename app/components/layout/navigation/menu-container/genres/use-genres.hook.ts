@@ -4,7 +4,7 @@ import { FiltersService } from '@/services/filters.service';
 
 import { capitalizeFirstLetter } from '@/utils/string';
 
-import { getGenreRoute } from '@/config/url.config';
+import { getGenreRoute } from '@/config/route.config';
 
 import { IMenuItem } from '../menu.interface';
 
