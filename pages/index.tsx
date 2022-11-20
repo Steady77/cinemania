@@ -3,18 +3,22 @@ import type { GetStaticProps, NextPage } from 'next';
 import Home from '@/components/screens/home/home';
 import { IHome } from '@/components/screens/home/home.interface';
 import { IGalleryItem } from '@/components/ui/gallery/gallery.interface';
+import { IList } from '@/components/ui/list/list.interface';
 import { ISlide } from '@/components/ui/slider/slider.interface';
 
+import { FiltersService } from '@/services/filters.service';
 import { MovieService } from '@/services/movie.service';
 
 import { getCurrentMonth, getCurrentYear } from '@/utils/date';
 import { getGenresList } from '@/utils/movie/get-string-of-genres';
+import { capitalizeFirstLetter } from '@/utils/string';
 
-import { getMovieRoute } from '@/config/url.config';
+import { getGenreRoute, getMovieRoute } from '@/config/url.config';
 
-const HomePage: NextPage<IHome> = ({ slides, releases, tvSeries }) => {
+const HomePage: NextPage<IHome> = ({ slides, releases, tvSeries, genres }) => {
 	return (
 		<Home
+			genres={genres}
 			slides={slides}
 			releases={releases}
 			tvSeries={tvSeries}
@@ -23,11 +27,21 @@ const HomePage: NextPage<IHome> = ({ slides, releases, tvSeries }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-	try {
-		const yaer = getCurrentYear();
-		const month = getCurrentMonth('en');
+	const currentYear = getCurrentYear();
+	const month = getCurrentMonth('en');
 
-		const { data: premieres } = await MovieService.getPremieres(yaer, month);
+	try {
+		const { data: genresData } = await FiltersService.getGenresCountries();
+
+		const genres: IList[] = genresData.genres.map((genre) => ({
+			link: getGenreRoute(String(genre.id)),
+			name: capitalizeFirstLetter(genre.genre),
+		}));
+
+		const { data: premieres } = await MovieService.getPremieres(
+			currentYear,
+			month,
+		);
 
 		const slides: ISlide[] = premieres.items.map((movie) => ({
 			kinopoiskId: movie.kinopoiskId,
@@ -53,7 +67,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 		const { data: tvSeriesData } = await MovieService.getByFilters({
 			type: 'TV_SERIES',
-			yearFrom: getCurrentYear(),
+			yearFrom: currentYear,
 		});
 
 		const tvSeries: IGalleryItem[] = tvSeriesData.items.map((movie) => ({
@@ -68,6 +82,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 		return {
 			props: {
+				genres,
 				slides,
 				releases,
 				tvSeries,
@@ -76,6 +91,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	} catch (error) {
 		return {
 			props: {
+				genres: [],
 				slides: [],
 				releases: [],
 				tvSeries: [],

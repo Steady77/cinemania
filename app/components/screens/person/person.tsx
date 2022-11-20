@@ -41,7 +41,7 @@ const Person: FC<{ person: IPerson }> = ({ person }) => {
 							title={person.nameRu}
 							className="text-5xl mb-2"
 						/>
-						<SubHeading title={person.nameEn || '---'} />
+						<SubHeading title={person.nameEn || ''} />
 						<li>Профессия: {person.profession || '---'}</li>
 						<li>Место рождения: {person.birthplace || '---'}</li>
 						<li>Возраст: {formatAge(person.age) || '---'}</li>
