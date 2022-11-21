@@ -1,6 +1,6 @@
 import { GetStaticProps, NextPage } from 'next';
 
-import FreshCatalog from '@/components/ui/fresh-catalog/fresh-catalog';
+import FreshCatalog from '@/components/ui/catalogs/fresh-catalog/fresh-catalog';
 
 import { IReleasesResponse } from '@/shared/types/movie.types';
 

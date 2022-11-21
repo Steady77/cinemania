@@ -6,12 +6,12 @@ import Meta from '@/utils/meta/meta';
 
 import { getMovieRoute } from '@/config/route.config';
 
-import GalleryItem from '../gallery/gallery-item';
-import Description from '../heading/description';
-import Heading from '../heading/heading';
+import GalleryItem from '../../gallery/gallery-item';
+import Description from '../../heading/description';
+import Heading from '../../heading/heading';
+import styles from '../catalog.module.scss';
 
 import { ITrendsCatalog } from './trends-catalog.interface';
-import styles from './trends-catalog.module.scss';
 
 const TrendsCatalog: FC<ITrendsCatalog> = ({
 	title,

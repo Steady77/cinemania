@@ -3,10 +3,8 @@
 }
 
 .movies {
-	display: grid;
+	@apply grid gap-4 justify-items-center mb-5;
 	grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-	grid-gap: 15px;
-	justify-items: center;
 
 	> a {
 		@apply animate-fade;

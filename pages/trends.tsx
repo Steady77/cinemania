@@ -1,6 +1,6 @@
 import { GetStaticProps, NextPage } from 'next';
 
-import TrendsCatalog from '@/components/ui/trends-catalog/trends-catalog';
+import TrendsCatalog from '@/components/ui/catalogs/trends-catalog/trends-catalog';
 
 import { ITopResponse } from '@/shared/types/movie.types';
 

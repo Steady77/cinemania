@@ -1,10 +1,10 @@
 import { FC } from 'react';
 
 import Banner from '@/components/ui/banner/banner';
+import StaffCatalog from '@/components/ui/catalogs/staff-catalog/staff-catalog';
 import Gallery from '@/components/ui/gallery/gallery';
 import Description from '@/components/ui/heading/description';
 import SubHeading from '@/components/ui/heading/sub-heading';
-import StaffCatalog from '@/components/ui/staff-catalog/staff-catalog';
 
 import Meta from '@/utils/meta/meta';
 

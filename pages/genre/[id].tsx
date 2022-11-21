@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
-import Catalog from '@/components/ui/catalog/catalog';
+import Catalog from '@/components/ui/catalogs/catalog';
 
 import { IFilmByFilters } from '@/shared/types/movie.types';
 

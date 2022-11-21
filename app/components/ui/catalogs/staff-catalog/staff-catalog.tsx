@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
-import { useMouseScroll } from '../gallery/use-mouse-scroll.hook';
-import Heading from '../heading/heading';
+import { useMouseScroll } from '../../gallery/use-mouse-scroll.hook';
+import Heading from '../../heading/heading';
 
 import styles from './staff-catalog.module.scss';
 import StaffItem from './staff-item';
