@@ -25,14 +25,14 @@ export const axiosServer = axios.create({
 	},
 });
 
-export const instance = axios.create({
+export const axiosInterseptors = axios.create({
 	baseURL: SERVER_URL,
 	headers: {
 		'Content-Type': 'application/json',
 	},
 });
 
-instance.interceptors.request.use((config) => {
+axiosInterseptors.interceptors.request.use((config) => {
 	const accessToken = Cookies.get(ACCESS_TOKEN);
 
 	if (config.headers && accessToken) {
@@ -42,7 +42,7 @@ instance.interceptors.request.use((config) => {
 	return config;
 });
 
-instance.interceptors.response.use(
+axiosInterseptors.interceptors.response.use(
 	(config) => config,
 	async (error) => {
 		const originalRequest = error.config;
@@ -57,7 +57,7 @@ instance.interceptors.response.use(
 			originalRequest._isRetry = true;
 			try {
 				await AuthService.getNewTokens();
-				return instance.request(originalRequest);
+				return axiosInterseptors.request(originalRequest);
 			} catch (error) {
 				if (errorCatch(error) === 'jwt expired') {
 					removeTokensFromCookie();
@@ -68,5 +68,3 @@ instance.interceptors.response.use(
 		throw error;
 	},
 );
-
-export default instance;
