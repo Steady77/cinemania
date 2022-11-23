@@ -14,7 +14,10 @@ export const AuthService = {
 	async register(email: string, password: string) {
 		const response = await axiosServer.post<IAuthResponse>(
 			getAuthUrl('/register'),
-			{ email, password },
+			{
+				email,
+				password,
+			},
 		);
 
 		if (response.data.accessToken) saveToStorages(response.data);
@@ -25,7 +28,10 @@ export const AuthService = {
 	async login(email: string, password: string) {
 		const response = await axiosServer.post<IAuthResponse>(
 			getAuthUrl('/login'),
-			{ email, password },
+			{
+				email,
+				password,
+			},
 		);
 
 		if (response.data.accessToken) saveToStorages(response.data);
@@ -42,7 +48,9 @@ export const AuthService = {
 		const refreshToken = Cookies.get(REFRESH_TOKEN);
 		const response = await axiosServer.post<IAuthResponse>(
 			getAuthUrl('/login/access-token'),
-			{ refreshToken },
+			{
+				refreshToken,
+			},
 		);
 
 		if (response.data.accessToken) saveToStorages(response.data);
