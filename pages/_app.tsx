@@ -1,11 +1,15 @@
 import type { AppProps } from 'next/app';
 import MainProvider from 'providers/main-provider';
 
+import { ComponentRoleType } from '@/shared/types/auth.types';
+
 import '@/assets/styles/globals.scss';
 
-function MyApp({ Component, pageProps }: AppProps) {
+type AppPropsType = AppProps & ComponentRoleType;
+
+function MyApp({ Component, pageProps }: AppPropsType) {
 	return (
-		<MainProvider>
+		<MainProvider Component={Component}>
 			<Component {...pageProps} />
 		</MainProvider>
 	);
