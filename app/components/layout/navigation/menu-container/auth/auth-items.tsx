@@ -31,6 +31,16 @@ const AuthItems: FC = () => {
 					}}
 				/>
 			)}
+
+			{user?.isAdmin && (
+				<MenuItem
+					item={{
+						icon: 'MdOutlineLock',
+						link: '/admin',
+						title: 'Админ панель',
+					}}
+				/>
+			)}
 		</>
 	);
 };
