@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	images: {
-		domains: ['kinopoiskapiunofficial.tech'],
+		domains: ['kinopoiskapiunofficial.tech', 'avatars.mds.yandex.net'],
 	},
 	poweredByHeader: false,
 	optimizeFonts: false,
