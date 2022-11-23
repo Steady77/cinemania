@@ -7,7 +7,7 @@ import styles from './search-input.module.scss';
 interface ISearchInput {
 	searchValue: string;
 	handleSearch: (event: ChangeEvent<HTMLInputElement>) => void;
-	handleClear: () => void;
+	handleClear?: () => void;
 }
 
 const SearchInput: FC<ISearchInput> = ({
