@@ -10,3 +10,7 @@ export const getCurrentMonth = (language: 'ru' | 'en') => {
 	if (language === 'en')
 		return new Date().toLocaleString('en-US', { month: 'long' });
 };
+
+export const convertSqlDate = (date: string) => {
+	return new Date(date).toLocaleDateString('ru');
+};

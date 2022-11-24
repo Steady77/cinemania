@@ -6,3 +6,4 @@ export const getFiltersUrl = () => `v2.2/films/filters`;
 export const getStaffUrl = (string: string) => `v1/staff/${string}`;
 export const getAuthUrl = (string: string) => `auth${string}`;
 export const getMoviesUrl = (string: string) => `v2.2/films${string}`;
+export const getUsersUrl = (string: string) => `/users${string}`;

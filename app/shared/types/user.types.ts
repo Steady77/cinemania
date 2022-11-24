@@ -3,5 +3,8 @@ export interface IUser {
 	email: string;
 	password: string;
 	createdAt: string;
-	isAdmin: boolean;
+}
+
+export interface IUserResp {
+	users: IUser[];
 }
