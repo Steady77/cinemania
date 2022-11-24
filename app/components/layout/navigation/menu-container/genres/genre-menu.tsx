@@ -1,7 +1,8 @@
-import { FC } from 'react';
+import { FC, memo, useEffect } from 'react';
 
 import ContentLoader from '@/components/ui/content-loader';
 
+import { useActions } from '@/hooks/use-actions.hook';
 import { useTypedSelector } from '@/hooks/use-typed-selector.hook';
 
 import { capitalizeFirstLetter } from '@/utils/string';
@@ -11,8 +12,13 @@ import { getGenreRoute } from '@/config/route.config';
 import Menu from '../menu';
 import { IMenuItem } from '../menu.interface';
 
-const GenreMenu: FC = () => {
+const GenreMenu: FC = memo(() => {
 	const { isLoading, genres } = useTypedSelector((state) => state.filtersSlice);
+	const { getGenresCountries } = useActions();
+
+	useEffect(() => {
+		getGenresCountries();
+	}, []);
 
 	const data = genres
 		.map(
@@ -40,5 +46,8 @@ const GenreMenu: FC = () => {
 	) : (
 		<Menu menu={{ title: 'Случайные жанры', items: data || [] }} />
 	);
-};
+});
+
+GenreMenu.displayName = 'GenreMenu';
+
 export default GenreMenu;
