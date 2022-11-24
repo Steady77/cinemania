@@ -9,6 +9,7 @@ import { IList } from '@/components/ui/list/list.interface';
 
 import { IPerson } from '@/shared/types/staff.types';
 
+import { getArrayOfUnique } from '@/utils/array';
 import Meta from '@/utils/meta/meta';
 import { formatAge } from '@/utils/string';
 
@@ -17,8 +18,10 @@ import { getMovieRoute } from '@/config/route.config';
 import styles from './person.module.scss';
 
 const Person: FC<{ person: IPerson }> = ({ person }) => {
-	const films: IList[] = person.films.length
-		? person.films.map((film) => ({
+	const uniqueFilms = getArrayOfUnique(person.films, 'filmId');
+
+	const films: IList[] = uniqueFilms.length
+		? uniqueFilms.map((film) => ({
 				link: getMovieRoute(film.filmId),
 				name: film.nameRu || film.nameEn,
 				rating: film.rating,

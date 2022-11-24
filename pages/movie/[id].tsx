@@ -53,7 +53,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
 		const { data: dataStaff } = await StaffService.getByFilmId(id);
 
-		const uniqueStaff = getArrayOfUnique(dataStaff);
+		const uniqueStaff = getArrayOfUnique(dataStaff, 'staffId');
 
 		const staff: IGalleryItem[] = uniqueStaff.map((person) => ({
 			name: person.nameRu,
