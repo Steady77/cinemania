@@ -36,6 +36,10 @@ export const useUsers = () => {
 		},
 	);
 
+	const handleClear = () => {
+		setSearchValue('');
+	};
+
 	const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
 		setSearchValue(e.target.value);
 	};
@@ -60,6 +64,7 @@ export const useUsers = () => {
 			handleSearch,
 			searchValue,
 			mutateAsync,
+			handleClear,
 			...queryData,
 		}),
 		[searchValue, mutateAsync, queryData],

@@ -6,14 +6,21 @@ import AdminTable from '@/components/ui/admin-table/admin-table/admin-table';
 import { useUsers } from './use-users.hook';
 
 const UsersList: FC = () => {
-	const { handleSearch, isLoading, searchValue, data, mutateAsync } =
-		useUsers();
+	const {
+		handleSearch,
+		isLoading,
+		searchValue,
+		data,
+		handleClear,
+		mutateAsync,
+	} = useUsers();
 
 	return (
 		<>
 			<AdminHeader
 				handleSearch={handleSearch}
 				searchValue={searchValue}
+				handleClear={handleClear}
 			/>
 			<AdminTable
 				isLoading={isLoading}
