@@ -18,7 +18,9 @@ const AdminActions: FC<IAdminActions> = ({ editUrl, removeHandler }) => {
 			<button onClick={() => push(editUrl)}>
 				<MaterialIcon name="MdEdit" />
 			</button>
-			<button onClick={removeHandler}>
+			<button
+				onClick={() => confirm('Пользователь будет удален') && removeHandler()}
+			>
 				<MaterialIcon name="MdClose" />
 			</button>
 		</div>
