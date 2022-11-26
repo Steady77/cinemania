@@ -1,0 +1,23 @@
+.profile {
+	@apply flex flex-col items-center;
+
+	.avatar {
+		@apply mb-3;
+
+		img {
+			@apply image-like-bg rounded-full;
+		}
+	}
+
+	.form {
+		@apply max-w-xs;
+
+		span {
+			@apply mb-1;
+		}
+
+		> button {
+			@apply mt-5;
+		}
+	}
+}

@@ -3,6 +3,7 @@ export interface IUser {
 	email: string;
 	password: string;
 	createdAt: string;
+	avatar: string;
 }
 
 export interface IUserResp {
