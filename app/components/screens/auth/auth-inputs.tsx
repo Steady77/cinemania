@@ -10,7 +10,7 @@ import { IAuthInput } from './auth.interface';
 interface IAuthInputs {
 	register: UseFormRegister<any>;
 	formState: FormState<IAuthInput>;
-	isPasswordRequired: boolean;
+	isPasswordRequired?: boolean;
 }
 
 const AuthInputs: FC<IAuthInputs> = ({
