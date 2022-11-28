@@ -1,14 +1,13 @@
 import Image from 'next/image';
 import { FC } from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 
 import ContentLoader from '@/components/ui/content-loader';
 import Button from '@/components/ui/form-elements/button';
+import UploadFile from '@/components/ui/form-elements/upload-file/upload-file';
 import Heading from '@/components/ui/heading/heading';
 
 import Meta from '@/utils/meta/meta';
-
-import { SERVER_URL } from '@/config/api.config';
 
 import AuthInputs from '../auth/auth-inputs';
 
@@ -17,14 +16,12 @@ import styles from './profile.module.scss';
 import { useProfile } from './use-profile.hook';
 
 const Profile: FC = () => {
-	const { handleSubmit, register, formState, setValue } =
+	const { handleSubmit, register, formState, setValue, control } =
 		useForm<IProfileInput>({
 			mode: 'onChange',
 		});
 
-	const { isLoading, onSubmit, data } = useProfile(setValue);
-
-	const avatarUrl = SERVER_URL + data?.data.avatar;
+	const { isLoading, onSubmit } = useProfile(setValue);
 
 	return (
 		<Meta title="Профиль">
@@ -34,17 +31,36 @@ const Profile: FC = () => {
 			/>
 			<div className={styles.profile}>
 				<div className={styles.avatar}>
-					<Image
-						width={150}
-						height={150}
-						src={avatarUrl}
-						alt="avatar"
+					<Controller
+						name="avatar"
+						control={control}
+						render={({ field: { value } }) => (
+							<Image
+								width={175}
+								height={175}
+								src={value}
+								alt="avatar"
+							/>
+						)}
 					/>
 				</div>
 				<form
 					onSubmit={handleSubmit(onSubmit)}
 					className={styles.form}
 				>
+					<Controller
+						name="avatar"
+						control={control}
+						defaultValue=""
+						render={({ field: { value, onChange }, fieldState: { error } }) => (
+							<UploadFile
+								placeholder="Поменять аватар"
+								error={error}
+								image={value}
+								onChange={onChange}
+							/>
+						)}
+					/>
 					{isLoading ? (
 						<ContentLoader count={2} />
 					) : (
@@ -53,8 +69,8 @@ const Profile: FC = () => {
 							register={register}
 						/>
 					)}
+					<Button>Обновить</Button>
 				</form>
-				<Button>Обновить</Button>
 			</div>
 		</Meta>
 	);

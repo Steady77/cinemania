@@ -1,4 +1,8 @@
-import { ButtonHTMLAttributes, InputHTMLAttributes } from 'react';
+import {
+	ButtonHTMLAttributes,
+	CSSProperties,
+	InputHTMLAttributes,
+} from 'react';
 import { FieldError } from 'react-hook-form';
 
 export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {}
@@ -11,3 +15,11 @@ export interface IInputProps {
 type InputPropsType = InputHTMLAttributes<HTMLInputElement> & IInputProps;
 
 export interface IInput extends InputPropsType {}
+
+export interface IUploadFile {
+	image?: string;
+	onChange: (...event: any[]) => void;
+	placeholder: string;
+	error?: FieldError;
+	style?: CSSProperties;
+}

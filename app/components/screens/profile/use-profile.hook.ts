@@ -9,22 +9,19 @@ import { toastError } from '@/utils/toast-error';
 import { IProfileInput } from './profile.interface';
 
 export const useProfile = (setValue: UseFormSetValue<IProfileInput>) => {
-	const { isLoading, data } = useQuery(
-		['profile'],
-		() => UserService.getProfile(),
-		{
-			onSuccess: ({ data }) => {
-				setValue('email', data.email);
-			},
-			onError: (error) => {
-				toastError(error, 'Получение профиля');
-			},
+	const { isLoading } = useQuery(['profile'], () => UserService.getProfile(), {
+		onSuccess: ({ data }) => {
+			setValue('email', data.email);
+			setValue('avatar', data.avatar);
 		},
-	);
+		onError: (error) => {
+			toastError(error, 'Получение профиля');
+		},
+	});
 
 	const { mutateAsync } = useMutation(
 		['update profile'],
-		(data: IProfileInput) => UserService.updateProfile(data),
+		(userData: IProfileInput) => UserService.updateProfile(userData),
 		{
 			onSuccess: () => {
 				toastr.success('Обновление профиля', 'Успешно');
@@ -35,9 +32,9 @@ export const useProfile = (setValue: UseFormSetValue<IProfileInput>) => {
 		},
 	);
 
-	const onSubmit: SubmitHandler<IProfileInput> = async (data) => {
-		await mutateAsync(data);
+	const onSubmit: SubmitHandler<IProfileInput> = async (userData) => {
+		await mutateAsync(userData);
 	};
 
-	return { onSubmit, isLoading, data };
+	return { onSubmit, isLoading };
 };
