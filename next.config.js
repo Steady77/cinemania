@@ -16,6 +16,14 @@ const nextConfig = {
 		APP_ENV: process.env.REACT_APP_ENV,
 		SERVER_URL: process.env.REACT_APP_SERVER_URL,
 	},
+	async rewrites() {
+		return [
+			{
+				source: '/upload/:path*',
+				destination: 'http://localhost:5000/upload/:path*',
+			},
+		];
+	},
 	swcMinify: true,
 };
 
