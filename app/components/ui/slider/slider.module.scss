@@ -5,7 +5,8 @@
 	max-width: 1200px;
 
 	.slide {
-		@apply relative h-96 rounded-3xl overflow-hidden shadow-xl flex items-end;
+		@apply relative rounded-3xl overflow-hidden shadow-xl flex items-end;
+		height: 450px;
 
 		@include fade-bg-gradient();
 

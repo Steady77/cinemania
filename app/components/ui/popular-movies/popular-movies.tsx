@@ -12,7 +12,7 @@ const PopularMovies: FC = () => {
 		'popular movies sidebar',
 		() => MovieService.getTop('TOP_100_POPULAR_FILMS'),
 		{
-			select: ({ data }) => data.films.slice(0, 3),
+			select: ({ data }) => data.films,
 		},
 	);
 

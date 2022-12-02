@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FC } from 'react';
 
-import styles from '@/components/layout/navigation/menu-container/menu.module.scss';
 import MaterialIcon from '@/components/ui/material-icon';
+import styles from '@/components/ui/menu/menu.module.scss';
 
 import { IMenuItem } from './menu.interface';
 

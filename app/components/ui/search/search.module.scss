@@ -1,3 +1,9 @@
-.wrapper {
-	@apply relative mb-10 mt-3;
+.search {
+	@media (max-width: 1200px) {
+		@apply grow mx-3;
+	}
+
+	@media (max-width: 524px) {
+		@apply mt-2;
+	}
 }

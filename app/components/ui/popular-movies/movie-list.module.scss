@@ -1,13 +1,14 @@
+.heading {
+	@apply font-bold text-xl mb-5 text-white capitalize;
+}
+
+.button {
+	@apply p-2.5 btn-primary block text-center w-52 mx-auto;
+}
+
 .list {
-	@apply mt-24 animate-fade;
-
-	.heading {
-		@apply font-bold text-xl mb-5 text-white capitalize;
-	}
-
-	.button {
-		@apply p-2.5 btn-primary block text-center;
-	}
+	@apply animate-fade grid mb-3;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
 
 	.item {
 		@apply mb-4 flex items-stretch;

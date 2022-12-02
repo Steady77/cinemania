@@ -16,7 +16,6 @@ const LogoutButton: FC = () => {
 		<li>
 			<a onClick={handleLogout}>
 				<MaterialIcon name="MdLogout" />
-				<span>Выйти</span>
 			</a>
 		</li>
 	);

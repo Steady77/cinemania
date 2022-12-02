@@ -4,15 +4,17 @@ import { FC } from 'react';
 
 import logoImg from '@/assets/images/logo.svg';
 
+import styles from './logo.module.scss';
+
 const Logo: FC = () => {
 	return (
 		<Link href="/">
-			<a className="px-layout mb-10 block">
+			<a className={styles.logo}>
 				<Image
 					src={logoImg}
-					width={296}
-					height={83}
 					alt="Cinemania"
+					width={176}
+					height={48}
 					draggable={false}
 				/>
 			</a>

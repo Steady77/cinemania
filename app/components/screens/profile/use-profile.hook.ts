@@ -2,6 +2,8 @@ import { SubmitHandler, UseFormSetValue } from 'react-hook-form';
 import { useMutation, useQuery } from 'react-query';
 import { toastr } from 'react-redux-toastr';
 
+import { useActions } from '@/hooks/use-actions.hook';
+
 import { UserService } from '@/services/user.service';
 
 import { toastError } from '@/utils/toast-error';
@@ -9,6 +11,8 @@ import { toastError } from '@/utils/toast-error';
 import { IProfileInput } from './profile.interface';
 
 export const useProfile = (setValue: UseFormSetValue<IProfileInput>) => {
+	const { getProfile } = useActions();
+
 	const { isLoading } = useQuery(['profile'], () => UserService.getProfile(), {
 		onSuccess: ({ data }) => {
 			setValue('email', data.email);
@@ -34,6 +38,7 @@ export const useProfile = (setValue: UseFormSetValue<IProfileInput>) => {
 
 	const onSubmit: SubmitHandler<IProfileInput> = async (userData) => {
 		await mutateAsync(userData);
+		getProfile();
 	};
 
 	return { onSubmit, isLoading };

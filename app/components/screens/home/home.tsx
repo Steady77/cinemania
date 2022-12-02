@@ -4,7 +4,7 @@ import Gallery from '@/components/ui/gallery/gallery';
 import Heading from '@/components/ui/heading/heading';
 import SubHeading from '@/components/ui/heading/sub-heading';
 import { List } from '@/components/ui/list/list';
-import Search from '@/components/ui/search/search';
+import PopularMovies from '@/components/ui/popular-movies/popular-movies';
 import Slider from '@/components/ui/slider/slider';
 
 import { getCurrentYear } from '@/utils/date';
@@ -18,8 +18,6 @@ const Home: FC<IHome> = ({ slides, releases, tvSeries, genres }) => {
 			title="Онлайн кинотеатр"
 			description="Описание"
 		>
-			<Search />
-
 			<Heading
 				title="Кинопремьеры"
 				className="text-blue-300 mb-8"
@@ -34,6 +32,8 @@ const Home: FC<IHome> = ({ slides, releases, tvSeries, genres }) => {
 				<SubHeading title="Лучшие фильмы" />
 				{releases.length && <Gallery items={releases} />}
 			</div>
+
+			<PopularMovies />
 
 			<div className="my-10">
 				<SubHeading title={`Сериалы ${getCurrentYear()}`} />

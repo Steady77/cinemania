@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import { FC } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
+import Avatar from '@/components/ui/avatar/avatar';
 import ContentLoader from '@/components/ui/content-loader';
 import Button from '@/components/ui/form-elements/button';
 import UploadFile from '@/components/ui/form-elements/upload-file/upload-file';
@@ -30,20 +30,17 @@ const Profile: FC = () => {
 				className="my-6"
 			/>
 			<div className={styles.profile}>
-				<div className={styles.avatar}>
-					<Controller
-						name="avatar"
-						control={control}
-						render={({ field: { value } }) => (
-							<Image
-								width={175}
-								height={175}
-								src={value}
-								alt="avatar"
-							/>
-						)}
-					/>
-				</div>
+				<Controller
+					name="avatar"
+					control={control}
+					render={({ field: { value } }) => (
+						<Avatar
+							img={value}
+							size="big"
+							className="mb-7"
+						/>
+					)}
+				/>
 				<form
 					onSubmit={handleSubmit(onSubmit)}
 					className={styles.form}

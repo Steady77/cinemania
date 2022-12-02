@@ -1,0 +1,42 @@
+.menu {
+	@apply animate-fade;
+
+	.list {
+		@apply flex-center-between;
+
+		@media (max-width: 1200px) {
+			@apply hidden;
+		}
+
+		> li {
+			@apply m-3;
+
+			> a {
+				@apply flex items-center text-blue-600 cursor-pointer;
+
+				> span {
+					@apply ml-2 text-base font-medium hover:text-white;
+				}
+
+				> svg {
+					@apply text-2lg;
+				}
+
+				> span,
+				> svg {
+					@apply transition-colors;
+				}
+			}
+
+			&.active {
+				> a > span {
+					@apply text-white;
+				}
+
+				> a > svg {
+					@apply fill-primary;
+				}
+			}
+		}
+	}
+}

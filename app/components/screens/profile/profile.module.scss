@@ -1,14 +1,6 @@
 .profile {
 	@apply flex flex-col items-center;
 
-	.avatar {
-		@apply mb-7;
-
-		img {
-			@apply image-like-bg rounded-full;
-		}
-	}
-
 	.form {
 		@apply max-w-sm;
 

@@ -7,18 +7,20 @@ import styles from './movie-list.module.scss';
 
 const MovieList: FC<IMovieList> = ({ link, movies, title }) => {
 	return (
-		<div className={styles.list}>
+		<>
 			<h5 className={styles.heading}>{title}</h5>
-			{movies.map((movie) => (
-				<MovieItem
-					key={movie.filmId}
-					movie={movie}
-				/>
-			))}
+			<div className={styles.list}>
+				{movies.map((movie) => (
+					<MovieItem
+						key={movie.filmId}
+						movie={movie}
+					/>
+				))}
+			</div>
 			<Link href={link}>
 				<a className={styles.button}>Посмотреть еще</a>
 			</Link>
-		</div>
+		</>
 	);
 };
 export default MovieList;
