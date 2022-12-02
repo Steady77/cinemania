@@ -2,6 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 
+import { useLockBodyScroll } from '@/hooks/use-lock-body-scroll.hook';
+
 import { IFilmByFilters } from '@/shared/types/movie.types';
 
 import { getMovieRoute } from '@/config/route.config';
@@ -9,6 +11,8 @@ import { getMovieRoute } from '@/config/route.config';
 import styles from './search-list.module.scss';
 
 const SearchList: FC<{ movies: IFilmByFilters[] }> = ({ movies }) => {
+	useLockBodyScroll();
+
 	return (
 		<div className={styles.list}>
 			{movies.length ? (
@@ -19,8 +23,8 @@ const SearchList: FC<{ movies: IFilmByFilters[] }> = ({ movies }) => {
 					>
 						<a>
 							<Image
-								width={50}
-								height={50}
+								width={75}
+								height={75}
 								src={movie.posterUrlPreview}
 								alt={movie.nameRu}
 								objectFit="cover"
@@ -36,4 +40,5 @@ const SearchList: FC<{ movies: IFilmByFilters[] }> = ({ movies }) => {
 		</div>
 	);
 };
+
 export default SearchList;
