@@ -1,7 +1,8 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 
 import Rating from '@/components/ui/rating/rating';
 
+import { useActions } from '@/hooks/use-actions.hook';
 import { useTypedSelector } from '@/hooks/use-typed-selector.hook';
 
 import { IMovie } from '@/shared/types/movie.types';
@@ -15,6 +16,11 @@ import styles from './content.module.scss';
 
 const Content: FC<{ movie: IMovie }> = ({ movie }) => {
 	const { countries, genres } = useTypedSelector((state) => state.filtersSlice);
+	const { getGenresCountries } = useActions();
+
+	useEffect(() => {
+		getGenresCountries();
+	}, []);
 
 	return (
 		<div className={styles.content}>

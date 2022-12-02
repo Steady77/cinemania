@@ -1,10 +1,13 @@
 import type { GetStaticProps, NextPage } from 'next';
+import { useEffect } from 'react';
 
 import Home from '@/components/screens/home/home';
 import { IHome } from '@/components/screens/home/home.interface';
 import { IGalleryItem } from '@/components/ui/gallery/gallery.interface';
 import { IList } from '@/components/ui/list/list.interface';
 import { ISlide } from '@/components/ui/slider/slider.interface';
+
+import { useActions } from '@/hooks/use-actions.hook';
 
 import { FiltersService } from '@/services/filters.service';
 import { MovieService } from '@/services/movie.service';
@@ -16,6 +19,12 @@ import { capitalizeFirstLetter } from '@/utils/string';
 import { getGenreRoute, getMovieRoute } from '@/config/route.config';
 
 const HomePage: NextPage<IHome> = ({ slides, releases, tvSeries, genres }) => {
+	const { getGenresCountries } = useActions();
+
+	useEffect(() => {
+		getGenresCountries();
+	}, []);
+
 	return (
 		<Home
 			genres={genres}
