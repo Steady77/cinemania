@@ -1,8 +1,8 @@
-export const capitalizeFirstLetter = (str: string | undefined) => {
+export const capitalizeFirstLetter = (str: string) => {
 	if (str) {
 		return str[0].toUpperCase() + str.substring(1).toLowerCase();
 	}
-	return str;
+	return 'Not found';
 };
 
 export const formatAge = (value: number): string => {
