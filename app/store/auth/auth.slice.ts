@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { USER } from '@/utils/consts';
 import { getFromLS } from '@/utils/storage';
 
-import { checkAuth, login, logout, register } from './auth.actions';
+import { checkAuth, getProfile, login, logout, register } from './auth.actions';
 import { IAuthInitialState } from './auth.interface';
 
 const initialState: IAuthInitialState = {
@@ -45,6 +45,9 @@ const authSlice = createSlice({
 			})
 			.addCase(checkAuth.fulfilled, (state, { payload }) => {
 				state.user = payload.user;
+			})
+			.addCase(getProfile.fulfilled, (state, { payload }) => {
+				state.user = payload;
 			});
 	},
 });

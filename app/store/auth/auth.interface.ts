@@ -3,6 +3,7 @@ import { IUser } from '@/shared/types/user.types';
 export interface IAuthState {
 	email: string;
 	isAdmin: boolean;
+	avatar: string;
 }
 
 export interface ITokens {

@@ -4,6 +4,7 @@ export interface IUser {
 	password: string;
 	createdAt: string;
 	avatar: string;
+	isAdmin: boolean;
 }
 
 export interface IUserResp {
