@@ -14,7 +14,7 @@ export const List: FC<{ items: IList[] }> = ({ items }) => {
 	if (items.length === 0) {
 		return (
 			<Heading
-				className="text-center text-xl"
+				className="text-center text-xl py-7"
 				title="Фильмы не найдены"
 			/>
 		);

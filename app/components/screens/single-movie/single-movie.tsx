@@ -25,7 +25,7 @@ const SingleMovie: FC<IMoviePage> = ({ movie, similarMovies, staff }) => {
 
 			<Description
 				text={movie.description}
-				className="px-8 pb-8 rounded-b-layout text-opacity-90 bg-blue-950"
+				className="px-8 pb-8 rounded-b-layout text-opacity-90 bg-blue-950 max-w-6xl mx-auto"
 			/>
 
 			<div className="my-10">

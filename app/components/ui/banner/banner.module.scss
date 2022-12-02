@@ -1,7 +1,7 @@
 @import '../../../assets/styles/variables';
 
 .banner {
-	@apply relative overflow-hidden w-full shadow-lg flex flex-col justify-end h-96 rounded-t-layout;
+	@apply relative overflow-hidden mx-auto max-w-6xl shadow-lg flex flex-col justify-end h-96 rounded-t-layout;
 
 	@include fade-bg-gradient(0deg);
 }
