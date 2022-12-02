@@ -28,12 +28,12 @@ const SingleMovie: FC<IMoviePage> = ({ movie, similarMovies, staff }) => {
 				className="px-8 pb-8 rounded-b-layout text-opacity-90 bg-blue-950"
 			/>
 
-			<div className="mt-6">
+			<div className="my-10">
 				<SubHeading title="Актеры и создатели" />
 				<StaffCatalog persons={staff} />
 			</div>
 
-			<div className="mt-6">
+			<div className="my-10">
 				<SubHeading title="Похожие фильмы" />
 				<Gallery items={similarMovies} />
 			</div>
