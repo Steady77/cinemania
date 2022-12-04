@@ -22,7 +22,12 @@ const Home: FC<IHome> = ({ slides, releases, tvSeries, genres }) => {
 				title="Кинопремьеры"
 				className="text-blue-300 mb-8"
 			/>
-			{slides.length && <Slider slides={slides} />}
+			{slides.length && (
+				<Slider
+					slides={slides}
+					buttonTitle="Подробнее"
+				/>
+			)}
 
 			<div className="my-10">
 				<List items={genres} />
