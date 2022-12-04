@@ -25,6 +25,11 @@ const nextConfig = {
 		];
 	},
 	swcMinify: true,
+	// Параметры для обхода лимита внешней API во время сборки
+	experimental: {
+		workerThreads: false,
+		cpus: 1,
+	},
 };
 
 module.exports = nextConfig;
