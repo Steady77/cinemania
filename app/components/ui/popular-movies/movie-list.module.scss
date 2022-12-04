@@ -7,8 +7,9 @@
 }
 
 .list {
-	@apply animate-fade grid mb-3;
+	@apply animate-fade grid mb-3 mx-auto;
 	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	max-width: 1200px;
 
 	.item {
 		@apply mb-4 flex items-stretch;

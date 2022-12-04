@@ -20,9 +20,8 @@ const MovieItem: FC<{ movie: ITopMovie }> = ({ movie }) => {
 					<Image
 						src={movie.posterUrlPreview}
 						alt={movie.nameRu}
-						width={65}
-						height={97}
-						priority
+						width={120}
+						height={179}
 					/>
 				</a>
 			</Link>
