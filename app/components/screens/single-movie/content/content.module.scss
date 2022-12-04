@@ -1,5 +1,5 @@
 .content {
-	@apply relative z-2 p-8;
+	@apply relative z-2 px-8 py-4;
 
 	.title {
 		@apply text-white uppercase text-5xl font-semibold mb-1 text-shadow;
@@ -7,5 +7,9 @@
 
 	.details {
 		@apply text-white text-lg text-opacity-80 my-3;
+	}
+
+	.button {
+		@apply btn-primary p-2 px-10 mt-3;
 	}
 }

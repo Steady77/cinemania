@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { FC, useEffect } from 'react';
 
 import Rating from '@/components/ui/rating/rating';
@@ -17,6 +18,7 @@ import styles from './content.module.scss';
 const Content: FC<{ movie: IMovie }> = ({ movie }) => {
 	const { countries, genres } = useTypedSelector((state) => state.filtersSlice);
 	const { getGenresCountries } = useActions();
+	const { push } = useRouter();
 
 	useEffect(() => {
 		getGenresCountries();
@@ -60,6 +62,12 @@ const Content: FC<{ movie: IMovie }> = ({ movie }) => {
 				icon="MdStarRate"
 				rating={movie.ratingImdb}
 			/>
+			<button
+				onClick={() => push(`/watch/${movie.kinopoiskId}`)}
+				className={styles.button}
+			>
+				Смотреть
+			</button>
 		</div>
 	);
 };

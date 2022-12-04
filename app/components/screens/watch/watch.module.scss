@@ -1,0 +1,21 @@
+.videoContainer {
+	@apply mx-auto;
+	max-width: 1200px;
+	height: calc(100vh - 104px);
+
+	@media (max-width: 1024px) {
+		height: 400px;
+	}
+
+	@media (max-width: 576px) {
+		height: 340px;
+	}
+
+	.video {
+		height: 100% !important;
+
+		iframe {
+			height: 100% !important;
+		}
+	}
+}
