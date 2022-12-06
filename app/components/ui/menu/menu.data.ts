@@ -9,12 +9,7 @@ export const firstMenu: IMenu = {
 			title: 'Главная',
 		},
 		{
-			icon: 'MdExplore',
-			link: '/genres',
-			title: 'Открытие',
-		},
-		{
-			icon: 'MdRefresh',
+			icon: 'MdFiberNew',
 			link: '/fresh',
 			title: 'Новинки',
 		},
