@@ -31,23 +31,20 @@ const AuthInputs: FC<IAuthInputs> = ({
 				placeholder="Почта"
 				error={errors.email}
 			/>
-			<Input
-				{...register(
-					'password',
-					isPasswordRequired
-						? {
-								required: 'Введите пароль',
-								minLength: {
-									value: 6,
-									message: 'Введите более 6 символов',
-								},
-						  }
-						: {},
-				)}
-				placeholder="Пароль"
-				type={'password'}
-				error={errors.password}
-			/>
+			{isPasswordRequired && (
+				<Input
+					{...register('password', {
+						required: 'Введите пароль',
+						minLength: {
+							value: 6,
+							message: 'Введите более 6 символов',
+						},
+					})}
+					placeholder="Пароль"
+					type={'password'}
+					error={errors.password}
+				/>
+			)}
 		</>
 	);
 };

@@ -1,0 +1,43 @@
+@import '../../../assets/styles/variables';
+
+.favorites {
+	@apply grid gap-4 justify-items-center my-5;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+.loaderContainer {
+	@apply grid gap-4 justify-items-center my-5;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	width: 100%;
+}
+
+.contentLoader {
+	@apply mb-8 h-60;
+	width: 320px;
+}
+
+.itemWrapper {
+	@apply relative h-60 animate-fade transition-transform hover:-translate-y-3;
+	width: 320px;
+
+	.item {
+		@apply relative z-1 w-full h-full flex items-end shadow-lg rounded-layout overflow-hidden;
+
+		@include fade-bg-gradient(0deg);
+		&::before {
+			@apply z-2;
+		}
+
+		img {
+			@apply image-like-bg;
+		}
+
+		.title {
+			@apply relative z-3 text-center m-4 w-full font-semibold text-white text-shadow;
+		}
+	}
+
+	> button {
+		@apply z-3 block -left-3 -top-1 right-auto;
+	}
+}

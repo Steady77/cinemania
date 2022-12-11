@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { FC } from 'react';
 
 import Avatar from '@/components/ui/avatar/avatar';
@@ -6,6 +7,7 @@ import ContentLoader from '@/components/ui/content-loader';
 
 import { useAuth } from '@/hooks/use-auth.hook';
 
+import MaterialIcon from '../../material-icon';
 import MenuItem from '../menu-item';
 
 import LogoutButton from './logout-button';
@@ -13,6 +15,7 @@ import styles from './profile-items.module.scss';
 
 const AuthItems: FC = () => {
 	const { user, isLoading } = useAuth();
+	const { push } = useRouter();
 
 	return (
 		<ul className={styles.profileMenu}>
@@ -35,6 +38,11 @@ const AuthItems: FC = () => {
 							</a>
 						</Link>
 					)}
+					<li>
+						<a onClick={() => push('/favorites')}>
+							<MaterialIcon name="MdFavorite" />
+						</a>
+					</li>
 					<LogoutButton />
 				</>
 			) : (

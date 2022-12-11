@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { FC, useEffect } from 'react';
 
+import FavoriteButton from '@/components/ui/favorite-button/favorite-button';
 import Rating from '@/components/ui/rating/rating';
 
 import { useActions } from '@/hooks/use-actions.hook';
@@ -68,6 +69,7 @@ const Content: FC<{ movie: IMovie }> = ({ movie }) => {
 			>
 				Смотреть
 			</button>
+			<FavoriteButton filmId={String(movie.kinopoiskId)} />
 		</div>
 	);
 };
