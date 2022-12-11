@@ -23,4 +23,14 @@ export const UserService = {
 	async updateProfile(data: IProfileInput) {
 		return axiosInterseptors.put<string>(getUserUrl('/profile'), data);
 	},
+
+	async getFavorites() {
+		return axiosInterseptors.get<string[]>(getUserUrl('/profile/favorites'));
+	},
+
+	async toggleFavorites(filmId: string) {
+		return axiosInterseptors.post<string>(getUserUrl('/profile/favorites'), {
+			filmId,
+		});
+	},
 };
