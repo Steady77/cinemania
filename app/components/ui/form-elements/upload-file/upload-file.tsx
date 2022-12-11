@@ -2,6 +2,8 @@ import cn from 'classnames';
 import Image from 'next/image';
 import { FC } from 'react';
 
+import defaultAvatar from '@/assets/images/default-avatar.png';
+
 import ContentLoader from '../../content-loader';
 import { IUploadFile } from '../form.interface';
 import styles from '../form.module.scss';
@@ -39,14 +41,12 @@ const UploadFile: FC<IUploadFile> = ({
 							className="w-full h-full"
 						/>
 					) : (
-						image && (
-							<Image
-								src={image}
-								alt=""
-								layout="fill"
-								unoptimized
-							/>
-						)
+						<Image
+							src={image || defaultAvatar}
+							alt=""
+							layout="fill"
+							unoptimized
+						/>
 					)}
 				</div>
 			</div>

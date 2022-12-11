@@ -2,6 +2,8 @@ import cn from 'classnames';
 import Image from 'next/image';
 import { FC } from 'react';
 
+import defaultAvatar from '@/assets/images/default-avatar.png';
+
 import styles from './avatar.module.scss';
 
 interface IAvatar {
@@ -19,7 +21,7 @@ const Avatar: FC<IAvatar> = ({ img, size, className }) => {
 			})}
 		>
 			<Image
-				src={img || ''}
+				src={img || defaultAvatar}
 				alt="avatar"
 				layout="fill"
 			/>
