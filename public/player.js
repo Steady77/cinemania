@@ -249,7 +249,7 @@ function kbp(self) {
 		bg +
 		' url(' +
 		options_loading +
-		') 50% 50% no-repeat}#kinobd-buttons{position:absolute;z-index:9999;right:0;top:30px;text-align:left}#kinobd-buttons:hover{right:0!important}#kinobd-buttons div{font-family:Outfit,sans-serif;font-weight:normal;text-shadow:none;line-height:normal;font-size:' +
+		') 50% 50% no-repeat}#kinobd-buttons{position:absolute;z-index:9999;right:0;top:30px;text-align:left}#kinobd-buttons:hover{right:0!important}#kinobd-buttons div{font-family:Nunito,sans-serif;font-weight:normal;text-shadow:none;line-height:normal;font-size:' +
 		12 * options.button_size +
 		'px;color:#fff;background:#' +
 		bg +
