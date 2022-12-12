@@ -9,6 +9,7 @@ import { useDebounce } from '@/hooks/use-debounce.hook';
 import { AdminService } from '@/services/admin.service';
 
 import { convertSqlDate } from '@/utils/date';
+import { convertSqlRole } from '@/utils/string';
 import { toastError } from '@/utils/toast-error';
 
 import { getAdminRoute } from '@/config/route.config';
@@ -26,7 +27,11 @@ export const useUsers = () => {
 					(user): ITableItem => ({
 						id: user.id,
 						editUrl: getAdminRoute(`user/edit/${user.id}`),
-						items: [user.email, convertSqlDate(user.createdAt)],
+						items: [
+							user.email,
+							convertSqlDate(user.createdAt),
+							convertSqlRole(user.isAdmin),
+						],
 					}),
 				),
 

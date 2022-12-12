@@ -25,7 +25,7 @@ const UsersList: FC = () => {
 			<AdminTable
 				isLoading={isLoading}
 				removeHandler={mutateAsync}
-				headerItems={['Почта', 'Дата регистрации']}
+				headerItems={['Почта', 'Дата регистрации', 'Права']}
 				tableItems={data || []}
 			/>
 		</>

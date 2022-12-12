@@ -1,8 +1,5 @@
-export const capitalizeFirstLetter = (str: string) => {
-	if (str) {
-		return str[0].toUpperCase() + str.substring(1).toLowerCase();
-	}
-	return 'Not found';
+export const convertSqlRole = (isAdmin: boolean) => {
+	return isAdmin ? 'Администратор' : 'Пользователь';
 };
 
 export const formatAge = (value: number): string => {
@@ -30,4 +27,11 @@ export const clearText = (
 	if (limit) result = result.slice(0, limit) + '...';
 
 	return result;
+};
+
+export const capitalizeFirstLetter = (str: string) => {
+	if (str) {
+		return str[0].toUpperCase() + str.substring(1).toLowerCase();
+	}
+	return 'Not found';
 };
