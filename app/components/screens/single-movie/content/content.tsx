@@ -5,6 +5,7 @@ import FavoriteButton from '@/components/ui/favorite-button/favorite-button';
 import Rating from '@/components/ui/rating/rating';
 
 import { useActions } from '@/hooks/use-actions.hook';
+import { useAuth } from '@/hooks/use-auth.hook';
 import { useTypedSelector } from '@/hooks/use-typed-selector.hook';
 
 import { IMovie } from '@/shared/types/movie.types';
@@ -20,6 +21,7 @@ const Content: FC<{ movie: IMovie }> = ({ movie }) => {
 	const { countries, genres } = useTypedSelector((state) => state.filtersSlice);
 	const { getGenresCountries } = useActions();
 	const { push } = useRouter();
+	const { user } = useAuth();
 
 	useEffect(() => {
 		getGenresCountries();
@@ -64,7 +66,11 @@ const Content: FC<{ movie: IMovie }> = ({ movie }) => {
 				rating={movie.ratingImdb}
 			/>
 			<button
-				onClick={() => push(`/watch/${movie.kinopoiskId}`)}
+				onClick={() =>
+					user
+						? push(`/watch/${movie.kinopoiskId}`)
+						: push(`/auth?redirect=/watch/${movie.kinopoiskId}`)
+				}
 				className={styles.button}
 			>
 				Смотреть
