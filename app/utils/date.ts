@@ -14,3 +14,9 @@ export const getCurrentMonth = (language: 'ru' | 'en') => {
 export const convertSqlDate = (date: string) => {
 	return new Date(date).toLocaleDateString('ru');
 };
+
+export const convertToTime = (ms: number) => {
+	return new Date(ms).toLocaleTimeString('ru-RU', {
+		timeStyle: 'short',
+	});
+};

@@ -1,0 +1,39 @@
+@import '@/assets/styles/variables';
+
+.container {
+	@apply w-1/5 h-full bg-blue-800 py-4 px-3 grid;
+	grid-template-columns: 100%;
+	grid-template-rows: 1fr auto;
+	min-height: calc(100vh - 136px);
+
+	@media (max-width: 1024px) {
+		width: 100%;
+		min-height: 400px;
+	}
+
+	@media (max-width: 576px) {
+		min-height: 320px;
+	}
+}
+
+.form {
+	border-top: 1px solid rgba(#fff, 0.1);
+	margin: 15px -10px 0;
+	padding: 15px 10px 0;
+}
+
+.content {
+	@apply overflow-y-auto overflow-x-hidden;
+	margin-right: -5px;
+	padding-right: 5px;
+
+	@include custom-scrollbar;
+}
+
+.noMessages {
+	@apply text-base font-normal text-center block text-white;
+
+	@media (max-width: 576px) {
+		@apply text-sm;
+	}
+}

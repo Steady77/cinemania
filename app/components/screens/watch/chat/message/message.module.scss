@@ -1,0 +1,29 @@
+.message {
+	@apply bg-blue-950 text-white overflow-hidden p-3 rounded-md;
+
+	&:not(:last-child) {
+		margin-bottom: 10px;
+	}
+}
+
+.top {
+	@apply flex-center-between;
+	margin-bottom: 10px;
+}
+
+.name {
+	@apply font-medium;
+	font-size: 15px;
+	line-height: 15px;
+}
+
+.text {
+	@apply font-light text-base;
+	line-height: 19px;
+}
+
+.time {
+	font-size: 15px;
+	line-height: 15px;
+	color: rgba(#fff, 0.5);
+}

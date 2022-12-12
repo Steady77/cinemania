@@ -1,10 +1,18 @@
-.videoContainer {
-	@apply mx-auto py-4;
-	max-width: 1200px;
+.watch {
+	@apply mx-auto py-4 flex;
 	height: calc(100vh - 104px);
 
 	@media (max-width: 1024px) {
+		@apply flex-wrap h-full;
+	}
+}
+
+.videoContainer {
+	@apply w-4/5;
+
+	@media (max-width: 1024px) {
 		height: 400px;
+		width: 100%;
 	}
 
 	@media (max-width: 576px) {
