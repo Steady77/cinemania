@@ -1,16 +1,16 @@
 # Cinemania
 
-App is under development...
+Онлайн-сервис для поиска и просмотра фильмов и сериалов.
 
 [Backend repository](https://github.com/Steady77/cinemania-server)
 
-## Stack:
+## Стэк:
 
 - NextJS
+- TypeScript
 - React
 - Redux Toolkit
-- TypeScript
-- SCSS, CSS modules
+- SCSS modules
 - Tailwind CSS
 
 ## API:
