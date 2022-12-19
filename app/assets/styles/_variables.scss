@@ -38,7 +38,7 @@
 	}
 
 	&::-webkit-scrollbar {
-		@apply h-2 bg-blue-900;
+		@apply h-2 w-2 bg-blue-900;
 	}
 
 	&::-webkit-scrollbar-thumb {
