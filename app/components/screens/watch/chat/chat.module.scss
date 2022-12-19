@@ -8,10 +8,12 @@
 
 	@media (max-width: 1024px) {
 		width: 100%;
+		max-height: 400px;
 		min-height: 400px;
 	}
 
 	@media (max-width: 576px) {
+		max-height: 320px;
 		min-height: 320px;
 	}
 }

@@ -1,32 +1,41 @@
+import { useRouter } from 'next/router';
 import { ChangeEvent, FC, FormEvent, useEffect, useRef, useState } from 'react';
 
 import Input from '@/components/ui/form-elements/input';
 
+import { useAuth } from '@/hooks/use-auth.hook';
+
 import styles from './chat.module.scss';
 import Message from './message/message';
 import { IMessage } from './message/message.type';
+import { useChat } from './use-chat.hook';
 
 const Chat: FC = () => {
-	const [message, setMessage] = useState<string>('');
-	const [messages, setMessages] = useState<IMessage[]>([]);
+	const { query } = useRouter();
+	const roomId = query?.id as string;
+
+	const [inputValue, setInputValue] = useState('');
 	const ref = useRef<HTMLDivElement>(null);
 
+	const { messages, sendMessage } = useChat(roomId);
+	const { user } = useAuth();
+
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-		setMessage(e.target.value);
+		setInputValue(e.target.value);
 	};
 
-	const sendMessage = (e: FormEvent<HTMLFormElement>) => {
+	const submitHandler = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		const newMessage: IMessage = {
-			name: 'Name',
-			text: message,
+			name: user?.email,
+			text: inputValue,
 			createdAt: Date.now(),
 		};
 
-		if (message.trim()) {
-			setMessages([...messages, newMessage]);
-			setMessage('');
+		if (inputValue.trim()) {
+			sendMessage(newMessage);
+			setInputValue('');
 		}
 	};
 
@@ -52,11 +61,12 @@ const Chat: FC = () => {
 				)}
 			</div>
 			<form
-				onSubmit={sendMessage}
+				onSubmit={submitHandler}
 				className={styles.form}
 				action="#"
 			>
 				<Input
+					value={inputValue}
 					placeholder="Введите сообщение"
 					style={{ marginBottom: 0 }}
 					onChange={handleChange}
