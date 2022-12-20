@@ -54,13 +54,13 @@ const Content: FC<{ movie: IMovie }> = ({ movie }) => {
 				}))}
 			/>
 			<Rating
-				className="absolute bottom-8 right-8 text-xl opacity-90"
+				className="absolute bottom-9 right-8 text-xl opacity-90"
 				text="Кинопоиск"
 				icon="MdStarRate"
 				rating={movie.ratingKinopoisk}
 			/>
 			<Rating
-				className="absolute bottom-14 right-8 text-xl opacity-90"
+				className="absolute bottom-3 right-8 text-xl opacity-90"
 				text="IMDB"
 				icon="MdStarRate"
 				rating={movie.ratingImdb}

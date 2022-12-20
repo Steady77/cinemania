@@ -1,6 +1,10 @@
 .button {
 	@apply absolute right-0 bottom-20 pt-8 bg-no-repeat w-24 h-16 bg-left mx-auto bg-transparent;
 	background-size: 2900%;
+
+	@media (max-width: 600px) {
+		bottom: 28rem;
+	}
 }
 
 .animate {

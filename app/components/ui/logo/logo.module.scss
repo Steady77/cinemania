@@ -1,3 +1,7 @@
 .logo {
 	@apply flex;
+
+	@media (max-width: 639px) {
+		@apply w-36;
+	}
 }

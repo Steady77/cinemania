@@ -7,6 +7,10 @@
 
 	> .text {
 		@apply pr-2;
+
+		@media (max-width: 470px) {
+			@apply hidden;
+		}
 	}
 
 	> span {
