@@ -1,4 +1,5 @@
-import { FC, useEffect, useRef, useState } from 'react';
+import { useInfiniteQuery } from '@tanstack/react-query';
+import { FC, Fragment } from 'react';
 
 import { MovieService } from '@/services/movie.service';
 
@@ -13,40 +14,23 @@ import styles from '../catalog.module.scss';
 
 import { ITrendsCatalog } from './trends-catalog.interface';
 
-const TrendsCatalog: FC<ITrendsCatalog> = ({
-	title,
-	description,
-	movies,
-	pagesCount,
-}) => {
-	const [moviesData, setMoviesData] = useState(movies);
-	const [currentPage, setCurrentPage] = useState(1);
-	const isMounted = useRef(false);
+const TrendsCatalog: FC<ITrendsCatalog> = ({ title, description }) => {
+	const { data, fetchNextPage, hasNextPage, isRefetching } = useInfiniteQuery(
+		['fresh movies'],
+		({ pageParam = 1 }) =>
+			MovieService.getTop('TOP_100_POPULAR_FILMS', pageParam),
+		{
+			getNextPageParam: (lastPage, pages) => {
+				const { pagesCount } = lastPage;
 
-	useEffect(() => {
-		if (isMounted.current) {
-			const getData = async () => {
-				try {
-					const { films } = await MovieService.getTop(
-						'TOP_100_POPULAR_FILMS',
-						currentPage,
-					);
-
-					setMoviesData([...moviesData, ...films]);
-				} catch (error: any) {
-					console.log(error);
+				if (pages.length < pagesCount) {
+					return pages.length + 1;
+				} else {
+					return undefined;
 				}
-			};
-
-			getData();
-		}
-
-		isMounted.current = true;
-	}, [currentPage]);
-
-	const loadMore = () => {
-		setCurrentPage((prev) => prev + 1);
-	};
+			},
+		},
+	);
 
 	return (
 		<Meta
@@ -64,23 +48,27 @@ const TrendsCatalog: FC<ITrendsCatalog> = ({
 				/>
 			)}
 			<section className={styles.movies}>
-				{moviesData.length > 0 &&
-					moviesData.map((movie) => (
-						<GalleryItem
-							key={movie.filmId}
-							item={{
-								name: movie.nameRu,
-								posterPath: movie.posterUrlPreview,
-								link: getMovieRoute(movie.filmId),
-								content: { title: movie.nameRu },
-							}}
-							variant="horizontal"
-						/>
+				{!isRefetching &&
+					data?.pages.map((group, idx) => (
+						<Fragment key={idx}>
+							{group.films.map((movie) => (
+								<GalleryItem
+									key={movie.filmId}
+									item={{
+										name: movie.nameRu,
+										posterPath: movie.posterUrlPreview,
+										link: getMovieRoute(movie.filmId),
+										content: { title: movie.nameRu },
+									}}
+									variant="horizontal"
+								/>
+							))}
+						</Fragment>
 					))}
 			</section>
-			{currentPage < pagesCount && (
+			{hasNextPage && (
 				<button
-					onClick={loadMore}
+					onClick={() => fetchNextPage()}
 					className={styles.button}
 				>
 					Еще
