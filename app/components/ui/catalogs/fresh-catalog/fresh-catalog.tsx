@@ -1,4 +1,5 @@
-import { FC, useEffect, useRef, useState } from 'react';
+import { useInfiniteQuery } from '@tanstack/react-query';
+import { FC } from 'react';
 
 import { MovieService } from '@/services/movie.service';
 
@@ -14,44 +15,21 @@ import styles from '../catalog.module.scss';
 
 import { IFreshCatalog } from './fresh-catalog.interface';
 
-const FreshCatalog: FC<IFreshCatalog> = ({
-	title,
-	description,
-	movies,
-	total,
-}) => {
-	const [moviesData, setMoviesData] = useState(movies);
-	const [currentPage, setCurrentPage] = useState(1);
-	const isMounted = useRef(false);
+const FreshCatalog: FC<IFreshCatalog> = ({ title, description }) => {
+	const yaer = getCurrentYear();
+	const month = getCurrentMonth('en');
 
-	const totalPages = Math.ceil(total / 10);
+	const { data, fetchNextPage, hasNextPage } = useInfiniteQuery(
+		['fresh movies'],
+		({ pageParam = 1 }) => MovieService.getReleases(yaer, month, pageParam),
+		{
+			getNextPageParam: (lastPage) => {
+				const { total, page } = lastPage;
 
-	useEffect(() => {
-		if (isMounted.current) {
-			const getData = async () => {
-				try {
-					const yaer = getCurrentYear();
-					const month = getCurrentMonth('en');
-
-					const {
-						data: { releases },
-					} = await MovieService.getReleases(yaer, month, currentPage);
-
-					setMoviesData([...moviesData, ...releases]);
-				} catch (error: any) {
-					console.log(error);
-				}
-			};
-
-			getData();
-		}
-
-		isMounted.current = true;
-	}, [currentPage]);
-
-	const loadMore = () => {
-		setCurrentPage((prev) => prev + 1);
-	};
+				return total / 10 > page ? page + 1 : undefined;
+			},
+		},
+	);
 
 	return (
 		<Meta
@@ -68,29 +46,32 @@ const FreshCatalog: FC<IFreshCatalog> = ({
 					className={styles.description}
 				/>
 			)}
-			<section className={styles.movies}>
-				{moviesData.length > 0 &&
-					moviesData.map((movie) => (
-						<GalleryItem
-							key={movie.filmId}
-							item={{
-								name: movie.nameRu,
-								posterPath: movie.posterUrlPreview,
-								link: getMovieRoute(movie.filmId),
-								content: { title: movie.nameRu },
-							}}
-							variant="horizontal"
-						/>
-					))}
+			<section className={styles.section}>
+				<div className={styles.movies}>
+					{data?.pages.map((page) =>
+						page.releases.map((movie) => (
+							<GalleryItem
+								key={movie.filmId}
+								item={{
+									name: movie.nameRu,
+									posterPath: movie.posterUrlPreview,
+									link: getMovieRoute(movie.filmId),
+									content: { title: movie.nameRu },
+								}}
+								variant="horizontal"
+							/>
+						)),
+					)}
+				</div>
+				{hasNextPage && (
+					<button
+						onClick={() => fetchNextPage()}
+						className={styles.button}
+					>
+						Еще
+					</button>
+				)}
 			</section>
-			{totalPages && currentPage < totalPages && (
-				<button
-					onClick={loadMore}
-					className={styles.button}
-				>
-					Еще
-				</button>
-			)}
 		</Meta>
 	);
 };
