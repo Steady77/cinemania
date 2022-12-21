@@ -1,6 +1,6 @@
+import { useMutation } from '@tanstack/react-query';
 import cn from 'classnames';
 import { FC, useEffect, useState } from 'react';
-import { useMutation } from 'react-query';
 
 import { useFavorites } from '@/components/screens/favorites/use-favorites.hook';
 

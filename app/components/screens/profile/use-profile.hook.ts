@@ -1,5 +1,5 @@
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { SubmitHandler, UseFormSetValue } from 'react-hook-form';
-import { useMutation, useQuery } from 'react-query';
 import { toastr } from 'react-redux-toastr';
 
 import { useActions } from '@/hooks/use-actions.hook';

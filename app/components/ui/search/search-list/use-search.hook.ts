@@ -1,5 +1,5 @@
+import { useQuery } from '@tanstack/react-query';
 import { ChangeEvent, useState } from 'react';
-import { useQuery } from 'react-query';
 
 import { useDebounce } from '@/hooks/use-debounce.hook';
 
@@ -20,7 +20,7 @@ export const useSearch = () => {
 
 	const handleClear = () => {
 		setSearchValue('');
-	}
+	};
 
 	const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
 		setSearchValue(e.target.value);

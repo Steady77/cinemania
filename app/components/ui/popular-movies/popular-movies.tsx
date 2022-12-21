@@ -1,5 +1,5 @@
+import { useQuery } from '@tanstack/react-query';
 import { FC } from 'react';
-import { useQuery } from 'react-query';
 
 import ContentLoader from '@/components/ui/content-loader';
 
@@ -9,7 +9,7 @@ import MovieList from './movie-list';
 
 const PopularMovies: FC = () => {
 	const { isLoading, data } = useQuery(
-		'popular movies sidebar',
+		['popular movies'],
 		() => MovieService.getTop('TOP_100_POPULAR_FILMS'),
 		{
 			select: ({ data }) => data.films,

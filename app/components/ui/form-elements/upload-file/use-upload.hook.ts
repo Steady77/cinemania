@@ -1,5 +1,5 @@
+import { useMutation } from '@tanstack/react-query';
 import { ChangeEvent, useCallback, useMemo } from 'react';
-import { useMutation } from 'react-query';
 
 import { FileService } from '@/services/file.service';
 
