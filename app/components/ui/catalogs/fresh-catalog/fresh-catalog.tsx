@@ -1,5 +1,5 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { FC } from 'react';
+import { FC, Fragment } from 'react';
 
 import { MovieService } from '@/services/movie.service';
 
@@ -19,7 +19,7 @@ const FreshCatalog: FC<IFreshCatalog> = ({ title, description }) => {
 	const yaer = getCurrentYear();
 	const month = getCurrentMonth('en');
 
-	const { data, fetchNextPage, hasNextPage } = useInfiniteQuery(
+	const { data, fetchNextPage, hasNextPage, isRefetching } = useInfiniteQuery(
 		['fresh movies'],
 		({ pageParam = 1 }) => MovieService.getReleases(yaer, month, pageParam),
 		{
@@ -48,20 +48,23 @@ const FreshCatalog: FC<IFreshCatalog> = ({ title, description }) => {
 			)}
 			<section className={styles.section}>
 				<div className={styles.movies}>
-					{data?.pages.map((page) =>
-						page.releases.map((movie) => (
-							<GalleryItem
-								key={movie.filmId}
-								item={{
-									name: movie.nameRu,
-									posterPath: movie.posterUrlPreview,
-									link: getMovieRoute(movie.filmId),
-									content: { title: movie.nameRu },
-								}}
-								variant="horizontal"
-							/>
-						)),
-					)}
+					{!isRefetching &&
+						data?.pages.map((group, idx) => (
+							<Fragment key={idx}>
+								{group.releases.map((movie) => (
+									<GalleryItem
+										key={movie.filmId}
+										item={{
+											name: movie.nameRu,
+											posterPath: movie.posterUrlPreview,
+											link: getMovieRoute(movie.filmId),
+											content: { title: movie.nameRu },
+										}}
+										variant="horizontal"
+									/>
+								))}
+							</Fragment>
+						))}
 				</div>
 				{hasNextPage && (
 					<button
