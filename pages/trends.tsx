@@ -19,9 +19,9 @@ const TrendsPage: NextPage<ITopResponse> = ({ films, pagesCount }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
 	try {
-		const {
-			data: { films, pagesCount },
-		} = await MovieService.getTop('TOP_100_POPULAR_FILMS');
+		const { films, pagesCount } = await MovieService.getTop(
+			'TOP_100_POPULAR_FILMS',
+		);
 
 		return {
 			props: {

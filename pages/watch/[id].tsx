@@ -21,7 +21,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 	const id = params?.id as string;
 
 	try {
-		const { data: movie } = await MovieService.getById(id);
+		const movie = await MovieService.getById(id);
 
 		return {
 			props: {

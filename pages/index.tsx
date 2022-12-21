@@ -47,10 +47,7 @@ export const getStaticProps: GetStaticProps = async () => {
 			name: capitalizeFirstLetter(genre.genre),
 		}));
 
-		const { data: premieres } = await MovieService.getPremieres(
-			currentYear,
-			month,
-		);
+		const premieres = await MovieService.getPremieres(currentYear, month);
 
 		const slides: ISlide[] = premieres.items.map((movie) => ({
 			kinopoiskId: movie.kinopoiskId,
@@ -60,9 +57,7 @@ export const getStaticProps: GetStaticProps = async () => {
 			nameRu: movie.nameRu,
 		}));
 
-		const { data: releasesData } = await MovieService.getTop(
-			'TOP_250_BEST_FILMS',
-		);
+		const releasesData = await MovieService.getTop('TOP_250_BEST_FILMS');
 
 		const releases: IGalleryItem[] = releasesData.films.map((movie) => ({
 			name: movie.nameRu,

@@ -27,9 +27,10 @@ const TrendsCatalog: FC<ITrendsCatalog> = ({
 		if (isMounted.current) {
 			const getData = async () => {
 				try {
-					const {
-						data: { films },
-					} = await MovieService.getTop('TOP_100_POPULAR_FILMS', currentPage);
+					const { films } = await MovieService.getTop(
+						'TOP_100_POPULAR_FILMS',
+						currentPage,
+					);
 
 					setMoviesData([...moviesData, ...films]);
 				} catch (error: any) {

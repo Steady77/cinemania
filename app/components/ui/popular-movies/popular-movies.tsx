@@ -12,7 +12,7 @@ const PopularMovies: FC = () => {
 		['popular movies'],
 		() => MovieService.getTop('TOP_100_POPULAR_FILMS'),
 		{
-			select: ({ data }) => data.films,
+			select: (data) => data.films,
 		},
 	);
 

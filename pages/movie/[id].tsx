@@ -36,9 +36,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 	const id = params?.id as string;
 
 	try {
-		const { data: movie } = await MovieService.getById(id);
+		const movie = await MovieService.getById(id);
 
-		const { data: dataSimilarMovies } = await MovieService.getSimilars(id);
+		const dataSimilarMovies = await MovieService.getSimilars(id);
 
 		const similarMovies: IGalleryItem[] = dataSimilarMovies.items.map(
 			(movie) => ({

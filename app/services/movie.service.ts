@@ -32,36 +32,54 @@ type TopType =
 
 export const MovieService = {
 	async getById(id: string) {
-		return axiosAPI.get<IMovie>(getMoviesUrl(`/${id}`));
+		const { data } = await axiosAPI.get<IMovie>(getMoviesUrl(`/${id}`));
+
+		return data;
 	},
 
 	async getSimilars(id: string) {
-		return axiosAPI.get<ISimilarsResp>(getMoviesUrl(`/${id}/similars`));
+		const { data } = await axiosAPI.get<ISimilarsResp>(
+			getMoviesUrl(`/${id}/similars`),
+		);
+
+		return data;
 	},
 
 	async getTop(type: TopType, page = 1) {
-		return axiosAPI.get<ITopResponse>(getMoviesUrl('/top'), {
+		const { data } = await axiosAPI.get<ITopResponse>(getMoviesUrl('/top'), {
 			params: { type, page },
 		});
+
+		return data;
 	},
 
 	async getPremieres(year: number, month: string | undefined) {
-		return axiosAPI.get<IPremieresMovies>(getMoviesUrl('/premieres'), {
-			params: {
-				year,
-				month,
+		const { data } = await axiosAPI.get<IPremieresMovies>(
+			getMoviesUrl('/premieres'),
+			{
+				params: {
+					year,
+					month,
+				},
 			},
-		});
+		);
+
+		return data;
 	},
 
 	async getReleases(year: number, month: string | undefined, page = 1) {
-		return axiosAPI.get<IReleasesResponse>('v2.1/films/releases', {
-			params: {
-				year,
-				month,
-				page,
+		const { data } = await axiosAPI.get<IReleasesResponse>(
+			'v2.1/films/releases',
+			{
+				params: {
+					year,
+					month,
+					page,
+				},
 			},
-		});
+		);
+
+		return data;
 	},
 
 	async getByFilters({
