@@ -25,7 +25,7 @@ const Favorites: FC = () => {
 					/>
 				) : (
 					<div className={styles.favorites}>
-						{favoritesMovies?.map(({ data }, idx) => (
+						{favoritesMovies?.map((data, idx) => (
 							<FavoriteItem
 								movie={data?.data}
 								key={idx}
