@@ -12,6 +12,8 @@ const PopularMovies: FC = () => {
 		['popular movies'],
 		() => MovieService.getTop('TOP_100_POPULAR_FILMS'),
 		{
+			refetchOnMount: false,
+			keepPreviousData: true,
 			select: (data) => data.films,
 		},
 	);

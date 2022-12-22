@@ -16,10 +16,12 @@ import { ITrendsCatalog } from './trends-catalog.interface';
 
 const TrendsCatalog: FC<ITrendsCatalog> = ({ title, description }) => {
 	const { data, fetchNextPage, hasNextPage, isRefetching } = useInfiniteQuery(
-		['fresh movies'],
+		['popular movies'],
 		({ pageParam = 1 }) =>
 			MovieService.getTop('TOP_100_POPULAR_FILMS', pageParam),
 		{
+			refetchOnMount: false,
+			keepPreviousData: true,
 			getNextPageParam: (lastPage, pages) => {
 				const { pagesCount } = lastPage;
 

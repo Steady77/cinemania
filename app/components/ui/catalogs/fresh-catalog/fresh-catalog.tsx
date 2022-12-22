@@ -23,6 +23,8 @@ const FreshCatalog: FC<IFreshCatalog> = ({ title, description }) => {
 		['fresh movies'],
 		({ pageParam = 1 }) => MovieService.getReleases(yaer, month, pageParam),
 		{
+			refetchOnMount: false,
+			keepPreviousData: true,
 			getNextPageParam: (lastPage) => {
 				const { total, page } = lastPage;
 
