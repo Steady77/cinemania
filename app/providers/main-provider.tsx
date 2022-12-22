@@ -1,4 +1,3 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { FC, PropsWithChildren } from 'react';
 import { Provider } from 'react-redux';
 
@@ -12,14 +11,6 @@ import AuthProvider from './auth-provider/auth-provider';
 import HeadProvider from './head-provider/head-provider';
 import ReduxToast from './redux-toast';
 
-const queryClient = new QueryClient({
-	defaultOptions: {
-		queries: {
-			refetchOnWindowFocus: false,
-		},
-	},
-});
-
 const MainProvider: FC<PropsWithChildren<ComponentRoleType>> = ({
 	children,
 	Component,
@@ -27,12 +18,10 @@ const MainProvider: FC<PropsWithChildren<ComponentRoleType>> = ({
 	return (
 		<HeadProvider>
 			<Provider store={store}>
-				<QueryClientProvider client={queryClient}>
-					<ReduxToast />
-					<AuthProvider Component={Component}>
-						<Layout>{children}</Layout>
-					</AuthProvider>
-				</QueryClientProvider>
+				<ReduxToast />
+				<AuthProvider Component={Component}>
+					<Layout>{children}</Layout>
+				</AuthProvider>
 			</Provider>
 		</HeadProvider>
 	);
