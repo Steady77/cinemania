@@ -13,7 +13,7 @@ export const useSearch = () => {
 		['search movie', debouncedSearch],
 		() => MovieService.getByFilters({ keyword: debouncedSearch }),
 		{
-			select: ({ data }) => data.items,
+			select: ({ items }) => items,
 			enabled: !!debouncedSearch,
 		},
 	);

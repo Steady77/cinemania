@@ -69,7 +69,7 @@ export const getStaticProps: GetStaticProps = async () => {
 			},
 		}));
 
-		const { data: tvSeriesData } = await MovieService.getByFilters({
+		const tvSeriesData = await MovieService.getByFilters({
 			type: 'TV_SERIES',
 			yearFrom: currentYear,
 		});

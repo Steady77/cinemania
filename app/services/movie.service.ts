@@ -95,7 +95,7 @@ export const MovieService = {
 		keyword,
 		page,
 	}: IGetByFilters) {
-		return axiosAPI.get<IFilmsByFiltersResp>(getMoviesUrl(''), {
+		const { data } = await axiosAPI.get<IFilmsByFiltersResp>(getMoviesUrl(''), {
 			params: {
 				countries,
 				genres,
@@ -110,5 +110,7 @@ export const MovieService = {
 				page,
 			},
 		});
+
+		return data;
 	},
 };
