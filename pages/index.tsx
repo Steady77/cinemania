@@ -42,10 +42,12 @@ export const getStaticProps: GetStaticProps = async () => {
 	try {
 		const { data: genresData } = await FiltersService.getGenresCountries();
 
-		const genres: IList[] = genresData.genres.map((genre) => ({
-			link: getGenreRoute(String(genre.id)),
-			name: capitalizeFirstLetter(genre.genre),
-		}));
+		const genres: IList[] = genresData.genres
+			.filter((item) => item.genre !== '')
+			.map((genre) => ({
+				link: getGenreRoute(String(genre.id)),
+				name: capitalizeFirstLetter(genre.genre),
+			}));
 
 		const premieres = await MovieService.getPremieres(currentYear, month);
 
