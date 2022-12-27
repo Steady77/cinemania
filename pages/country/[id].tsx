@@ -1,28 +1,24 @@
+import { QueryClient, dehydrate } from '@tanstack/react-query';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
-import Catalog from '@/components/ui/catalogs/catalog';
+import CountryCatalog from '@/components/ui/catalogs/country-catalog';
 
 import { IFilmByFilters } from '@/shared/types/movie.types';
 
 import { FiltersService } from '@/services/filters.service';
 import { MovieService } from '@/services/movie.service';
 
-import Error404 from '../404';
-
 interface ICountryPage {
 	items: IFilmByFilters[];
 	country: string;
 }
 
-const CountryPage: NextPage<ICountryPage> = ({ items, country }) => {
-	return country ? (
-		<Catalog
+const CountryPage: NextPage<ICountryPage> = ({ country }) => {
+	return (
+		<CountryCatalog
 			title={country}
 			description={`Фильмы и сериалы сделанные в ${country}`}
-			movies={items || []}
 		/>
-	) : (
-		<Error404 />
 	);
 };
 
@@ -48,7 +44,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-	let id = Number(params?.id);
+	const queryClient = new QueryClient();
+	const id = Number(params?.id);
 
 	try {
 		const {
@@ -57,14 +54,16 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 		const country = countries.find((obj) => obj.id === id)?.country;
 
-		const {
-			data: { items },
-		} = await MovieService.getByFilters({ countries: id });
+		await queryClient.prefetchInfiniteQuery(
+			['movies by country'],
+			({ pageParam = 1 }) =>
+				MovieService.getByFilters({ countries: id, page: pageParam }),
+		);
 
 		return {
 			props: {
+				dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
 				country,
-				items,
 			},
 		};
 	} catch (error) {
