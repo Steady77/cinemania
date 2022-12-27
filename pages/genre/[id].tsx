@@ -1,30 +1,19 @@
+import { QueryClient, dehydrate } from '@tanstack/react-query';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
-import Catalog from '@/components/ui/catalogs/catalog';
-
-import { IFilmByFilters } from '@/shared/types/movie.types';
+import GenreCatalog from '@/components/ui/catalogs/genre-catalog';
 
 import { FiltersService } from '@/services/filters.service';
 import { MovieService } from '@/services/movie.service';
 
 import { capitalizeFirstLetter } from '@/utils/string';
 
-import Error404 from '../404';
-
-interface IGenrePage {
-	items: IFilmByFilters[];
-	genre: string;
-}
-
-const GenrePage: NextPage<IGenrePage> = ({ items, genre }) => {
-	return genre ? (
-		<Catalog
+const GenrePage: NextPage<{ genre: string }> = ({ genre }) => {
+	return (
+		<GenreCatalog
 			title={capitalizeFirstLetter(genre)}
 			description={`Фильмы и сериалы жанра ${genre}`}
-			movies={items || []}
 		/>
-	) : (
-		<Error404 />
 	);
 };
 
@@ -50,7 +39,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-	let id = Number(params?.id);
+	const queryClient = new QueryClient();
+	const id = Number(params?.id);
 
 	try {
 		const {
@@ -59,14 +49,16 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 		const genre = genres.find((obj) => obj.id === id)?.genre;
 
-		const {
-			data: { items },
-		} = await MovieService.getByFilters({ genres: id });
+		await queryClient.prefetchInfiniteQuery(
+			['movies by genre'],
+			({ pageParam = 1 }) =>
+				MovieService.getByFilters({ genres: id, page: pageParam }),
+		);
 
 		return {
 			props: {
+				dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
 				genre,
-				items,
 			},
 		};
 	} catch (error) {
