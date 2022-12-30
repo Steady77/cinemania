@@ -1,12 +1,12 @@
 .menu {
 	@apply animate-fade;
 
+	@media (max-width: 1200px) {
+		@apply w-full bottom-0 left-0 fixed z-10 bg-blue-950;
+	}
+
 	.list {
 		@apply flex-center-between;
-
-		@media (max-width: 1200px) {
-			@apply hidden;
-		}
 
 		> li {
 			@apply m-3;

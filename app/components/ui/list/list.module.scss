@@ -1,5 +1,11 @@
 .list {
-	@apply flex items-center overflow-hidden flex-nowrap py-3;
+	@apply flex items-center flex-nowrap py-3 overflow-x-scroll;
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar {
+		width: 0;
+		height: 0;
+	}
 
 	.item {
 		@apply transition-transform flex flex-col items-center justify-center shadow-lg 

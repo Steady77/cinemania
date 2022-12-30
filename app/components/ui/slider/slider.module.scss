@@ -19,6 +19,10 @@
 
 			.heading {
 				@apply text-white uppercase text-5xl font-semibold mb-1 text-shadow;
+
+				@media (max-width: 450px) {
+					@apply capitalize text-4xl;
+				}
 			}
 
 			.subHeading {
