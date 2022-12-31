@@ -1,13 +1,15 @@
+@import '@/assets/styles/variables';
+
 .list {
-	@apply grid gap-2 absolute border border-blue-700 rounded-layout bg-blue-800 w-full animate-fade z-30;
+	@apply grid gap-2 absolute border border-blue-700 rounded-layout bg-blue-800 w-full animate-fade z-30
+	overflow-x-hidden overflow-y-auto;
 	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 	top: 75px;
 	left: 0px;
 	max-width: 1700px;
+	max-height: 500px;
 
-	@media (max-width: 562px) {
-		top: 130px;
-	}
+	@include custom-scrollbar;
 
 	> a {
 		@apply flex items-center py-3 px-4 relative;

@@ -1,9 +1,5 @@
 .profileMenu {
-	@apply flex-center-between animate-fade ml-2;
-
-	@media (max-width: 664px) {
-		@apply mt-2;
-	}
+	@apply flex-center-between animate-fade ml-auto;
 
 	> li {
 		@apply m-3;

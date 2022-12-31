@@ -10,7 +10,12 @@ import { getMovieRoute } from '@/config/route.config';
 
 import styles from './search-list.module.scss';
 
-const SearchList: FC<{ movies: IFilmByFilters[] }> = ({ movies }) => {
+interface SearchListProps {
+	movies: IFilmByFilters[];
+	handleClose: () => void;
+}
+
+const SearchList: FC<SearchListProps> = ({ movies, handleClose }) => {
 	useLockBodyScroll();
 
 	return (
@@ -21,7 +26,7 @@ const SearchList: FC<{ movies: IFilmByFilters[] }> = ({ movies }) => {
 						key={movie.kinopoiskId}
 						href={getMovieRoute(movie.kinopoiskId)}
 					>
-						<a>
+						<a onClick={handleClose}>
 							<Image
 								width={75}
 								height={75}

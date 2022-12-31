@@ -1,9 +1,19 @@
 .search {
-	@media (max-width: 1200px) {
-		@apply grow mx-3;
+	@apply flex items-center mx-auto;
+
+	@media (max-width: 768px) {
+		@apply order-1 mx-0;
 	}
 
-	@media (max-width: 524px) {
-		@apply mt-2 order-1;
+	.searchIcon {
+		@apply fill-blue-600 text-3xl transition-colors ml-auto cursor-pointer pointer-events-none;
+
+		&:hover {
+			@apply fill-primary;
+		}
+
+		@media (max-width: 768px) {
+			@apply pointer-events-auto;
+		}
 	}
 }
