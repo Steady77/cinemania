@@ -6,7 +6,7 @@ import MaterialIcon from '../material-icon';
 import styles from './search-input.module.scss';
 
 interface ISearchInput {
-	visible: boolean;
+	visible?: boolean;
 	searchValue: string;
 	handleSearch: (event: ChangeEvent<HTMLInputElement>) => void;
 	handleClear?: () => void;
