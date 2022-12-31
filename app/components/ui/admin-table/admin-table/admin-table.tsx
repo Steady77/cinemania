@@ -21,7 +21,7 @@ const AdminTable: FC<IAdminTable> = ({
 	tableItems,
 }) => {
 	return (
-		<div>
+		<div className={styles.table}>
 			<AdminTableHeader headerItems={headerItems} />
 			{isLoading ? (
 				<ContentLoader

@@ -1,3 +1,13 @@
+.table {
+	@media (max-width: 670px) {
+		@apply text-sm;
+	}
+
+	@media (max-width: 533px) {
+		@apply text-xs;
+	}
+}
+
 .item {
 	@apply flex items-center justify-between bg-blue-700 bg-opacity-20 mt-4 px-5 rounded-lg transition-colors hover:bg-opacity-50;
 
