@@ -39,7 +39,7 @@ const MovieItem: FC<{ movie: ITopMovie }> = ({ movie }) => {
 					))}
 				</div>
 				<Rating
-					className="mb-2"
+					className={styles.rating}
 					rating={movie.rating}
 					icon="MdStarRate"
 				/>

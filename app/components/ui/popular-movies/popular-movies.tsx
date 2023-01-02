@@ -6,6 +6,7 @@ import ContentLoader from '@/components/ui/content-loader';
 import { MovieService } from '@/services/movie.service';
 
 import MovieList from './movie-list';
+import styles from './popular-movies.module.scss';
 
 const PopularMovies: FC = () => {
 	const { isLoading, data } = useQuery(
@@ -19,17 +20,18 @@ const PopularMovies: FC = () => {
 	);
 
 	return isLoading || data?.length! < 1 ? (
-		<div className="mt-11">
+		<div className="mt-5">
 			<ContentLoader
-				count={3}
-				className="h-28 mb-4"
+				count={6}
+				inline
+				className="h-44"
+				containerClassName={styles.loaderContainer}
 			/>
 		</div>
 	) : (
 		<MovieList
 			link="/trends"
 			movies={data || []}
-			title="Популярные фильмы"
 		/>
 	);
 };

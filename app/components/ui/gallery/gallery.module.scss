@@ -21,6 +21,10 @@
 	&.horizontal {
 		@apply h-44;
 		width: 340px;
+
+		@media (max-width: 400px) {
+			width: 280px;
+		}
 	}
 
 	&.withText {

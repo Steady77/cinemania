@@ -1,0 +1,7 @@
+.description {
+	@apply px-8 pb-8 rounded-b-layout text-opacity-90 bg-blue-950 max-w-6xl mx-auto;
+
+	@media (max-width: 450px) {
+		@apply px-4;
+	}
+}

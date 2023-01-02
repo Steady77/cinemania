@@ -1,0 +1,9 @@
+.loaderContainer {
+	@apply animate-fade grid gap-4 mb-3 mx-auto;
+	grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+	max-width: 1200px;
+
+	@media (max-width: 687px) {
+		grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+	}
+}

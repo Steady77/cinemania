@@ -38,7 +38,10 @@ const Home: FC<IHome> = ({ slides, releases, tvSeries, genres }) => {
 				{releases.length && <Gallery items={releases} />}
 			</div>
 
-			<PopularMovies />
+			<div className="my-10">
+				<SubHeading title="Популярные фильмы" />
+				<PopularMovies />
+			</div>
 
 			<div className="my-10">
 				<SubHeading title={`Сериалы ${getCurrentYear()}`} />

@@ -1,8 +1,16 @@
 .profileMenu {
 	@apply flex-center-between animate-fade ml-auto;
 
+	@media (max-width: 400px) {
+		@apply ml-2;
+	}
+
 	> li {
 		@apply m-3;
+
+		@media (max-width: 400px) {
+			@apply m-1;
+		}
 
 		> a {
 			@apply flex items-center text-blue-600 cursor-pointer;

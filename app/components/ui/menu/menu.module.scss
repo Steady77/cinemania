@@ -2,11 +2,15 @@
 	@apply animate-fade mx-auto;
 
 	@media (max-width: 1200px) {
-		@apply w-full bottom-0 left-0 fixed z-10 bg-blue-950;
+		@apply w-full bottom-0 left-0 fixed z-30 bg-blue-950;
 	}
 
 	.list {
 		@apply flex-center-between;
+
+		@media (max-width: 1200px) {
+			@apply justify-around;
+		}
 
 		> li {
 			@apply m-3;
@@ -16,6 +20,10 @@
 
 				> span {
 					@apply ml-2 text-base font-medium hover:text-white;
+
+					@media (max-width: 370px) {
+						@apply hidden;
+					}
 				}
 
 				> svg {

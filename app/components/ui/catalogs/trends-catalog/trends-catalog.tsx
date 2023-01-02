@@ -49,24 +49,26 @@ const TrendsCatalog: FC<ITrendsCatalog> = ({ title, description }) => {
 					className={styles.description}
 				/>
 			)}
-			<section className={styles.movies}>
-				{!isRefetching &&
-					data?.pages.map((group, idx) => (
-						<Fragment key={idx}>
-							{group.films.map((movie) => (
-								<GalleryItem
-									key={movie.filmId}
-									item={{
-										name: movie.nameRu,
-										posterPath: movie.posterUrlPreview,
-										link: getMovieRoute(movie.filmId),
-										content: { title: movie.nameRu },
-									}}
-									variant="horizontal"
-								/>
-							))}
-						</Fragment>
-					))}
+			<section>
+				<div className={styles.movies}>
+					{!isRefetching &&
+						data?.pages.map((group, idx) => (
+							<Fragment key={idx}>
+								{group.films.map((movie) => (
+									<GalleryItem
+										key={movie.filmId}
+										item={{
+											name: movie.nameRu,
+											posterPath: movie.posterUrlPreview,
+											link: getMovieRoute(movie.filmId),
+											content: { title: movie.nameRu },
+										}}
+										variant="horizontal"
+									/>
+								))}
+							</Fragment>
+						))}
+				</div>
 			</section>
 			{hasNextPage && (
 				<button

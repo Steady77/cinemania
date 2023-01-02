@@ -1,4 +1,8 @@
 .layout {
 	@apply px-4 mx-auto min-h-screen pb-8;
 	max-width: 1600px;
+
+	@media (max-width: 1200px) {
+		@apply pb-16;
+	}
 }

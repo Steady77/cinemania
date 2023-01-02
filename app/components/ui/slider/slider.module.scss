@@ -17,6 +17,10 @@
 		.content {
 			@apply relative z-2 p-8;
 
+			@media (max-width: 450px) {
+				@apply px-4;
+			}
+
 			.heading {
 				@apply text-white uppercase text-5xl font-semibold mb-1 text-shadow;
 
@@ -31,6 +35,10 @@
 
 			.button {
 				@apply btn-primary p-2 px-10;
+
+				@media (max-width: 450px) {
+					@apply px-6;
+				}
 			}
 		}
 	}

@@ -3,9 +3,17 @@
 
 	&.left {
 		@apply right-24;
+
+		@media (max-width: 450px) {
+			@apply right-20;
+		}
 	}
 
 	&.right {
 		@apply right-8;
+
+		@media (max-width: 450px) {
+			@apply right-7;
+		}
 	}
 }

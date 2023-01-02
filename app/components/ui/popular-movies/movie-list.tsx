@@ -5,10 +5,9 @@ import MovieItem from './movie-item';
 import { IMovieList } from './movie-list.interface';
 import styles from './movie-list.module.scss';
 
-const MovieList: FC<IMovieList> = ({ link, movies, title }) => {
+const MovieList: FC<IMovieList> = ({ link, movies }) => {
 	return (
 		<>
-			<h5 className={styles.heading}>{title}</h5>
 			<div className={styles.list}>
 				{movies.map((movie) => (
 					<MovieItem

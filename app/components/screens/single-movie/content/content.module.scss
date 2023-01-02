@@ -1,6 +1,10 @@
 .content {
 	@apply relative z-2 px-8 py-4;
 
+	@media (max-width: 450px) {
+		@apply px-4;
+	}
+
 	.title {
 		@apply text-white uppercase text-5xl font-semibold mb-1 text-shadow;
 

@@ -1,18 +1,22 @@
-.heading {
-	@apply font-bold text-xl mb-5 text-white capitalize;
-}
-
 .button {
 	@apply p-2.5 btn-primary block text-center w-52 mx-auto;
 }
 
 .list {
-	@apply animate-fade grid mb-3 mx-auto;
+	@apply animate-fade grid gap-2 mb-3 mx-auto mt-5;
 	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
 	max-width: 1200px;
 
+	@media (max-width: 687px) {
+		grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+	}
+
 	.item {
 		@apply mb-4 flex items-stretch;
+
+		@media (max-width: 687px) {
+			@apply block text-center;
+		}
 
 		> a {
 			img {
@@ -32,8 +36,12 @@
 		@apply ml-4 flex flex-col justify-between;
 		width: 67%;
 
+		@media (max-width: 687px) {
+			@apply w-full ml-0;
+		}
+
 		.title {
-			@apply text-white text-lg font-medium truncate transition-colors;
+			@apply text-white text-lg font-medium transition-colors;
 
 			&:hover {
 				@apply text-blue-500;
@@ -46,6 +54,10 @@
 
 		.rating {
 			@apply flex items-center mb-2;
+
+			@media (max-width: 687px) {
+				@apply mx-auto;
+			}
 
 			> svg {
 				@apply fill-yellow-700 mr-2 text-lg;

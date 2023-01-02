@@ -48,7 +48,7 @@ const FreshCatalog: FC<IFreshCatalog> = ({ title, description }) => {
 					className={styles.description}
 				/>
 			)}
-			<section className={styles.section}>
+			<section>
 				<div className={styles.movies}>
 					{!isRefetching &&
 						data?.pages.map((group, idx) => (

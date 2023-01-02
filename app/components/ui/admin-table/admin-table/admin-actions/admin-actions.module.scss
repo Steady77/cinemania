@@ -7,6 +7,10 @@
 
 		&:first-child {
 			@apply mr-4;
+
+			@media (max-width: 533px) {
+				@apply mr-2;
+			}
 		}
 	}
 }
