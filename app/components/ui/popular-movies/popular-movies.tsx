@@ -10,7 +10,7 @@ import styles from './popular-movies.module.scss';
 
 const PopularMovies: FC = () => {
 	const { isLoading, data } = useQuery(
-		['popular movies'],
+		['popular movies home page'],
 		() => MovieService.getTop('TOP_100_POPULAR_FILMS'),
 		{
 			refetchOnMount: false,
