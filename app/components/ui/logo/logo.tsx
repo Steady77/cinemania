@@ -15,7 +15,7 @@ const Logo: FC = () => {
 					alt="Cinemania"
 					width={176}
 					height={48}
-					draggable={false}
+					priority
 				/>
 			</a>
 		</Link>
