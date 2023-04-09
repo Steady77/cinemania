@@ -14,25 +14,27 @@ const Favorites: FC = () => {
 
 	return (
 		<Meta title="Избранное">
-			<Heading title="Избранное" />
 			<section>
-				{isLoading ? (
-					<ContentLoader
-						count={4}
-						inline
-						className={styles.contentLoader}
-						containerClassName={styles.loaderContainer}
-					/>
-				) : (
-					<div className={styles.favorites}>
-						{favoritesMovies?.map((data, idx) => (
-							<FavoriteItem
-								movie={data?.data}
-								key={idx}
-							/>
-						))}
-					</div>
-				)}
+				<Heading title="Избранное" />
+				<div>
+					{isLoading ? (
+						<ContentLoader
+							count={4}
+							inline
+							className={styles.contentLoader}
+							containerClassName={styles.loaderContainer}
+						/>
+					) : (
+						<div className={styles.favorites}>
+							{favoritesMovies?.map((data, idx) => (
+								<FavoriteItem
+									movie={data?.data}
+									key={idx}
+								/>
+							))}
+						</div>
+					)}
+				</div>
 			</section>
 		</Meta>
 	);

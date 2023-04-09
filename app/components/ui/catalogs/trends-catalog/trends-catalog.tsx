@@ -39,45 +39,47 @@ const TrendsCatalog: FC<ITrendsCatalog> = ({ title, description }) => {
 			title={title}
 			description={description}
 		>
-			<Heading
-				title={title}
-				className={styles.heading}
-			/>
-			{description && (
-				<Description
-					text={description}
-					className={styles.description}
-				/>
-			)}
 			<section>
-				<div className={styles.movies}>
-					{!isRefetching &&
-						data?.pages.map((group, idx) => (
-							<Fragment key={idx}>
-								{group.films.map((movie) => (
-									<GalleryItem
-										key={movie.filmId}
-										item={{
-											name: movie.nameRu,
-											posterPath: movie.posterUrlPreview,
-											link: getMovieRoute(movie.filmId),
-											content: { title: movie.nameRu },
-										}}
-										variant="horizontal"
-									/>
-								))}
-							</Fragment>
-						))}
+				<Heading
+					title={title}
+					className={styles.heading}
+				/>
+				{description && (
+					<Description
+						text={description}
+						className={styles.description}
+					/>
+				)}
+				<div>
+					<div className={styles.movies}>
+						{!isRefetching &&
+							data?.pages.map((group, idx) => (
+								<Fragment key={idx}>
+									{group.films.map((movie) => (
+										<GalleryItem
+											key={movie.filmId}
+											item={{
+												name: movie.nameRu,
+												posterPath: movie.posterUrlPreview,
+												link: getMovieRoute(movie.filmId),
+												content: { title: movie.nameRu },
+											}}
+											variant="horizontal"
+										/>
+									))}
+								</Fragment>
+							))}
+					</div>
 				</div>
+				{hasNextPage && (
+					<button
+						onClick={() => fetchNextPage()}
+						className={styles.button}
+					>
+						Еще
+					</button>
+				)}
 			</section>
-			{hasNextPage && (
-				<button
-					onClick={() => fetchNextPage()}
-					className={styles.button}
-				>
-					Еще
-				</button>
-			)}
 		</Meta>
 	);
 };

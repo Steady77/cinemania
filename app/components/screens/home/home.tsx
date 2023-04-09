@@ -18,35 +18,37 @@ const Home: FC<IHome> = ({ slides, releases, tvSeries, genres }) => {
 			title="Онлайн кинотеатр"
 			description="Описание"
 		>
-			<Heading
-				title="Кинопремьеры"
-				className="text-blue-300 mb-8"
-			/>
-			{slides.length && (
-				<Slider
-					slides={slides}
-					buttonTitle="Подробнее"
+			<section>
+				<Heading
+					title="Кинопремьеры"
+					className="text-blue-300 mb-8"
 				/>
-			)}
+				{slides.length && (
+					<Slider
+						slides={slides}
+						buttonTitle="Подробнее"
+					/>
+				)}
 
-			<div className="my-10">
-				<List items={genres} />
-			</div>
+				<div className="my-10">
+					<List items={genres} />
+				</div>
 
-			<div className="my-10">
-				<SubHeading title="Лучшие фильмы" />
-				{releases.length && <Gallery items={releases} />}
-			</div>
+				<div className="my-10">
+					<SubHeading title="Лучшие фильмы" />
+					{releases.length && <Gallery items={releases} />}
+				</div>
 
-			<div className="my-10">
-				<SubHeading title="Популярные фильмы" />
-				<PopularMovies />
-			</div>
+				<div className="my-10">
+					<SubHeading title="Популярные фильмы" />
+					<PopularMovies />
+				</div>
 
-			<div className="my-10">
-				<SubHeading title={`Сериалы ${getCurrentYear()}`} />
-				{tvSeries.length && <Gallery items={tvSeries} />}
-			</div>
+				<div className="my-10">
+					<SubHeading title={`Сериалы ${getCurrentYear()}`} />
+					{tvSeries.length && <Gallery items={tvSeries} />}
+				</div>
+			</section>
 		</Meta>
 	);
 };

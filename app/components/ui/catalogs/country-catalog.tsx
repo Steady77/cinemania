@@ -42,44 +42,46 @@ const CountryCatalog: FC<ICatalog> = ({ title, description }) => {
 			title={title}
 			description={description}
 		>
-			<Heading
-				title={title}
-				className={styles.heading}
-			/>
-			{description && (
-				<Description
-					text={description}
-					className={styles.description}
+			<section>
+				<Heading
+					title={title}
+					className={styles.heading}
 				/>
-			)}
-			<section className={styles.section}>
-				<div className={styles.movies}>
-					{!isRefetching &&
-						data?.pages.map((group, idx) => (
-							<Fragment key={idx}>
-								{group.items.map((movie) => (
-									<GalleryItem
-										key={movie.kinopoiskId}
-										item={{
-											name: movie.nameRu,
-											posterPath: movie.posterUrlPreview,
-											link: getMovieRoute(movie.kinopoiskId),
-											content: { title: movie.nameRu },
-										}}
-										variant="horizontal"
-									/>
-								))}
-							</Fragment>
-						))}
-				</div>
-				{hasNextPage && (
-					<button
-						onClick={() => fetchNextPage()}
-						className={styles.button}
-					>
-						Еще
-					</button>
+				{description && (
+					<Description
+						text={description}
+						className={styles.description}
+					/>
 				)}
+				<div>
+					<div className={styles.movies}>
+						{!isRefetching &&
+							data?.pages.map((group, idx) => (
+								<Fragment key={idx}>
+									{group.items.map((movie) => (
+										<GalleryItem
+											key={movie.kinopoiskId}
+											item={{
+												name: movie.nameRu,
+												posterPath: movie.posterUrlPreview,
+												link: getMovieRoute(movie.kinopoiskId),
+												content: { title: movie.nameRu },
+											}}
+											variant="horizontal"
+										/>
+									))}
+								</Fragment>
+							))}
+					</div>
+					{hasNextPage && (
+						<button
+							onClick={() => fetchNextPage()}
+							className={styles.button}
+						>
+							Еще
+						</button>
+					)}
+				</div>
 			</section>
 		</Meta>
 	);

@@ -19,25 +19,27 @@ const SingleMovie: FC<IMoviePage> = ({ movie, similarMovies, staff }) => {
 			title={movie.nameRu}
 			description={movie.description}
 		>
-			<Banner
-				image={movie.coverUrl || movie.posterUrl}
-				Detail={() => <Content movie={movie} />}
-			/>
+			<section>
+				<Banner
+					image={movie.coverUrl || movie.posterUrl}
+					Detail={() => <Content movie={movie} />}
+				/>
 
-			<Description
-				text={movie.description}
-				className={styles.description}
-			/>
+				<Description
+					text={movie.description}
+					className={styles.description}
+				/>
 
-			<div className="my-10">
-				<SubHeading title="Актеры и создатели" />
-				<StaffCatalog persons={staff} />
-			</div>
+				<div className="my-10">
+					<SubHeading title="Актеры и создатели" />
+					<StaffCatalog persons={staff} />
+				</div>
 
-			<div className="my-10">
-				<SubHeading title="Похожие фильмы" />
-				<Gallery items={similarMovies} />
-			</div>
+				<div className="my-10">
+					<SubHeading title="Похожие фильмы" />
+					<Gallery items={similarMovies} />
+				</div>
+			</section>
 		</Meta>
 	);
 };

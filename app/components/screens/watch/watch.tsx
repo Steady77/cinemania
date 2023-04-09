@@ -21,18 +21,20 @@ const Watch: FC<IWatch> = ({ movie }) => {
 	}, []);
 
 	return (
-		<div className={styles.watch}>
-			<div className={styles.videoContainer}>
-				<div
-					className={styles.video}
-					id="kinobd"
-					data-resize="1"
-					data-bg="#000"
-					data-kinopoisk={movie.kinopoiskId}
-				/>
+		<section>
+			<div className={styles.watch}>
+				<div className={styles.videoContainer}>
+					<div
+						className={styles.video}
+						id="kinobd"
+						data-resize="1"
+						data-bg="#000"
+						data-kinopoisk={movie.kinopoiskId}
+					/>
+				</div>
+				<Chat />
 			</div>
-			<Chat />
-		</div>
+		</section>
 	);
 };
 

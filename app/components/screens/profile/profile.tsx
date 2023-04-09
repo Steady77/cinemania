@@ -25,50 +25,55 @@ const Profile: FC = () => {
 
 	return (
 		<Meta title="Профиль">
-			<Heading
-				title="Профиль"
-				className="my-6"
-			/>
-			<div className={styles.profile}>
-				<Controller
-					name="avatar"
-					control={control}
-					render={({ field: { value } }) => (
-						<Avatar
-							img={value}
-							size="big"
-							className="mb-7"
-						/>
-					)}
+			<section>
+				<Heading
+					title="Профиль"
+					className="my-6"
 				/>
-				<form
-					onSubmit={handleSubmit(onSubmit)}
-					className={styles.form}
-				>
+				<div className={styles.profile}>
 					<Controller
 						name="avatar"
 						control={control}
-						defaultValue=""
-						render={({ field: { value, onChange }, fieldState: { error } }) => (
-							<UploadFile
-								placeholder="Поменять аватар"
-								error={error}
-								image={value}
-								onChange={onChange}
+						render={({ field: { value } }) => (
+							<Avatar
+								img={value}
+								size="big"
+								className="mb-7"
 							/>
 						)}
 					/>
-					{isLoading ? (
-						<ContentLoader count={2} />
-					) : (
-						<AuthInputs
-							formState={formState}
-							register={register}
+					<form
+						onSubmit={handleSubmit(onSubmit)}
+						className={styles.form}
+					>
+						<Controller
+							name="avatar"
+							control={control}
+							defaultValue=""
+							render={({
+								field: { value, onChange },
+								fieldState: { error },
+							}) => (
+								<UploadFile
+									placeholder="Поменять аватар"
+									error={error}
+									image={value}
+									onChange={onChange}
+								/>
+							)}
 						/>
-					)}
-					<Button>Обновить</Button>
-				</form>
-			</div>
+						{isLoading ? (
+							<ContentLoader count={2} />
+						) : (
+							<AuthInputs
+								formState={formState}
+								register={register}
+							/>
+						)}
+						<Button>Обновить</Button>
+					</form>
+				</div>
+			</section>
 		</Meta>
 	);
 };

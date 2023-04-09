@@ -43,17 +43,18 @@ const GenreCatalog: FC<ICatalog> = ({ title, description }) => {
 			title={title}
 			description={description}
 		>
-			<Heading
-				title={title}
-				className={styles.heading}
-			/>
-			{description && (
-				<Description
-					text={description}
-					className={styles.description}
+			<section>
+				<Heading
+					title={title}
+					className={styles.heading}
 				/>
-			)}
-			<section className={styles.section}>
+				{description && (
+					<Description
+						text={description}
+						className={styles.description}
+					/>
+				)}
+
 				<div className={styles.movies}>
 					{!isRefetching &&
 						data?.pages.map((group, idx) => (

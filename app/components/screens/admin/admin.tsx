@@ -9,8 +9,10 @@ import UsersList from './users-list/users-list';
 const Admin: FC = () => {
 	return (
 		<Meta title="Панель администратора">
-			<Heading title="Пользователи" />
-			<UsersList />
+			<section>
+				<Heading title="Пользователи" />
+				<UsersList />
+			</section>
 		</Meta>
 	);
 };
