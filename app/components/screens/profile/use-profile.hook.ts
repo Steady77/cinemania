@@ -11,19 +11,23 @@ import { toastError } from '@/utils/toast-error';
 import { IProfileInput } from './profile.interface';
 
 export const useProfile = (setValue: UseFormSetValue<IProfileInput>) => {
-	const { getProfile } = useActions();
+	const { getProfile, logout } = useActions();
 
-	const { isLoading } = useQuery(['profile'], () => UserService.getProfile(), {
-		onSuccess: ({ data }) => {
-			setValue('email', data.email);
-			setValue('avatar', data.avatar);
+	const { isLoading, data: profile } = useQuery(
+		['profile'],
+		() => UserService.getProfile(),
+		{
+			onSuccess: ({ data }) => {
+				setValue('email', data.email);
+				setValue('avatar', data.avatar);
+			},
+			onError: (error) => {
+				toastError(error, 'Получение профиля');
+			},
 		},
-		onError: (error) => {
-			toastError(error, 'Получение профиля');
-		},
-	});
+	);
 
-	const { mutateAsync } = useMutation(
+	const { mutateAsync: updateProfile } = useMutation(
 		['update profile'],
 		(userData: IProfileInput) => UserService.updateProfile(userData),
 		{
@@ -36,10 +40,30 @@ export const useProfile = (setValue: UseFormSetValue<IProfileInput>) => {
 		},
 	);
 
+	const { mutateAsync: deleteProfile } = useMutation(
+		['delete profile'],
+		(id: string) => UserService.deleteProfile(id),
+		{
+			onSuccess: () => {
+				toastr.success('Удаление профиля', 'Успешно');
+			},
+			onError: (error) => {
+				toastError(error, 'Удаление профиля');
+			},
+		},
+	);
+
 	const onSubmit: SubmitHandler<IProfileInput> = async (userData) => {
-		await mutateAsync(userData);
+		await updateProfile(userData);
 		getProfile();
 	};
 
-	return { onSubmit, isLoading };
+	const handleDelete = async () => {
+		if (profile) {
+			await deleteProfile(profile?.data.id);
+			logout();
+		}
+	};
+
+	return { onSubmit, isLoading, handleDelete };
 };

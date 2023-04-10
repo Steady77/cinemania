@@ -1,3 +1,4 @@
+import { log } from 'console';
 import { FC } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
@@ -21,7 +22,7 @@ const Profile: FC = () => {
 			mode: 'onChange',
 		});
 
-	const { isLoading, onSubmit } = useProfile(setValue);
+	const { isLoading, onSubmit, handleDelete } = useProfile(setValue);
 
 	return (
 		<Meta title="Профиль">
@@ -72,6 +73,12 @@ const Profile: FC = () => {
 						)}
 						<Button>Обновить</Button>
 					</form>
+					<Button
+						className={styles.delete}
+						onClick={() => confirm('Профиль будет удален') && handleDelete()}
+					>
+						Удалить
+					</Button>
 				</div>
 			</section>
 		</Meta>

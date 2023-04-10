@@ -24,6 +24,10 @@ export const UserService = {
 		return axiosInterseptors.put<string>(getUserUrl('/profile'), data);
 	},
 
+	async deleteProfile(id: string) {
+		return axiosInterseptors.delete<string>(getUserUrl(`/profile/${id}`));
+	},
+
 	async getFavorites() {
 		return axiosInterseptors.get<string[]>(getUserUrl('/profile/favorites'));
 	},

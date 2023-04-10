@@ -18,14 +18,14 @@ export const AdminService = {
 	},
 
 	async getOneUser(id: string) {
-		return axiosInterseptors.get<string>(getAdminUrl(`/user${id}`));
+		return axiosInterseptors.get<string>(getAdminUrl(`/user/${id}`));
 	},
 
 	async updateUser(id: string, data: IProfileInput) {
-		return axiosInterseptors.put<string>(getAdminUrl(`/user${id}`), data);
+		return axiosInterseptors.put<string>(getAdminUrl(`/user/${id}`), data);
 	},
 
 	async deleteUser(id: string) {
-		return axiosInterseptors.delete<string>(getAdminUrl(`/user${id}`));
+		return axiosInterseptors.delete<string>(getAdminUrl(`/user/${id}`));
 	},
 };
