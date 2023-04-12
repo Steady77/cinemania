@@ -2,6 +2,8 @@ import { FC, useEffect } from 'react';
 
 import { IMovie } from '@/shared/types/movie.types';
 
+import { useUpdateWatchHistory } from '../single-movie/use-update-watch-history';
+
 import Chat from './chat/chat';
 import styles from './watch.module.scss';
 
@@ -10,6 +12,8 @@ interface IWatch {
 }
 
 const Watch: FC<IWatch> = ({ movie }) => {
+	useUpdateWatchHistory(String(movie.kinopoiskId));
+
 	useEffect(() => {
 		const script = document.createElement('script');
 		script.src = '/player.js';

@@ -1,4 +1,3 @@
-import { log } from 'console';
 import { FC } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
@@ -6,7 +5,9 @@ import Avatar from '@/components/ui/avatar/avatar';
 import ContentLoader from '@/components/ui/content-loader';
 import Button from '@/components/ui/form-elements/button';
 import UploadFile from '@/components/ui/form-elements/upload-file/upload-file';
+import Gallery from '@/components/ui/gallery/gallery';
 import Heading from '@/components/ui/heading/heading';
+import SubHeading from '@/components/ui/heading/sub-heading';
 
 import Meta from '@/utils/meta/meta';
 
@@ -14,7 +15,9 @@ import AuthInputs from '../auth/auth-inputs';
 
 import { IProfileInput } from './profile.interface';
 import styles from './profile.module.scss';
+import Statistic from './statistic';
 import { useProfile } from './use-profile.hook';
+import { useWatchHistory } from './use-watch-history';
 
 const Profile: FC = () => {
 	const { handleSubmit, register, formState, setValue, control } =
@@ -23,6 +26,8 @@ const Profile: FC = () => {
 		});
 
 	const { isLoading, onSubmit, handleDelete } = useProfile(setValue);
+
+	const { data, movies } = useWatchHistory();
 
 	return (
 		<Meta title="Профиль">
@@ -80,6 +85,13 @@ const Profile: FC = () => {
 						Удалить
 					</Button>
 				</div>
+
+				<div className="my-10">
+					<SubHeading title="Недавние просмотры" />
+					<Gallery items={movies} />
+				</div>
+
+				<Statistic totalWatch={data?.totalWatched || 0} />
 			</section>
 		</Meta>
 	);

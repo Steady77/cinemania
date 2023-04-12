@@ -2,7 +2,7 @@ import { axiosInterseptors } from 'api/interceptors';
 
 import { IProfileInput } from '@/components/screens/profile/profile.interface';
 
-import { IUser } from '@/shared/types/user.types';
+import { IUser, WatchedHistory } from '@/shared/types/user.types';
 
 import { USER } from '@/utils/consts';
 import { saveToLS } from '@/utils/storage';
@@ -36,5 +36,20 @@ export const UserService = {
 		return axiosInterseptors.post<string>(getUserUrl('/profile/favorites'), {
 			filmId,
 		});
+	},
+
+	async getWatchedHistory() {
+		return axiosInterseptors.get<WatchedHistory>(
+			getUserUrl('/profile/history'),
+		);
+	},
+
+	async setWatchedHistory(filmId: string) {
+		return axiosInterseptors.post<{ message: string }>(
+			getUserUrl('/profile/history'),
+			{
+				filmId,
+			},
+		);
 	},
 };

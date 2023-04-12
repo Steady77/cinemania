@@ -10,3 +10,8 @@ export interface IUser {
 export interface IUserResp {
 	users: IUser[];
 }
+
+export interface WatchedHistory {
+	watchHistory: string[];
+	totalWatched: number;
+}
