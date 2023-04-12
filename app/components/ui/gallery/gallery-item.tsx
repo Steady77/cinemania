@@ -19,7 +19,7 @@ const GalleryItem: FC<IGalleryItemProps> = ({ item, variant }) => {
 				})}
 			>
 				<Image
-					src={item.posterPath}
+					src={item.posterPath || ''}
 					alt={item.name}
 					layout="fill"
 					draggable={false}
