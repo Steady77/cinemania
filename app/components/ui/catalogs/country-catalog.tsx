@@ -1,6 +1,8 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
-import { FC, Fragment } from 'react';
+import { FC, Fragment, useRef } from 'react';
+
+import { useObserver } from '@/hooks/use-observer.hook';
 
 import { MovieService } from '@/services/movie.service';
 
@@ -11,6 +13,7 @@ import { getMovieRoute } from '@/config/route.config';
 import GalleryItem from '../gallery/gallery-item';
 import Description from '../heading/description';
 import Heading from '../heading/heading';
+import Spinner from '../spinner/spinner';
 
 import { ICatalog } from './catalog.interface';
 import styles from './catalog.module.scss';
@@ -19,7 +22,9 @@ const CountryCatalog: FC<ICatalog> = ({ title, description }) => {
 	const { query } = useRouter();
 	const id = Number(query?.id);
 
-	const { data, fetchNextPage, hasNextPage, isRefetching } = useInfiniteQuery(
+	const ref = useRef<HTMLDivElement | null>(null);
+
+	const { data, fetchNextPage, hasNextPage, isFetching } = useInfiniteQuery(
 		['movies by country'],
 		({ pageParam = 1 }) =>
 			MovieService.getByFilters({ countries: id, page: pageParam }),
@@ -37,6 +42,9 @@ const CountryCatalog: FC<ICatalog> = ({ title, description }) => {
 			},
 		},
 	);
+
+	useObserver(ref, hasNextPage, isFetching, fetchNextPage);
+
 	return (
 		<Meta
 			title={title}
@@ -55,32 +63,25 @@ const CountryCatalog: FC<ICatalog> = ({ title, description }) => {
 				)}
 				<div>
 					<div className={styles.movies}>
-						{!isRefetching &&
-							data?.pages.map((group, idx) => (
-								<Fragment key={idx}>
-									{group.items.map((movie) => (
-										<GalleryItem
-											key={movie.kinopoiskId}
-											item={{
-												name: movie.nameRu,
-												posterPath: movie.posterUrlPreview,
-												link: getMovieRoute(movie.kinopoiskId),
-												content: { title: movie.nameRu },
-											}}
-											variant="horizontal"
-										/>
-									))}
-								</Fragment>
-							))}
+						{data?.pages.map((group, idx) => (
+							<Fragment key={idx}>
+								{group.items.map((movie) => (
+									<GalleryItem
+										key={movie.kinopoiskId}
+										item={{
+											name: movie.nameRu,
+											posterPath: movie.posterUrlPreview,
+											link: getMovieRoute(movie.kinopoiskId),
+											content: { title: movie.nameRu },
+										}}
+										variant="horizontal"
+									/>
+								))}
+							</Fragment>
+						))}
 					</div>
-					{hasNextPage && (
-						<button
-							onClick={() => fetchNextPage()}
-							className={styles.button}
-						>
-							Еще
-						</button>
-					)}
+					{isFetching && <Spinner />}
+					<div ref={ref}></div>
 				</div>
 			</section>
 		</Meta>
